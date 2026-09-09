@@ -1,0 +1,1223 @@
+{
+  "generatedAt": "2026-09-09T23:55:56.772Z",
+  "mode": "code",
+  "companies": [
+    {
+      "id": "harlan",
+      "name": "Harlan Industrial Services",
+      "sector": "Industrial services",
+      "city": "Toledo, OH",
+      "ceo": {
+        "name": "Dana Whitfield",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-17",
+      "initiativeIds": [
+        "harlan-erp",
+        "harlan-plant",
+        "harlan-pricing",
+        "harlan-tms"
+      ]
+    },
+    {
+      "id": "meridian",
+      "name": "Meridian Freight Partners",
+      "sector": "Regional logistics",
+      "city": "Memphis, TN",
+      "ceo": {
+        "name": "Luis Ortega",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-15",
+      "initiativeIds": [
+        "meridian-pricing",
+        "meridian-drivers",
+        "meridian-cfo",
+        "meridian-warehouse"
+      ]
+    },
+    {
+      "id": "corvus",
+      "name": "Corvus Aviation Services",
+      "sector": "Aviation services and MRO",
+      "city": "Wichita, KS",
+      "ceo": {
+        "name": "Priya Natarajan",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-16",
+      "initiativeIds": [
+        "corvus-sales",
+        "corvus-mro",
+        "corvus-tms",
+        "corvus-concentration"
+      ]
+    }
+  ],
+  "initiatives": [
+    {
+      "id": "corvus-sales",
+      "companyId": "corvus",
+      "name": "Sales coverage expansion, two territory reps",
+      "boardTarget": "both hired by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Priya Natarajan",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Two territory sales roles are open, with both hires targeted for Q2.",
+          "cite": {
+            "reportId": "corvus-2026-01",
+            "page": 2,
+            "section": "People"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The search for the two territory sales roles is with a recruiter.",
+          "cite": {
+            "reportId": "corvus-2026-02",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Recruiting underway for both territory roles.",
+          "cite": {
+            "reportId": "corvus-2026-03",
+            "page": 2,
+            "section": "People"
+          }
+        },
+        "2026-04": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-05": {
+          "mentioned": false,
+          "flag": "grey",
+          "change": {
+            "kind": "silent",
+            "from": "March",
+            "label": "Not mentioned since March"
+          }
+        },
+        "2026-06": {
+          "mentioned": false,
+          "flag": "grey"
+        },
+        "2026-07": {
+          "mentioned": false,
+          "flag": "grey"
+        },
+        "2026-08": {
+          "mentioned": false,
+          "flag": "grey"
+        }
+      },
+      "status": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      }
+    },
+    {
+      "id": "corvus-mro",
+      "companyId": "corvus",
+      "name": "MRO capacity expansion, Hangar 3",
+      "boardTarget": "online by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Tom Reyes, VP Maintenance",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Hangar 3 construction is on plan to be online in Q3.",
+          "cite": {
+            "reportId": "corvus-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Hangar 3 steel erection is complete and the project remains on plan for Q3.",
+          "cite": {
+            "reportId": "corvus-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Hangar 3 remains on plan for Q3, with interior fit-out starting in April.",
+          "cite": {
+            "reportId": "corvus-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Hangar 3 fit-out is underway and the online date remains Q3.",
+          "cite": {
+            "reportId": "corvus-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Online date moved to October.",
+          "cite": {
+            "reportId": "corvus-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "October",
+            "label": "Date moved: Q3 2026 to October"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Hangar 3 remains on plan to be online in October.",
+          "cite": {
+            "reportId": "corvus-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "red",
+          "quote": "Now targeting December.",
+          "cite": {
+            "reportId": "corvus-2026-07",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "October",
+            "to": "December",
+            "label": "Date moved: October to December"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "red",
+          "quote": "Vendor resourcing has pushed the online date.",
+          "cite": {
+            "reportId": "corvus-2026-08",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "December",
+            "label": "Restated without a date"
+          }
+        }
+      },
+      "status": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan."
+      }
+    },
+    {
+      "id": "corvus-tms",
+      "companyId": "corvus",
+      "name": "TMS vendor selection",
+      "boardTarget": "decision by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Tom Reyes, VP Maintenance",
+      "months": {
+        "2026-01": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "TMS selection is a two-vendor bake-off, with a decision expected in Q2.",
+          "cite": {
+            "reportId": "corvus-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Reference calls with both TMS vendors are complete.",
+          "cite": {
+            "reportId": "corvus-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Selected a TMS vendor after a two-vendor bake-off.",
+          "cite": {
+            "reportId": "corvus-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Contract terms with the selected TMS vendor are in negotiation.",
+          "cite": {
+            "reportId": "corvus-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Contract in legal.",
+          "cite": {
+            "reportId": "corvus-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Contract in legal.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "parallelWith": [
+        "harlan-tms"
+      ]
+    },
+    {
+      "id": "corvus-concentration",
+      "companyId": "corvus",
+      "name": "Customer concentration under 30%",
+      "boardTarget": "top customer under 30% of revenue",
+      "targetDate": "2026-12",
+      "owner": "Priya Natarajan",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The top customer was 38% of revenue in January. The plan is to bring that under 30% through new account wins.",
+          "cite": {
+            "reportId": "corvus-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 37% of revenue.",
+          "cite": {
+            "reportId": "corvus-2026-02",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 37% of revenue, with two new accounts onboarded.",
+          "cite": {
+            "reportId": "corvus-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 36% of revenue.",
+          "cite": {
+            "reportId": "corvus-2026-04",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 35% of revenue.",
+          "cite": {
+            "reportId": "corvus-2026-05",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 35% of revenue.",
+          "cite": {
+            "reportId": "corvus-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 34% of revenue.",
+          "cite": {
+            "reportId": "corvus-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Top customer at 33% of revenue, down from 38% in January.",
+          "cite": {
+            "reportId": "corvus-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 33%, down from 38% in January."
+      }
+    },
+    {
+      "id": "harlan-erp",
+      "companyId": "harlan",
+      "name": "ERP migration",
+      "boardTarget": "go-live end of Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Dana Whitfield",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "ERP go-live remains on plan for the end of Q2.",
+          "cite": {
+            "reportId": "harlan-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The ERP program remains on plan for a Q2 go-live, with testing of the finance module underway.",
+          "cite": {
+            "reportId": "harlan-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Implementation on track for a June cutover. Data migration is 60% complete.",
+          "cite": {
+            "reportId": "harlan-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Cutover planning for June is proceeding, and user training begins in May.",
+          "cite": {
+            "reportId": "harlan-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Now targeting a July go-live. Vendor resourcing is constrained in the integration workstream.",
+          "cite": {
+            "reportId": "harlan-2026-05",
+            "page": 2,
+            "section": "CEO commentary"
+          },
+          "change": {
+            "kind": "date",
+            "from": "June",
+            "to": "July",
+            "label": "Date moved: June to July"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Phase 1 (finance and procurement) goes live July 1. Phase 2 (operations) is planned for Q4.",
+          "cite": {
+            "reportId": "harlan-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "scope",
+            "to": "phase-2",
+            "label": "Scope split: phase 2 added"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Phase 1 went live on July 1 as planned. Phase 2 remains planned for Q4.",
+          "cite": {
+            "reportId": "harlan-2026-07",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "red",
+          "quote": "Phase 2 is now expected in Q1 2027 to avoid disruption during peak season.",
+          "cite": {
+            "reportId": "harlan-2026-08",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q4 2026",
+            "to": "Q1 2027",
+            "label": "Date moved: Q4 2026 to Q1 2027"
+          }
+        }
+      },
+      "status": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2."
+      }
+    },
+    {
+      "id": "harlan-plant",
+      "companyId": "harlan",
+      "name": "Plant consolidation, Dayton into Toledo",
+      "boardTarget": "complete by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Marcus Bell, COO",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Consolidation of the Dayton plant into Toledo is on plan to complete in Q3.",
+          "cite": {
+            "reportId": "harlan-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Dayton consolidation remains on plan for Q3, with the lease exit in negotiation.",
+          "cite": {
+            "reportId": "harlan-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The Dayton lease exit was signed on March 6. The move date is to be confirmed.",
+          "cite": {
+            "reportId": "harlan-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "label": "Restated without a date"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Dayton consolidation planning continues. The move date will be confirmed once the Toledo line extension is complete.",
+          "cite": {
+            "reportId": "harlan-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Toledo line extension work is underway. A move date for Dayton has not yet been set.",
+          "cite": {
+            "reportId": "harlan-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Dayton consolidation continues to plan. The move date will follow completion of the Toledo extension.",
+          "cite": {
+            "reportId": "harlan-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The Toledo extension is nearing completion. The Dayton move date remains to be confirmed.",
+          "cite": {
+            "reportId": "harlan-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Dayton consolidation remains in planning. A move date has not been set.",
+          "cite": {
+            "reportId": "harlan-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      }
+    },
+    {
+      "id": "harlan-pricing",
+      "companyId": "harlan",
+      "name": "Pricing discipline, net price +2 pts",
+      "boardTarget": "all regions by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Dana Whitfield",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Pricing discipline rolls out region by region, with all three regions live by Q3.",
+          "cite": {
+            "reportId": "harlan-2026-01",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The pricing rollout began in the Northeast region in February.",
+          "cite": {
+            "reportId": "harlan-2026-02",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Northeast pricing is live and the Southeast region begins in April.",
+          "cite": {
+            "reportId": "harlan-2026-03",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Southeast pricing rollout started on April 6.",
+          "cite": {
+            "reportId": "harlan-2026-04",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Pricing is live in the Northeast and Southeast regions.",
+          "cite": {
+            "reportId": "harlan-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Live in 2 of 3 regions. Midwest remains scheduled for Q3.",
+          "cite": {
+            "reportId": "harlan-2026-06",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Midwest pricing rollout is scheduled for September.",
+          "cite": {
+            "reportId": "harlan-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Live in 2 of 3 regions. Midwest scheduled for September.",
+          "cite": {
+            "reportId": "harlan-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for September."
+      },
+      "promisedBenefit": "2 points of net price"
+    },
+    {
+      "id": "harlan-tms",
+      "companyId": "harlan",
+      "name": "TMS vendor selection",
+      "boardTarget": "decision by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Marcus Bell, COO",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "TMS vendor selection is underway with a decision expected in Q3.",
+          "cite": {
+            "reportId": "harlan-2026-01",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The TMS requirements document was finalized in February.",
+          "cite": {
+            "reportId": "harlan-2026-02",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Four TMS vendors responded to the request for proposal.",
+          "cite": {
+            "reportId": "harlan-2026-03",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "TMS vendor demonstrations were completed in April.",
+          "cite": {
+            "reportId": "harlan-2026-04",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The TMS shortlist is down to two vendors.",
+          "cite": {
+            "reportId": "harlan-2026-05",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The team is in final evaluation between two TMS vendors.",
+          "cite": {
+            "reportId": "harlan-2026-06",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Commercial proposals from the two TMS vendors are under review.",
+          "cite": {
+            "reportId": "harlan-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The TMS vendor decision remains on plan for Q3.",
+          "cite": {
+            "reportId": "harlan-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus is running the same evaluation.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "parallelWith": [
+        "corvus-tms"
+      ]
+    },
+    {
+      "id": "meridian-pricing",
+      "companyId": "meridian",
+      "name": "Pricing initiative, +2 to 3 pts by Q3",
+      "boardTarget": "2 to 3 points of net price by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Luis Ortega",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Targeting 2 to 3 points of net price by Q3 through the regional rollout.",
+          "cite": {
+            "reportId": "meridian-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The regional pricing rollout begins in the East region in March.",
+          "cite": {
+            "reportId": "meridian-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "East region pricing went live in March.",
+          "cite": {
+            "reportId": "meridian-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Implemented in the East and Gulf regions.",
+          "cite": {
+            "reportId": "meridian-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Central region pricing rollout is underway.",
+          "cite": {
+            "reportId": "meridian-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "All regions live.",
+          "cite": {
+            "reportId": "meridian-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-08": {
+          "mentioned": false,
+          "flag": "green"
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Gross margin up 180 bps since April. The report does not connect the two.",
+        "chip": {
+          "text": "Benefit not rolled up",
+          "tone": "you"
+        }
+      },
+      "promisedBenefit": "2 to 3 points of net price"
+    },
+    {
+      "id": "meridian-drivers",
+      "companyId": "meridian",
+      "name": "Driver retention program",
+      "boardTarget": "turnover under 40% by year end",
+      "targetDate": "2026-12",
+      "owner": "Renee Calloway, VP Operations",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Driver turnover was 48% on a trailing twelve month basis. The retention program targets under 40% by year end.",
+          "cite": {
+            "reportId": "meridian-2026-01",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Driver turnover at 47%. Referral bonuses launched in February.",
+          "cite": {
+            "reportId": "meridian-2026-02",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Driver turnover at 46%. The revised home-time schedule is live at all terminals.",
+          "cite": {
+            "reportId": "meridian-2026-03",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Driver turnover at 45%.",
+          "cite": {
+            "reportId": "meridian-2026-04",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Driver turnover at 44%. The program remains on plan for under 40% by year end.",
+          "cite": {
+            "reportId": "meridian-2026-05",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Driver turnover at 45%.",
+          "cite": {
+            "reportId": "meridian-2026-06",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "number",
+            "from": "44%",
+            "to": "45%",
+            "label": "Number moved: 44% to 45%"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Driver turnover at 45%. Recruiting pipeline remains strong.",
+          "cite": {
+            "reportId": "meridian-2026-07",
+            "page": 2,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Turnover at 46%. Recruiting pipeline remains strong.",
+          "cite": {
+            "reportId": "meridian-2026-08",
+            "page": 2,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "number",
+            "from": "45%",
+            "to": "46%",
+            "label": "Number moved: 45% to 46%"
+          }
+        }
+      },
+      "status": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 46%, was 44% in May. No new actions named."
+      }
+    },
+    {
+      "id": "meridian-cfo",
+      "companyId": "meridian",
+      "name": "CFO hire",
+      "boardTarget": "in seat by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Luis Ortega",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The CFO search is underway with a retained firm, targeting a Q3 start.",
+          "cite": {
+            "reportId": "meridian-2026-01",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The CFO search continues. First-round candidate interviews are scheduled for March.",
+          "cite": {
+            "reportId": "meridian-2026-02",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "CFO candidate interviews were held in March.",
+          "cite": {
+            "reportId": "meridian-2026-03",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The CFO search has been restarted with a new firm.",
+          "cite": {
+            "reportId": "meridian-2026-04",
+            "page": 3,
+            "section": "People"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "label": "Restated without a date"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The restarted CFO search is producing candidates. A start date has not been set.",
+          "cite": {
+            "reportId": "meridian-2026-05",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "A CFO finalist has been identified, with a start expected in Q3.",
+          "cite": {
+            "reportId": "meridian-2026-06",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "CFO offer negotiations are in progress for a Q3 start.",
+          "cite": {
+            "reportId": "meridian-2026-07",
+            "page": 3,
+            "section": "People"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Offer accepted August 20. Start date September 15.",
+          "cite": {
+            "reportId": "meridian-2026-08",
+            "page": 3,
+            "section": "People"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Done",
+        "sentence": "Offer accepted Aug 20. Start date Sep 15."
+      }
+    },
+    {
+      "id": "meridian-warehouse",
+      "companyId": "meridian",
+      "name": "Warehouse automation pilot, Memphis",
+      "boardTarget": "pilot results by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Renee Calloway, VP Operations",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Memphis warehouse automation pilot is on plan, with results expected in Q4.",
+          "cite": {
+            "reportId": "meridian-2026-01",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Pilot equipment for Memphis was ordered in February.",
+          "cite": {
+            "reportId": "meridian-2026-02",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Site preparation for the Memphis pilot began in March.",
+          "cite": {
+            "reportId": "meridian-2026-03",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Memphis pilot site preparation is complete.",
+          "cite": {
+            "reportId": "meridian-2026-04",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Pilot equipment delivery to Memphis is scheduled for July.",
+          "cite": {
+            "reportId": "meridian-2026-05",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Memphis pilot equipment delivery remains scheduled for July.",
+          "cite": {
+            "reportId": "meridian-2026-06",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Pilot equipment arrived in Memphis and installation is underway.",
+          "cite": {
+            "reportId": "meridian-2026-07",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Equipment installed. First throughput read in September.",
+          "cite": {
+            "reportId": "meridian-2026-08",
+            "page": 3,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment installed. First throughput read in September."
+      }
+    }
+  ]
+}

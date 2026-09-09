@@ -1,0 +1,134 @@
+// Fails if the ledger drifts from the ground truth: any quote that differs
+// from arcs.json by a character, any flag or change that differs from the
+// intended one, any cite that does not resolve to a real report page with
+// the quote on it. Also checks the authored fixtures' cites, the August
+// counts, and that no fixture or UI copy carries an em-dash.
+
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+import type { Arc, Ledger, Pattern, Question } from "../lib/types";
+import { MONTHS } from "../lib/types";
+import { locateSentence, pageText, reportId } from "../lib/reports";
+
+const ROOT = join(__dirname, "..");
+const read = (p: string) => readFileSync(join(ROOT, p), "utf8");
+const arcs = JSON.parse(read("data/source/arcs.json")) as Arc[];
+const ledger = JSON.parse(read("data/ledger.json")) as Ledger;
+
+const errors: string[] = [];
+const fail = (s: string) => errors.push(s);
+
+const reportCache = new Map<string, string | null>();
+function reportMd(id: string): string | null {
+  if (!reportCache.has(id)) {
+    const p = join(ROOT, "data/reports", `${id}.md`);
+    reportCache.set(id, existsSync(p) ? readFileSync(p, "utf8") : null);
+  }
+  return reportCache.get(id) ?? null;
+}
+
+function checkCite(where: string, id: string, page: number, quote?: string) {
+  const md = reportMd(id);
+  if (!md) return fail(`${where}: report ${id} does not exist`);
+  const text = pageText(md, page);
+  if (text === null) return fail(`${where}: ${id} has no page ${page}`);
+  if (quote && !text.includes(quote)) fail(`${where}: quote is not on ${id} page ${page}: "${quote}"`);
+}
+
+// 1. Ledger against arcs
+const byId = new Map(ledger.initiatives.map((i) => [i.id, i]));
+if (ledger.initiatives.length !== arcs.length) fail(`ledger has ${ledger.initiatives.length} initiatives, arcs has ${arcs.length}`);
+for (const a of arcs) {
+  const i = byId.get(a.id);
+  if (!i) {
+    fail(`${a.id}: missing from ledger`);
+    continue;
+  }
+  for (const m of MONTHS) {
+    const want = a.months[m];
+    const got = i.months[m];
+    const where = `${a.id} ${m}`;
+    if (!got) {
+      fail(`${where}: missing month`);
+      continue;
+    }
+    if (got.mentioned !== (want.sentence !== null)) fail(`${where}: mentioned ${got.mentioned}, expected ${want.sentence !== null}`);
+    if ((got.quote ?? null) !== want.sentence) fail(`${where}: quote differs\n  got:  ${got.quote}\n  want: ${want.sentence}`);
+    if (got.flag !== want.flag) fail(`${where}: flag ${got.flag}, expected ${want.flag}`);
+    if (JSON.stringify(got.change ?? null) !== JSON.stringify(want.change ?? null)) fail(`${where}: change differs\n  got:  ${JSON.stringify(got.change)}\n  want: ${JSON.stringify(want.change)}`);
+    if (want.sentence) {
+      if (!got.cite) {
+        fail(`${where}: no cite`);
+      } else {
+        if (got.cite.reportId !== reportId(a.companyId, m)) fail(`${where}: cite names ${got.cite.reportId}`);
+        checkCite(where, got.cite.reportId, got.cite.page, want.sentence);
+        const md = reportMd(got.cite.reportId);
+        const loc = md ? locateSentence(md, want.sentence) : null;
+        if (loc && loc.section !== got.cite.section) fail(`${where}: cite section ${got.cite.section}, report says ${loc.section}`);
+        if (loc && want.section && loc.section !== want.section) fail(`${where}: arcs section ${want.section}, report says ${loc.section}`);
+      }
+    } else if (got.cite) {
+      fail(`${where}: cite on an unmentioned month`);
+    }
+  }
+  if (JSON.stringify(i.status) !== JSON.stringify(a.status)) fail(`${a.id}: status differs\n  got:  ${JSON.stringify(i.status)}\n  want: ${JSON.stringify(a.status)}`);
+  if (JSON.stringify(i.parallelWith ?? null) !== JSON.stringify(a.parallelWith ?? null)) fail(`${a.id}: parallelWith differs`);
+}
+
+// 2. August counts
+const counts = { red: 0, amber: 0, grey: 0, green: 0 };
+for (const i of ledger.initiatives) counts[i.status.flag] += 1;
+if (JSON.stringify(counts) !== JSON.stringify({ red: 2, amber: 2, grey: 1, green: 7 })) fail(`August counts ${JSON.stringify(counts)}, expected 2 / 2 / 1 / 7`);
+
+// 3. Authored fixtures' cites
+if (existsSync(join(ROOT, "data/questions.json"))) {
+  const qs = JSON.parse(read("data/questions.json")) as Question[];
+  for (const q of qs) {
+    if (!byId.has(q.initiativeId)) fail(`question ${q.id}: unknown initiative ${q.initiativeId}`);
+    for (const c of q.cites) {
+      const m = /^([a-z]+-\d{4}-\d{2}):(\d+)$/.exec(c);
+      if (!m) {
+        fail(`question ${q.id}: cite "${c}" is not reportId:page`);
+        continue;
+      }
+      checkCite(`question ${q.id}`, m[1], Number(m[2]));
+    }
+  }
+}
+if (existsSync(join(ROOT, "data/patterns.json"))) {
+  const ps = JSON.parse(read("data/patterns.json")) as Pattern[];
+  for (const p of ps) {
+    const cited = new Set<string>();
+    for (const e of p.evidence) {
+      if (!e.cite) continue;
+      const quoted = /[“"]([^”"]+)[”"]/.exec(e.text)?.[1];
+      checkCite(`pattern ${p.id}`, e.cite.reportId, e.cite.page, quoted);
+      cited.add(e.cite.reportId.split("-")[0]);
+    }
+    for (const c of p.companyIds) if (!cited.has(c)) fail(`pattern ${p.id}: no cite for ${c}`);
+  }
+}
+
+// 4. No em-dashes in fixtures or UI copy
+function walk(dir: string, out: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (name === "node_modules" || name === ".next" || name.startsWith(".")) continue;
+    if (statSync(p).isDirectory()) walk(p, out);
+    else if (/\.(json|md|txt|tsx?|css)$/.test(name)) out.push(p);
+  }
+  return out;
+}
+for (const dir of ["data", "app", "components", "lib", "skill"]) {
+  if (!existsSync(join(ROOT, dir))) continue;
+  for (const p of walk(join(ROOT, dir))) {
+    if (readFileSync(p, "utf8").includes("—")) fail(`em-dash in ${p.slice(ROOT.length + 1)}`);
+  }
+}
+
+if (errors.length) {
+  console.error(`check-ledger: ${errors.length} problem${errors.length === 1 ? "" : "s"}`);
+  for (const e of errors) console.error("  " + e);
+  process.exit(1);
+}
+console.log(`check-ledger: ${arcs.length} initiatives, ${arcs.length * MONTHS.length} month cells, every quote, flag, change, and cite matches. Mode: ${ledger.mode}.`);
