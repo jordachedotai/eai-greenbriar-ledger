@@ -1,0 +1,32 @@
+[
+  {
+    "id": "harlan",
+    "name": "Harlan Industrial Services",
+    "sector": "Industrial services",
+    "city": "Toledo, OH",
+    "ceo": { "name": "Dana Whitfield", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-17",
+    "initiativeIds": ["harlan-erp", "harlan-plant", "harlan-pricing", "harlan-tms"]
+  },
+  {
+    "id": "meridian",
+    "name": "Meridian Freight Partners",
+    "sector": "Regional logistics",
+    "city": "Memphis, TN",
+    "ceo": { "name": "Luis Ortega", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-15",
+    "initiativeIds": ["meridian-pricing", "meridian-drivers", "meridian-cfo", "meridian-warehouse"]
+  },
+  {
+    "id": "corvus",
+    "name": "Corvus Aviation Services",
+    "sector": "Aviation services and MRO",
+    "city": "Wichita, KS",
+    "ceo": { "name": "Priya Natarajan", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-16",
+    "initiativeIds": ["corvus-sales", "corvus-mro", "corvus-tms", "corvus-concentration"]
+  }
+]

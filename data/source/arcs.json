@@ -1,0 +1,236 @@
+[
+  {
+    "id": "harlan-erp",
+    "companyId": "harlan",
+    "name": "ERP migration",
+    "boardTarget": "go-live end of Q2 2026",
+    "targetDate": "2026-Q2",
+    "owner": "Dana Whitfield",
+    "months": {
+      "2026-01": { "sentence": "ERP go-live remains on plan for the end of Q2.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-Q2" }] } },
+      "2026-02": { "sentence": "The ERP program remains on plan for a Q2 go-live, with testing of the finance module underway.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-Q2" }] } },
+      "2026-03": { "sentence": "Implementation on track for a June cutover. Data migration is 60% complete.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-06" }] } },
+      "2026-04": { "sentence": "Cutover planning for June is proceeding, and user training begins in May.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-06" }] } },
+      "2026-05": { "sentence": "Now targeting a July go-live. Vendor resourcing is constrained in the integration workstream.", "section": "CEO commentary", "flag": "amber", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-07" }], "reason": "vendor resourcing" }, "change": { "kind": "date", "from": "June", "to": "July", "label": "Date moved: June to July" } },
+      "2026-06": { "sentence": "Phase 1 (finance and procurement) goes live July 1. Phase 2 (operations) is planned for Q4.", "section": "Strategic initiatives", "flag": "amber", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-07" }, { "key": "phase-2", "kind": "date", "value": "2026-Q4", "label": "Scope split: phase 2 added" }] }, "change": { "kind": "scope", "to": "phase-2", "label": "Scope split: phase 2 added" } },
+      "2026-07": { "sentence": "Phase 1 went live on July 1 as planned. Phase 2 remains planned for Q4.", "section": "Strategic initiatives", "flag": "amber", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-07" }, { "key": "phase-2", "kind": "date", "value": "2026-Q4" }] } },
+      "2026-08": { "sentence": "Phase 2 is now expected in Q1 2027 to avoid disruption during peak season.", "section": "Strategic initiatives", "flag": "red", "facts": { "commitments": [{ "key": "phase-2", "kind": "date", "value": "2027-Q1" }], "reason": "peak season" }, "change": { "kind": "date", "from": "Q4 2026", "to": "Q1 2027", "label": "Date moved: Q4 2026 to Q1 2027" } }
+    },
+    "status": { "flag": "red", "pill": "Needs a conversation", "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2." }
+  },
+  {
+    "id": "harlan-plant",
+    "companyId": "harlan",
+    "name": "Plant consolidation, Dayton into Toledo",
+    "boardTarget": "complete by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Marcus Bell, COO",
+    "months": {
+      "2026-01": { "sentence": "Consolidation of the Dayton plant into Toledo is on plan to complete in Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "complete", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "Dayton consolidation remains on plan for Q3, with the lease exit in negotiation.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "complete", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-03": { "sentence": "The Dayton lease exit was signed on March 6. The move date is to be confirmed.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true }, "change": { "kind": "date", "from": "Q3 2026", "label": "Restated without a date" } },
+      "2026-04": { "sentence": "Dayton consolidation planning continues. The move date will be confirmed once the Toledo line extension is complete.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } },
+      "2026-05": { "sentence": "Toledo line extension work is underway. A move date for Dayton has not yet been set.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } },
+      "2026-06": { "sentence": "Dayton consolidation continues to plan. The move date will follow completion of the Toledo extension.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } },
+      "2026-07": { "sentence": "The Toledo extension is nearing completion. The Dayton move date remains to be confirmed.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } },
+      "2026-08": { "sentence": "Dayton consolidation remains in planning. A move date has not been set.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } }
+    },
+    "status": { "flag": "amber", "pill": "Slipping", "sentence": "Lease exit signed in March. No move date stated since." }
+  },
+  {
+    "id": "harlan-pricing",
+    "companyId": "harlan",
+    "name": "Pricing discipline, net price +2 pts",
+    "boardTarget": "all regions by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Dana Whitfield",
+    "promisedBenefit": "2 points of net price",
+    "months": {
+      "2026-01": { "sentence": "Pricing discipline rolls out region by region, with all three regions live by Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "The pricing rollout began in the Northeast region in February.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "Northeast pricing is live and the Southeast region begins in April.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": "The Southeast pricing rollout started on April 6.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-05": { "sentence": "Pricing is live in the Northeast and Southeast regions.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-06": { "sentence": "Live in 2 of 3 regions. Midwest remains scheduled for Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-07": { "sentence": "The Midwest pricing rollout is scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] } },
+      "2026-08": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] } }
+    },
+    "status": { "flag": "green", "pill": "On track", "sentence": "Live in 2 of 3 regions. Midwest scheduled for September." }
+  },
+  {
+    "id": "harlan-tms",
+    "companyId": "harlan",
+    "name": "TMS vendor selection",
+    "boardTarget": "decision by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Marcus Bell, COO",
+    "months": {
+      "2026-01": { "sentence": "TMS vendor selection is underway with a decision expected in Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "decision", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "The TMS requirements document was finalized in February.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "Four TMS vendors responded to the request for proposal.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": "TMS vendor demonstrations were completed in April.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-05": { "sentence": "The TMS shortlist is down to two vendors.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-06": { "sentence": "The team is in final evaluation between two TMS vendors.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-07": { "sentence": "Commercial proposals from the two TMS vendors are under review.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-08": { "sentence": "The TMS vendor decision remains on plan for Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "decision", "kind": "date", "value": "2026-Q3" }] } }
+    },
+    "status": { "flag": "green", "pill": "On track", "sentence": "Down to two vendors. Corvus is running the same evaluation.", "chip": { "text": "Parallel with Corvus", "tone": "you" } },
+    "parallelWith": ["corvus-tms"]
+  },
+  {
+    "id": "meridian-pricing",
+    "companyId": "meridian",
+    "name": "Pricing initiative, +2 to 3 pts by Q3",
+    "boardTarget": "2 to 3 points of net price by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Luis Ortega",
+    "promisedBenefit": "2 to 3 points of net price",
+    "months": {
+      "2026-01": { "sentence": "Targeting 2 to 3 points of net price by Q3 through the regional rollout.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "rollout", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "The regional pricing rollout begins in the East region in March.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "East region pricing went live in March.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": "Implemented in the East and Gulf regions.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-05": { "sentence": "The Central region pricing rollout is underway.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-06": { "sentence": "All regions live.", "section": "Strategic initiatives", "flag": "green", "facts": { "completed": "Delivered" } },
+      "2026-07": { "sentence": null, "flag": "green" },
+      "2026-08": { "sentence": null, "flag": "green" }
+    },
+    "status": { "flag": "green", "pill": "Delivered", "sentence": "Gross margin up 180 bps since April. The report does not connect the two.", "chip": { "text": "Benefit not rolled up", "tone": "you" } }
+  },
+  {
+    "id": "meridian-drivers",
+    "companyId": "meridian",
+    "name": "Driver retention program",
+    "boardTarget": "turnover under 40% by year end",
+    "targetDate": "2026-12",
+    "owner": "Renee Calloway, VP Operations",
+    "measureDirection": "down",
+    "months": {
+      "2026-01": { "sentence": "Driver turnover was 48% on a trailing twelve month basis. The retention program targets under 40% by year end.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "target", "kind": "date", "value": "2026-12" }], "measure": { "value": 48, "unit": "%" } } },
+      "2026-02": { "sentence": "Driver turnover at 47%. Referral bonuses launched in February.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 47, "unit": "%" } } },
+      "2026-03": { "sentence": "Driver turnover at 46%. The revised home-time schedule is live at all terminals.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 46, "unit": "%" } } },
+      "2026-04": { "sentence": "Driver turnover at 45%.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 45, "unit": "%" } } },
+      "2026-05": { "sentence": "Driver turnover at 44%. The program remains on plan for under 40% by year end.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "target", "kind": "date", "value": "2026-12" }], "measure": { "value": 44, "unit": "%" } } },
+      "2026-06": { "sentence": "Driver turnover at 45%.", "section": "Strategic initiatives", "flag": "amber", "facts": { "measure": { "value": 45, "unit": "%" } }, "change": { "kind": "number", "from": "44%", "to": "45%", "label": "Number moved: 44% to 45%" } },
+      "2026-07": { "sentence": "Driver turnover at 45%. Recruiting pipeline remains strong.", "section": "Strategic initiatives", "flag": "amber", "facts": { "measure": { "value": 45, "unit": "%" } } },
+      "2026-08": { "sentence": "Turnover at 46%. Recruiting pipeline remains strong.", "section": "Strategic initiatives", "flag": "amber", "facts": { "measure": { "value": 46, "unit": "%" } }, "change": { "kind": "number", "from": "45%", "to": "46%", "label": "Number moved: 45% to 46%" } }
+    },
+    "status": { "flag": "amber", "pill": "Slipping", "sentence": "Turnover reported at 46%, was 44% in May. No new actions named." }
+  },
+  {
+    "id": "meridian-cfo",
+    "companyId": "meridian",
+    "name": "CFO hire",
+    "boardTarget": "in seat by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Luis Ortega",
+    "months": {
+      "2026-01": { "sentence": "The CFO search is underway with a retained firm, targeting a Q3 start.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "The CFO search continues. First-round candidate interviews are scheduled for March.", "section": "People", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "CFO candidate interviews were held in March.", "section": "People", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": "The CFO search has been restarted with a new firm.", "section": "People", "flag": "amber", "facts": { "restatedWithoutDate": true }, "change": { "kind": "date", "from": "Q3 2026", "label": "Restated without a date" } },
+      "2026-05": { "sentence": "The restarted CFO search is producing candidates. A start date has not been set.", "section": "People", "flag": "amber", "facts": { "restatedWithoutDate": true } },
+      "2026-06": { "sentence": "A CFO finalist has been identified, with a start expected in Q3.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-07": { "sentence": "CFO offer negotiations are in progress for a Q3 start.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-08": { "sentence": "Offer accepted August 20. Start date September 15.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-09" }], "completed": "Done" } }
+    },
+    "status": { "flag": "green", "pill": "Done", "sentence": "Offer accepted Aug 20. Start date Sep 15." }
+  },
+  {
+    "id": "meridian-warehouse",
+    "companyId": "meridian",
+    "name": "Warehouse automation pilot, Memphis",
+    "boardTarget": "pilot results by Q4 2026",
+    "targetDate": "2026-Q4",
+    "owner": "Renee Calloway, VP Operations",
+    "months": {
+      "2026-01": { "sentence": "The Memphis warehouse automation pilot is on plan, with results expected in Q4.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "results", "kind": "date", "value": "2026-Q4" }] } },
+      "2026-02": { "sentence": "Pilot equipment for Memphis was ordered in February.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "Site preparation for the Memphis pilot began in March.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": "Memphis pilot site preparation is complete.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-05": { "sentence": "Pilot equipment delivery to Memphis is scheduled for July.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-06": { "sentence": "Memphis pilot equipment delivery remains scheduled for July.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-07": { "sentence": "Pilot equipment arrived in Memphis and installation is underway.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-08": { "sentence": "Equipment installed. First throughput read in September.", "section": "Strategic initiatives", "flag": "green", "facts": {} }
+    },
+    "status": { "flag": "green", "pill": "On track", "sentence": "Equipment installed. First throughput read in September." }
+  },
+  {
+    "id": "corvus-sales",
+    "companyId": "corvus",
+    "name": "Sales coverage expansion, two territory reps",
+    "boardTarget": "both hired by Q2 2026",
+    "targetDate": "2026-Q2",
+    "owner": "Priya Natarajan",
+    "months": {
+      "2026-01": { "sentence": "Two territory sales roles are open, with both hires targeted for Q2.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "hires", "kind": "date", "value": "2026-Q2" }] } },
+      "2026-02": { "sentence": "The search for the two territory sales roles is with a recruiter.", "section": "People", "flag": "green", "facts": {} },
+      "2026-03": { "sentence": "Recruiting underway for both territory roles.", "section": "People", "flag": "green", "facts": {} },
+      "2026-04": { "sentence": null, "flag": "green" },
+      "2026-05": { "sentence": null, "flag": "grey", "change": { "kind": "silent", "from": "March", "label": "Not mentioned since March" } },
+      "2026-06": { "sentence": null, "flag": "grey" },
+      "2026-07": { "sentence": null, "flag": "grey" },
+      "2026-08": { "sentence": null, "flag": "grey" }
+    },
+    "status": { "flag": "grey", "pill": "Not reported", "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." }
+  },
+  {
+    "id": "corvus-mro",
+    "companyId": "corvus",
+    "name": "MRO capacity expansion, Hangar 3",
+    "boardTarget": "online by Q3 2026",
+    "targetDate": "2026-Q3",
+    "owner": "Tom Reyes, VP Maintenance",
+    "months": {
+      "2026-01": { "sentence": "Hangar 3 construction is on plan to be online in Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-02": { "sentence": "Hangar 3 steel erection is complete and the project remains on plan for Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-03": { "sentence": "Hangar 3 remains on plan for Q3, with interior fit-out starting in April.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-04": { "sentence": "Hangar 3 fit-out is underway and the online date remains Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-Q3" }] } },
+      "2026-05": { "sentence": "Online date moved to October.", "section": "Strategic initiatives", "flag": "amber", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-10" }] }, "change": { "kind": "date", "from": "Q3 2026", "to": "October", "label": "Date moved: Q3 2026 to October" } },
+      "2026-06": { "sentence": "Hangar 3 remains on plan to be online in October.", "section": "Strategic initiatives", "flag": "amber", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-10" }] } },
+      "2026-07": { "sentence": "Now targeting December.", "section": "Strategic initiatives", "flag": "red", "facts": { "commitments": [{ "key": "online", "kind": "date", "value": "2026-12" }] }, "change": { "kind": "date", "from": "October", "to": "December", "label": "Date moved: October to December" } },
+      "2026-08": { "sentence": "Vendor resourcing has pushed the online date.", "section": "Strategic initiatives", "flag": "red", "facts": { "reason": "vendor resourcing", "restatedWithoutDate": true }, "change": { "kind": "date", "from": "December", "label": "Restated without a date" } }
+    },
+    "status": { "flag": "red", "pill": "Needs a conversation", "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan." }
+  },
+  {
+    "id": "corvus-tms",
+    "companyId": "corvus",
+    "name": "TMS vendor selection",
+    "boardTarget": "decision by Q2 2026",
+    "targetDate": "2026-Q2",
+    "owner": "Tom Reyes, VP Maintenance",
+    "months": {
+      "2026-01": { "sentence": null, "flag": "green" },
+      "2026-02": { "sentence": "TMS selection is a two-vendor bake-off, with a decision expected in Q2.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "decision", "kind": "date", "value": "2026-Q2" }] } },
+      "2026-03": { "sentence": null, "flag": "green" },
+      "2026-04": { "sentence": "Reference calls with both TMS vendors are complete.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-05": { "sentence": "Selected a TMS vendor after a two-vendor bake-off.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-06": { "sentence": null, "flag": "green" },
+      "2026-07": { "sentence": "Contract terms with the selected TMS vendor are in negotiation.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
+      "2026-08": { "sentence": "Contract in legal.", "section": "Strategic initiatives", "flag": "green", "facts": {} }
+    },
+    "status": { "flag": "green", "pill": "On track", "sentence": "Vendor chosen in May. Contract in legal.", "chip": { "text": "Parallel with Harlan", "tone": "you" } },
+    "parallelWith": ["harlan-tms"]
+  },
+  {
+    "id": "corvus-concentration",
+    "companyId": "corvus",
+    "name": "Customer concentration under 30%",
+    "boardTarget": "top customer under 30% of revenue",
+    "targetDate": "2026-12",
+    "owner": "Priya Natarajan",
+    "measureDirection": "down",
+    "months": {
+      "2026-01": { "sentence": "The top customer was 38% of revenue in January. The plan is to bring that under 30% through new account wins.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 38, "unit": "%" } } },
+      "2026-02": { "sentence": "Top customer at 37% of revenue.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 37, "unit": "%" } } },
+      "2026-03": { "sentence": "Top customer at 37% of revenue, with two new accounts onboarded.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 37, "unit": "%" } } },
+      "2026-04": { "sentence": "Top customer at 36% of revenue.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 36, "unit": "%" } } },
+      "2026-05": { "sentence": "Top customer at 35% of revenue.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 35, "unit": "%" } } },
+      "2026-06": { "sentence": "Top customer at 35% of revenue.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 35, "unit": "%" } } },
+      "2026-07": { "sentence": "Top customer at 34% of revenue.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 34, "unit": "%" } } },
+      "2026-08": { "sentence": "Top customer at 33% of revenue, down from 38% in January.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 33, "unit": "%" } } }
+    },
+    "status": { "flag": "green", "pill": "On track", "sentence": "Top customer 33%, down from 38% in January." }
+  }
+]
