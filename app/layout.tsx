@@ -7,8 +7,8 @@ const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500", "600", "
 const serif = Source_Serif_4({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-serif-src" });
 
 export const metadata: Metadata = {
-  title: "Greenbriar Portfolio Meeting Scheduler",
-  description: "Quarterly portfolio company meeting scheduling, one board, one button per step.",
+  title: "Greenbriar Portfolio Initiative Ledger",
+  description: "What each management team committed to, what they wrote about it month by month, and where to push before the next call.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
