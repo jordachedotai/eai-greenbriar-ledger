@@ -1,0 +1,36 @@
+[
+  {
+    "companyId": "harlan",
+    "updated": "2026-09-04",
+    "lines": [
+      { "date": "2026-09-04", "text": "ERP phase 1 live since July 1. Phase 2 now Q1 2027 per the August report. No revised budget since March." },
+      { "date": "2026-08-07", "text": "Dayton lease exit signed in March. No move date stated in any report since." },
+      { "date": "2026-08-07", "text": "Pricing live in Northeast and Southeast. Midwest scheduled for September." },
+      { "date": "2026-07-09", "text": "TMS decision down to two vendors. Corvus already chose from a two-vendor bake-off in May." },
+      { "date": "2026-05-20", "text": "Whitfield frames the ERP slip as vendor resourcing. Internal data owner not confirmed." }
+    ]
+  },
+  {
+    "companyId": "meridian",
+    "updated": "2026-09-04",
+    "lines": [
+      { "date": "2026-09-04", "text": "CFO offer accepted August 20, start September 15." },
+      { "date": "2026-09-04", "text": "Driver turnover 46% in August, up from 44% in May. No new actions named in the report." },
+      { "date": "2026-08-07", "text": "Pricing live in all regions since June. Gross margin 27.9% in July versus 26.1% in March; the report does not connect the two." },
+      { "date": "2026-08-07", "text": "Warehouse pilot equipment installed. First throughput read expected in September." },
+      { "date": "2026-06-12", "text": "Sales comp changed in March ahead of the pricing rollout. Confirmed as the reason it held." },
+      { "date": "2026-08-28", "text": "Warehouse system integration is not on the pilot schedule. September read may be a manual count.", "status": "draft" }
+    ]
+  },
+  {
+    "companyId": "corvus",
+    "updated": "2026-09-04",
+    "lines": [
+      { "date": "2026-09-04", "text": "Hangar 3 online date moved twice: October in May, December in July. August cites vendor resourcing with no new date." },
+      { "date": "2026-09-04", "text": "Two territory sales roles last mentioned in March. Nothing since." },
+      { "date": "2026-08-07", "text": "TMS vendor selected in May. Contract in legal as of August." },
+      { "date": "2026-08-07", "text": "Top customer 33% of revenue, down from 38% in January. Target under 30%." },
+      { "date": "2026-04-03", "text": "Hangar projects have never hit the first date given. Plan on the second date." }
+    ]
+  }
+]

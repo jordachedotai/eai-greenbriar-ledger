@@ -1,0 +1,7 @@
+[
+  { "id": "log-meridian-0828", "date": "2026-08-28", "companyId": "meridian", "text": "Driver turnover moves with dispatch tenure more than with pay. The two terminals that kept dispatchers held turnover under 35%.", "source": "Site visit, Memphis", "status": "on-bench" },
+  { "id": "log-meridian-0612", "date": "2026-06-12", "companyId": "meridian", "text": "Regional pricing rollouts hold only when the sales comp plan changes first. Ortega changed comp in March; price held in Q2.", "source": "Site visit, Memphis", "status": "confirmed" },
+  { "id": "log-harlan-0520", "date": "2026-05-20", "companyId": "harlan", "text": "Whitfield reports integration slippage as a vendor problem. Check whether the internal data owner is staffed before accepting that.", "source": "CEO call", "status": "on-bench" },
+  { "id": "log-corvus-0403", "date": "2026-04-03", "companyId": "corvus", "text": "Hangar projects at Corvus have never hit the first date given. Three for three. Plan the board conversation on the second date.", "source": "Board prep", "status": "confirmed" },
+  { "id": "log-meridian-0828-draft", "date": "2026-08-28", "companyId": "meridian", "text": "The warehouse pilot equipment is in, but the integration with the warehouse system is not on the schedule. The September throughput read may come off a manual count.", "source": "Dictated note, Memphis site visit", "status": "draft" }
+]

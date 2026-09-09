@@ -1,0 +1,41 @@
+[
+  {
+    "id": "pattern-tms",
+    "title": "Two companies are evaluating the same transportation management system",
+    "companyIds": ["harlan", "corvus"],
+    "body": "Corvus chose a vendor in May and the contract is in legal. Harlan is still between two vendors. Corvus is three months ahead on the same decision.",
+    "evidence": [
+      { "text": "Harlan, June p. 3: “final evaluation between two TMS vendors.”", "cite": { "reportId": "harlan-2026-06", "page": 3 } },
+      { "text": "Corvus, May p. 2: “Selected a TMS vendor after a two-vendor bake-off.” Both describe a two-vendor evaluation.", "cite": { "reportId": "corvus-2026-05", "page": 2 } },
+      { "text": "Corvus ran reference calls in April. Harlan has not mentioned reference calls.", "cite": { "reportId": "corvus-2026-04", "page": 2 } }
+    ],
+    "action": "Draft an intro between the two operations leads",
+    "tone": "you"
+  },
+  {
+    "id": "pattern-pricing",
+    "title": "Pricing worked at Meridian. Harlan is halfway through the same play.",
+    "companyIds": ["meridian", "harlan"],
+    "body": "Meridian's rollout is live in all regions and gross margin is up 180 bps since April. Harlan is live in two of three regions with the same regional approach and has not reported a margin read yet.",
+    "evidence": [
+      { "text": "Meridian, July p. 1: financial table, gross margin 27.9% versus 26.1% in March.", "cite": { "reportId": "meridian-2026-07", "page": 1 } },
+      { "text": "Learning log, Meridian site visit Jun 12: the regional rollout only held because the sales comp plan changed first." },
+      { "text": "Harlan, August p. 3: Midwest rollout in September. No mention of sales comp.", "cite": { "reportId": "harlan-2026-08", "page": 3 } }
+    ],
+    "action": "Add the comp-plan learning to Harlan's Thursday questions",
+    "tone": "you"
+  },
+  {
+    "id": "pattern-vendor",
+    "title": "Two go-live dates slipped in the same quarter for the same stated reason",
+    "companyIds": ["harlan", "corvus"],
+    "body": "Harlan's ERP phase 2 and Corvus's Hangar 3 both moved in the summer, and both reports use the phrase “vendor resourcing.” Worth asking whether it is the same integrator.",
+    "evidence": [
+      { "text": "Harlan, May p. 2: “Vendor resourcing is constrained in the integration workstream.”", "cite": { "reportId": "harlan-2026-05", "page": 2 } },
+      { "text": "Corvus, August p. 2: “Vendor resourcing has pushed the online date.”", "cite": { "reportId": "corvus-2026-08", "page": 2 } },
+      { "text": "Neither report names the vendor." }
+    ],
+    "action": "Ask both CEOs to name the vendor",
+    "tone": "red"
+  }
+]
