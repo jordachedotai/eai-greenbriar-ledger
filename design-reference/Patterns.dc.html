@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <style>
+    body { margin: 0; font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; color: #17221a; background: #f5f7f4; -webkit-font-smoothing: antialiased; }
+    a { color: #1f5a2d; text-decoration: none; } a:hover { color: #143f1f; }
+    .serif { font-family: "Source Serif 4", Georgia, "Times New Roman", serif; }
+    .label { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #61705f; }
+    .card { background: #ffffff; border: 1px solid #dde3da; border-radius: 14px; box-shadow: 0 1px 2px rgba(23,34,26,0.06), 0 8px 24px -18px rgba(23,34,26,0.2); }
+    .cell { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .pill { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; border-radius: 10px; font-size: 15px; font-weight: 600; white-space: nowrap; }
+    .btn-brand { background: #1f5a2d; color: #ffffff; box-shadow: 0 1px 2px rgba(20,63,31,0.3); }
+    .btn-you { background: #2b5f9e; color: #ffffff; box-shadow: 0 1px 2px rgba(43,95,158,0.35); }
+    .btn-secondary { background: #ffffff; color: #17221a; border: 1px solid #c9d3c8; }
+    .cite { font-size: 12px; color: #61705f; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 1040px; display: flex; flex-direction: row; background: #f5f7f4; overflow: hidden;">
+
+  <aside style="width: 232px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; background: #ffffff; border-right: 1px solid #dde3da;">
+    <div style="display: flex; flex-direction: column;">
+      <div style="height: 64px; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid #dde3da;">
+        <img src="wordmark.png" alt="Greenbriar" style="height: 22px; width: auto;">
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 2px; padding: 12px 12px;">
+        <div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg><span>Portfolio</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: #e6efe7; color: #143f1f; font-weight: 600; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M7.5 8l3.5 7.5"></path><path d="M16.5 8L13 15.5"></path><path d="M8.5 6h7"></path></svg><span>Patterns</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l5 5v13H6z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg><span>Reports</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"></path></svg><span>Learning log</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10"></path><path d="M18 7h2"></path><circle cx="16" cy="7" r="2"></circle><path d="M4 17h2"></path><circle cx="8" cy="17" r="2"></circle><path d="M10 17h10"></path></svg><span>Settings</span></div>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 16px; border-top: 1px solid #dde3da;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #e6efe7; color: #143f1f; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #dde3da;">MB</div>
+        <div style="display: flex; flex-direction: column; line-height: 1.25;">
+          <span style="font-size: 15px; font-weight: 600; color: #17221a;">Matt Burke</span>
+          <span style="font-size: 13px; color: #61705f;">Managing Director</span>
+        </div>
+      </div>
+      <div style="font-size: 13px; color: #61705f; display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg><span>Collapse</span></div>
+    </div>
+  </aside>
+  <div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; background: #143f1f; color: #ffffff;">
+      <div style="display: flex; align-items: baseline; gap: 14px;"><span class="serif" style="font-size: 24px; font-weight: 600; letter-spacing: -0.01em;">Patterns</span><span style="font-size: 15px; color: rgba(255,255,255,0.72);">Across 3 companies, January to August 2026</span></div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        
+        <span style="border-radius: 999px; background: rgba(255,255,255,0.12); padding: 4px 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9);">Demo data</span>
+        <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.12);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M12 16v4"></path><path d="M8 20h8"></path></svg></span>
+      </div>
+    </header>
+    <div style="flex-grow: 1; display: grid; grid-template-columns: 1fr 380px; gap: 20px; padding: 22px 28px 28px; overflow: hidden;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; justify-content: flex-start; gap: 12px;">
+          <span style="font-size: 15px; color: #61705f;">Things that show up in more than one company. Found by reading all 24 reports at once, which nobody has time to do.</span>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 18px; font-weight: 600; line-height: 1.3;">Two companies are evaluating the same transportation management system</span>
+            <div style="display: flex; gap: 6px;"><span class="pill" style="background: #eef2ec; color: #17221a;">Harlan</span><span class="pill" style="background: #eef2ec; color: #17221a;">Corvus</span></div>
+          </div>
+          <span style="font-size: 15px; line-height: 1.45; color: #17221a;">Corvus chose a vendor in May and the contract is in legal. Harlan is still between the same two vendors. Corvus is three months ahead on the same decision.</span>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Harlan, June p. 6: “final evaluation between two TMS vendors.”</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Corvus, May p. 5: “selected a TMS vendor after a two-vendor bake-off.” Both name the same two.</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Corvus ran reference calls in April. Harlan has not mentioned reference calls.</span></div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><span class="btn btn-secondary" style="height: 36px; font-size: 14px;">Draft an intro between the two operations leads</span><span style="font-size: 13px; color: #61705f;">Draft. Nothing is sent until you approve it.</span></div>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 18px; font-weight: 600; line-height: 1.3;">Pricing worked at Meridian. Harlan is halfway through the same play.</span>
+            <div style="display: flex; gap: 6px;"><span class="pill" style="background: #eef2ec; color: #17221a;">Meridian</span><span class="pill" style="background: #eef2ec; color: #17221a;">Harlan</span></div>
+          </div>
+          <span style="font-size: 15px; line-height: 1.45; color: #17221a;">Meridian delivered 2.4 points of net price and gross margin is up 180 bps since April. Harlan is live in two of three regions with the same structure and has not reported a margin read yet.</span>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Meridian, July p. 2: financial table, gross margin 27.9% versus 26.1% in March.</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Learning log, Meridian site visit Jun 12: “the regional rollout only held because the sales comp plan changed first.”</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #2b5f9e;"></span><span style="font-size: 14px; line-height: 1.45;">Harlan, August p. 5: Midwest rollout in September. No mention of sales comp.</span></div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><span class="btn btn-secondary" style="height: 36px; font-size: 14px;">Add the comp-plan learning to Harlan's Thursday questions</span><span style="font-size: 13px; color: #61705f;">Draft. Nothing is sent until you approve it.</span></div>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <span style="font-size: 18px; font-weight: 600; line-height: 1.3;">Two go-live dates slipped in the same quarter for the same stated reason</span>
+            <div style="display: flex; gap: 6px;"><span class="pill" style="background: #eef2ec; color: #17221a;">Harlan</span><span class="pill" style="background: #eef2ec; color: #17221a;">Corvus</span></div>
+          </div>
+          <span style="font-size: 15px; line-height: 1.45; color: #17221a;">Harlan's ERP phase 2 and Corvus's Hangar 3 both moved in the summer, and both reports use the phrase “vendor resourcing.” Worth asking whether it is the same integrator.</span>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #c8434f;"></span><span style="font-size: 14px; line-height: 1.45;">Harlan, May p. 4: “vendor resourcing is constrained.”</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #c8434f;"></span><span style="font-size: 14px; line-height: 1.45;">Corvus, August p. 6: “vendor resourcing has pushed the online date.”</span></div><div style="display: flex; gap: 10px; align-items: flex-start;"><span style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #c8434f;"></span><span style="font-size: 14px; line-height: 1.45;">Neither report names the vendor.</span></div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><span class="btn btn-secondary" style="height: 36px; font-size: 14px;">Ask both CEOs to name the vendor</span><span style="font-size: 13px; color: #61705f;">Draft. Nothing is sent until you approve it.</span></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;"><span class="label">Learning log, latest</span><a href="#" style="font-size: 14px; font-weight: 600;">All entries</a></div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 10px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; align-items: center; justify-content: space-between;"><span style="font-size: 13px; color: #61705f;">Aug 28 · Meridian</span><span class="pill" style="background: #e5edf7; color: #2b5f9e;">On bench</span></div>
+            <span style="font-size: 14px; line-height: 1.45;">Driver turnover moves with dispatch tenure more than with pay. The two terminals that kept dispatchers held turnover under 35%.</span>
+          </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 10px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; align-items: center; justify-content: space-between;"><span style="font-size: 13px; color: #61705f;">Jun 12 · Meridian</span><span class="pill" style="background: #e3f4ea; color: #15733f;">Confirmed</span></div>
+            <span style="font-size: 14px; line-height: 1.45;">Regional pricing rollouts hold only when the sales comp plan changes first. Ortega changed comp in March; price held in Q2.</span>
+          </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 10px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; align-items: center; justify-content: space-between;"><span style="font-size: 13px; color: #61705f;">May 20 · Harlan</span><span class="pill" style="background: #e5edf7; color: #2b5f9e;">On bench</span></div>
+            <span style="font-size: 14px; line-height: 1.45;">Whitfield reports integration slippage as a vendor problem. Check whether the internal data owner is staffed before accepting that.</span>
+          </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 10px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; align-items: center; justify-content: space-between;"><span style="font-size: 13px; color: #61705f;">Apr 3 · Corvus</span><span class="pill" style="background: #e3f4ea; color: #15733f;">Confirmed</span></div>
+            <span style="font-size: 14px; line-height: 1.45;">Hangar projects at Corvus have never hit the first date given. Three for three. Plan the board conversation on the second date.</span>
+          </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 10px; background: #eef2ec;">
+          <span style="font-size: 14px; line-height: 1.45;">Entries come from your notes and site visits. Each one is a draft until you confirm it. Your team can read and add to this log.</span>
+          <span class="btn btn-secondary" style="height: 36px; font-size: 14px; align-self: flex-start;">Add from a note</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* Brand tokens. Green pulled from reference/greenbriar-logo.png. */
+@theme {
+  --color-bg: #f5f7f4;
+  --color-panel: #ffffff;
+  --color-panel2: #eef2ec;
+  --color-line: #dde3da;
+  --color-txt: #17221a;
+  --color-mut: #61705f;
+  --color-brand: #1f5a2d;
+  --color-brand2: #143f1f;
+  --color-brand-soft: #e6efe7;
+  --color-amber: #b9770c;
+  --color-amber-soft: #fbf3dd;
+  --color-red: #c8434f;
+  --color-red-soft: #fbe7e9;
+  --color-blue: #2b5f9e;
+  --color-blue-soft: #e5edf7;
+  --color-green: #1f9d57;
+  --color-header: #143f1f;
+  /* status system, one meaning per color (reference/design/Tokens.dc.html) */
+  --color-you: #2b5f9e;
+  --color-you-soft: #e5edf7;
+  --color-you-line: #c3d4ea;
+  --color-wait: #8a5a08;
+  --color-wait-soft: #fbf3dd;
+  --color-wait-line: #f0e2b8;
+  --color-lock: #15733f;
+  --color-lock-soft: #e3f4ea;
+  --color-lock-line: #c4e6d1;
+  --color-idle: #61705f;
+  --color-idle-soft: #eef2ec;
+  --color-idle-line: #e3e9e1;
+  --color-idle-bg: #f2f5f1;
+  --color-idle-text: #8a978a;
+  --color-ring: #c9d3c8;
+  --font-sans: var(--font-sans-src), "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-serif-src), "Source Serif 4", Georgia, "Times New Roman", serif;
+  --shadow-card: 0 1px 2px rgba(23, 34, 26, 0.06), 0 8px 24px -18px rgba(23, 34, 26, 0.2);
+  --shadow-card-hover: 0 1px 2px rgba(23, 34, 26, 0.06), 0 14px 32px -16px rgba(23, 34, 26, 0.28);
+  --shadow-you: 0 1px 2px rgba(23, 34, 26, 0.06), 0 8px 24px -18px rgba(43, 95, 158, 0.35);
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-txt);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.card-lift {
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+.card-lift:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.working::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  text-align: left;
+  animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
+
+.face-initials::before {
+  content: attr(data-initials);
+}

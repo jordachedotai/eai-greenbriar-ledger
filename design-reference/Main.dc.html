@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <style>
+    body { margin: 0; font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; color: #17221a; background: #f5f7f4; -webkit-font-smoothing: antialiased; }
+    a { color: #1f5a2d; text-decoration: none; } a:hover { color: #143f1f; }
+    .serif { font-family: "Source Serif 4", Georgia, "Times New Roman", serif; }
+    .label { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #61705f; }
+    .card { background: #ffffff; border: 1px solid #dde3da; border-radius: 14px; box-shadow: 0 1px 2px rgba(23,34,26,0.06), 0 8px 24px -18px rgba(23,34,26,0.2); }
+    .cell { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .pill { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; border-radius: 10px; font-size: 15px; font-weight: 600; white-space: nowrap; }
+    .btn-brand { background: #1f5a2d; color: #ffffff; box-shadow: 0 1px 2px rgba(20,63,31,0.3); }
+    .btn-you { background: #2b5f9e; color: #ffffff; box-shadow: 0 1px 2px rgba(43,95,158,0.35); }
+    .btn-secondary { background: #ffffff; color: #17221a; border: 1px solid #c9d3c8; }
+    .cite { font-size: 12px; color: #61705f; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 1260px; display: flex; flex-direction: row; background: #f5f7f4; overflow: hidden;">
+
+  <aside style="width: 232px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; background: #ffffff; border-right: 1px solid #dde3da;">
+    <div style="display: flex; flex-direction: column;">
+      <div style="height: 64px; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid #dde3da;">
+        <img src="wordmark.png" alt="Greenbriar" style="height: 22px; width: auto;">
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 2px; padding: 12px 12px;">
+        <div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: #e6efe7; color: #143f1f; font-weight: 600; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg><span>Portfolio</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M7.5 8l3.5 7.5"></path><path d="M16.5 8L13 15.5"></path><path d="M8.5 6h7"></path></svg><span>Patterns</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l5 5v13H6z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg><span>Reports</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"></path></svg><span>Learning log</span></div><div style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: #17221a; font-weight: 500; font-size: 16px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#61705f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10"></path><path d="M18 7h2"></path><circle cx="16" cy="7" r="2"></circle><path d="M4 17h2"></path><circle cx="8" cy="17" r="2"></circle><path d="M10 17h10"></path></svg><span>Settings</span></div>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 16px; border-top: 1px solid #dde3da;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #e6efe7; color: #143f1f; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #dde3da;">MB</div>
+        <div style="display: flex; flex-direction: column; line-height: 1.25;">
+          <span style="font-size: 15px; font-weight: 600; color: #17221a;">Matt Burke</span>
+          <span style="font-size: 13px; color: #61705f;">Managing Director</span>
+        </div>
+      </div>
+      <div style="font-size: 13px; color: #61705f; display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg><span>Collapse</span></div>
+    </div>
+  </aside>
+  <div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; background: #143f1f; color: #ffffff;">
+      <div style="display: flex; align-items: baseline; gap: 14px;"><span class="serif" style="font-size: 24px; font-weight: 600; letter-spacing: -0.01em;">Portfolio</span><span style="font-size: 15px; color: rgba(255,255,255,0.72);">Initiatives, January to August 2026</span></div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="display: flex; align-items: center; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 3px;">
+          <span style="font-size: 14px; font-weight: 500; padding: 5px 12px; color: rgba(255,255,255,0.85);">July</span>
+          <span style="font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 6px; background: #ffffff; color: #143f1f;">August 2026</span>
+        </div>
+        <span style="border-radius: 999px; background: rgba(255,255,255,0.12); padding: 4px 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9);">Demo data</span>
+        <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.12);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M12 16v4"></path><path d="M8 20h8"></path></svg></span>
+      </div>
+    </header>
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 18px; padding: 22px 28px 28px; overflow: hidden;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between;">
+        <div style="display: flex; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; border-radius: 12px; background: #fbe7e9; border: 1px solid #f3c6cb; min-width: 168px;">
+          <span class="serif" style="font-size: 34px; font-weight: 600; line-height: 1; color: #c8434f;">2</span>
+          <span style="font-size: 15px; font-weight: 600; color: #c8434f;">Need a conversation</span>
+          <span style="font-size: 13px; color: #61705f;">before the next CEO call</span>
+        </div>
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; border-radius: 12px; background: #fbf3dd; border: 1px solid #f0e2b8; min-width: 168px;">
+          <span class="serif" style="font-size: 34px; font-weight: 600; line-height: 1; color: #8a5a08;">2</span>
+          <span style="font-size: 15px; font-weight: 600; color: #8a5a08;">Slipping</span>
+          <span style="font-size: 13px; color: #61705f;">dates or numbers moved</span>
+        </div>
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; border-radius: 12px; background: #f2f5f1; border: 1px solid #e3e9e1; min-width: 168px;">
+          <span class="serif" style="font-size: 34px; font-weight: 600; line-height: 1; color: #8a978a;">1</span>
+          <span style="font-size: 15px; font-weight: 600; color: #8a978a;">Not reported</span>
+          <span style="font-size: 13px; color: #61705f;">went quiet, no closure stated</span>
+        </div>
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; border-radius: 12px; background: #e3f4ea; border: 1px solid #c4e6d1; min-width: 168px;">
+          <span class="serif" style="font-size: 34px; font-weight: 600; line-height: 1; color: #15733f;">7</span>
+          <span style="font-size: 15px; font-weight: 600; color: #15733f;">On track</span>
+          <span style="font-size: 13px; color: #61705f;">including 2 delivered</span>
+        </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+          <span style="font-size: 14px; color: #61705f;">12 initiatives across 3 companies. Read from 24 monthly reports.</span>
+          <span style="font-size: 14px; color: #61705f;">Every flag cites the page it came from.</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 16px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-size: 18px; font-weight: 600;">Harlan Industrial Services</span><span style="font-size: 14px; color: #61705f;">Dana Whitfield, CEO</span></div>
+            <span style="font-size: 14px; color: #61705f;">Next call Thu Sep 11 · 4 initiatives · 1 needs a conversation · 1 slipping</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; padding: 0 16px;">
+            <span class="label">Initiative</span>
+            <div style="display: flex; gap: 6px;"><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">F</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span></div>
+            <span class="label">Where it stands in August</span>
+            <span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #f3c6cb; border-left: 4px solid #c8434f;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">ERP migration</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: go-live end of Q2 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbe7e9; border: 1px solid #f3c6cb;"></span><span class="cell" style="background: #fbe7e9; border: 1px solid #f3c6cb;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #fbe7e9; color: #c8434f;">Needs a conversation</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Phase 2 now Q1 2027. The whole system was due end of Q2.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Plant consolidation, Dayton into Toledo</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: complete by Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #fbf3dd; color: #8a5a08;">Slipping</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lease exit signed. Move date has not been stated since April.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Pricing discipline, net price +2 pts</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: all regions by Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">On track</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Live in 2 of 3 regions. Midwest scheduled for September.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">TMS vendor selection</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: decision by Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">On track</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Down to two vendors. Corvus is running the same evaluation.</span> <span class="pill" style="background: #e5edf7; color: #2b5f9e;">Parallel with Corvus</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div></div>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 16px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-size: 18px; font-weight: 600;">Meridian Freight Partners</span><span style="font-size: 14px; color: #61705f;">Luis Ortega, CEO</span></div>
+            <span style="font-size: 14px; color: #61705f;">Next call Tue Sep 16 · 4 initiatives · 1 slipping</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; padding: 0 16px;">
+            <span class="label">Initiative</span>
+            <div style="display: flex; gap: 6px;"><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">F</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span></div>
+            <span class="label">Where it stands in August</span>
+            <span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Pricing initiative, +2 to 3 pts by Q3</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">Delivered</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Gross margin up 180 bps since April. The report does not connect the two.</span> <span class="pill" style="background: #e5edf7; color: #2b5f9e;">Benefit not rolled up</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Driver retention program</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: turnover under 40% by year end</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #fbf3dd; color: #8a5a08;">Slipping</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Turnover reported at 46%, was 44% in May. No new actions named.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">CFO hire</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: in seat by Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">Done</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Offer accepted Aug 20. Start date Sep 15.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Warehouse automation pilot, Memphis</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: pilot results by Q4 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">On track</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Equipment installed. First throughput read in September.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div></div>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 16px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-size: 18px; font-weight: 600;">Corvus Aviation Services</span><span style="font-size: 14px; color: #61705f;">Priya Natarajan, CEO</span></div>
+            <span style="font-size: 14px; color: #61705f;">Next call Wed Sep 17 · 4 initiatives · 1 needs a conversation · 1 not reported</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; padding: 0 16px;">
+            <span class="label">Initiative</span>
+            <div style="display: flex; gap: 6px;"><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">F</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">M</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">J</span><span style="width: 24px; text-align: center; font-size: 12px; color: #61705f;">A</span></div>
+            <span class="label">Where it stands in August</span>
+            <span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #e3e9e1; border-left: 4px solid #8a978a;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Sales coverage expansion, two territory reps</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: both hired by Q2 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #f2f5f1; border: 1px solid #e3e9e1;"></span><span class="cell" style="background: #f2f5f1; border: 1px solid #e3e9e1;"></span><span class="cell" style="background: #f2f5f1; border: 1px solid #e3e9e1;"></span><span class="cell" style="background: #f2f5f1; border: 1px solid #e3e9e1;"></span><span class="cell" style="background: #f2f5f1; border: 1px solid #e3e9e1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #f2f5f1; color: #8a978a;">Not reported</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Last mentioned in March: "recruiting underway." No closure stated since.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #f3c6cb; border-left: 4px solid #c8434f;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">MRO capacity expansion, Hangar 3</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: online by Q3 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbf3dd; border: 1px solid #f0e2b8;"></span><span class="cell" style="background: #fbe7e9; border: 1px solid #f3c6cb;"></span><span class="cell" style="background: #fbe7e9; border: 1px solid #f3c6cb;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #fbe7e9; color: #c8434f;">Needs a conversation</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Online date moved twice. August cites vendor resourcing, same phrase as Harlan.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">TMS vendor selection</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: decision by Q2 2026</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">On track</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Vendor chosen in May. Contract in legal.</span> <span class="pill" style="background: #e5edf7; color: #2b5f9e;">Parallel with Harlan</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div><div style="display: grid; grid-template-columns: 300px 234px 1fr 96px; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: #ffffff; border: 1px solid #dde3da;">
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1.25;">Customer concentration under 30%</span>
+              <span style="font-size: 13px; color: #61705f;">Board target: top customer under 30% of revenue</span>
+            </div>
+            <div style="display: flex; gap: 6px;"><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span><span class="cell" style="background: #e3f4ea; border: 1px solid #c4e6d1;"></span></div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;"><span class="pill" style="background: #e3f4ea; color: #15733f;">On track</span><span style="font-size: 14px; color: #17221a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Top customer 33%, down from 38% in January.</span></div>
+            <a href="#" style="font-size: 15px; font-weight: 600; color: #1f5a2d; text-align: right;">Open</a>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

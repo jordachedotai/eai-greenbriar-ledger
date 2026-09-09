@@ -1,0 +1,76 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1260,
+      "title": "1 \u00b7 Portfolio, August 2026"
+    },
+    {
+      "file": "Company.dc.html",
+      "x": 0,
+      "y": 1400,
+      "w": 1440,
+      "h": 1100,
+      "title": "2 \u00b7 Company, Harlan, ERP migration selected"
+    },
+    {
+      "file": "Patterns.dc.html",
+      "x": 0,
+      "y": 2640,
+      "w": 1440,
+      "h": 1040,
+      "title": "3 \u00b7 Patterns and learning log"
+    },
+    {
+      "file": "Spine.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "Vision \u00b7 the initiative as the spine"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "read-me",
+      "x": 1560,
+      "y": -170,
+      "w": 640,
+      "text": "Three screens for Matt and James, plus one vision board. Static mockups on fictional companies (Harlan, Meridian, Corvus). Logged-in user shown as Matt; swap to a generic deal lead if he would rather not be named. Nothing here is a judgment about management: every flag is a quote with a page number."
+    },
+    {
+      "id": "bigger-1",
+      "x": 1560,
+      "y": 1000,
+      "w": 440,
+      "text": "Bigger than Matt's ask, 1 of 3\nStart the ledger at the IC memo, not at this year's board list. The value creation plan the firm underwrote is entry one. Then the tool checks execution against the thesis, not just against January."
+    },
+    {
+      "id": "bigger-2",
+      "x": 2040,
+      "y": 1000,
+      "w": 440,
+      "text": "Bigger than Matt's ask, 2 of 3\nBenefit realization is not a separate exercise. Every initiative carries the benefit it promised and the benefit the financials show. \"Did they do it\" and \"did it pay\" are the same row."
+    },
+    {
+      "id": "bigger-3",
+      "x": 2520,
+      "y": 1000,
+      "w": 440,
+      "text": "Bigger than Matt's ask, 3 of 3\nThe firm's own base rates. After enough initiatives are recorded as data, the ledger knows what an ERP promise is worth at a Greenbriar industrial services company. That is a diligence tool and a fundraising asset, and it starts with capturing month one as structure."
+    },
+    {
+      "id": "option-shared",
+      "x": 1560,
+      "y": 1260,
+      "w": 640,
+      "text": "Option to raise with Matt, not to assume\nGive management the same ledger. Commitments get written the moment they are made, in structure, and the monthly report writes itself from the record. Accountability stops being forensic. It also answers Scott's accuracy worry, because the source is structured input rather than PDF extraction. Cultural call. Ask."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

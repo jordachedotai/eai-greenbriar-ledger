@@ -1,0 +1,1 @@
+Copied from ~/Documents/Tools/eai-greenbriar-scheduler on 2026-09-09 as the pattern to adapt. Not compiled. Sidebar, Header, PresenterMenu, store, data, and the shell layout: same look, different nav items, different state shape. See docs/PRD.md for what changes.
