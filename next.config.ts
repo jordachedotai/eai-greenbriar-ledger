@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // No dev badge in screenshots or the room.
+  devIndicators: false,
   async redirects() {
     return [
       { source: "/portcos", destination: "/portfolio", permanent: false },
