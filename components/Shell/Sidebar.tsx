@@ -1,7 +1,9 @@
 "use client";
 
 // Left sidebar, collapsible. Same look as the scheduler: wordmark, five nav
-// items, the deal lead's avatar block at the bottom with a sign-out menu.
+// items plus a greyed Deals placeholder (the Apex workflow, not built here;
+// it does not navigate), the deal lead's avatar block at the bottom with a
+// sign-out menu.
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -10,10 +12,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { getCurrentUser } from "@/lib/data";
 import { Face } from "@/components/ui/Face";
-import { IconBook, IconChevronLeft, IconGrid, IconPatterns, IconReport, IconSettings } from "@/components/ui/icons";
+import { IconBook, IconChevronLeft, IconDeals, IconGrid, IconPatterns, IconReport, IconSettings } from "@/components/ui/icons";
 
 const ITEMS = [
   { href: "/portfolio", label: "Portfolio", Icon: IconGrid },
+  { href: "", label: "Deals", Icon: IconDeals, soon: true },
   { href: "/patterns", label: "Patterns", Icon: IconPatterns },
   { href: "/reports", label: "Reports", Icon: IconReport },
   { href: "/log", label: "Learning log", Icon: IconBook },
@@ -65,7 +68,27 @@ export function Sidebar() {
           {collapsed ? <span className="serif text-[20px] font-semibold text-brand">G</span> : <Image src="/greenbriar-logo.png" alt="Greenbriar" width={134} height={22} priority />}
         </div>
         <nav className="flex flex-col gap-0.5 p-3">
-          {ITEMS.map(({ href, label, Icon }) => {
+          {ITEMS.map(({ href, label, Icon, soon }) => {
+            if (soon) {
+              return (
+                <div
+                  key={label}
+                  title={`${label}, coming soon`}
+                  aria-disabled="true"
+                  data-testid={`nav-${label.toLowerCase()}`}
+                  data-soon="true"
+                  className={"flex h-11 cursor-default select-none items-center gap-3 rounded-[10px] px-3 text-[16px] font-medium text-idle-text " + (collapsed ? "justify-center px-0" : "")}
+                >
+                  <Icon size={20} stroke="#8a978a" />
+                  {!collapsed ? (
+                    <span className="flex items-baseline gap-2">
+                      <span>{label}</span>
+                      <span className="text-[12px] font-medium uppercase tracking-[0.04em]">Soon</span>
+                    </span>
+                  ) : null}
+                </div>
+              );
+            }
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
               <Link

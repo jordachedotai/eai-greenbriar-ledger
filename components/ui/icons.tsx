@@ -13,6 +13,16 @@ export function IconGrid({ size = 20, className, stroke = "currentColor" }: P) {
     </svg>
   );
 }
+// A briefcase, for the Deals placeholder.
+export function IconDeals({ size = 20, className, stroke = "currentColor" }: P) {
+  return (
+    <svg {...base(size)} stroke={stroke} className={className} aria-hidden>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+      <path d="M3 12h18" />
+    </svg>
+  );
+}
 export function IconPatterns({ size = 20, className, stroke = "currentColor" }: P) {
   return (
     <svg {...base(size)} stroke={stroke} className={className} aria-hidden>
