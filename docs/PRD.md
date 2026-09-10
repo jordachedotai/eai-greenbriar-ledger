@@ -18,6 +18,29 @@ It answers two questions:
 
 It is not a financial dashboard, not a memo generator, not a chat window.
 
+## Goal, in one sentence
+
+Each month, within minutes of the reports arriving, the deal lead knows which management commitments moved, and walks into every CEO call with the right questions, with the record doing the remembering.
+
+## Matt's workflow, by cadence
+
+- **January.** Board agrees three to five priorities per company. They become the ledger's entries: name, target date, owner, measure, promised benefit.
+- **Monthly, when the pack arrives.** The tool reads it. Flags update. Questions draft. Patterns refresh. Matt spends five minutes on Portfolio, not an evening on PDFs.
+- **Weekly, before each CEO call.** Open the company. Read the stack for anything red or amber. Approve or edit the three questions. Take the call. Dictate two minutes afterward; the learning log and current state update as drafts he confirms.
+- **During a call, when memory fails.** "Go back in time" to the month in question. Hover the cell. Read what they wrote, with the page number. Bring it forward into the questions if it matters.
+- **Quarterly.** The strategic-priorities slide drafts itself for the associate. The valuation review reads from the record, not from recall.
+- **Next January.** New priorities, and the finished initiatives carry their outcome and realized benefit into the firm's history.
+
+## How information flows in
+
+- **Monthly management reports** (PDF or slides, per company). Today they land in a SharePoint folder. In the demo they are staged as files. The skill reads every page, pulls each sentence about a registered initiative verbatim with page and section, structures the dates and numbers, diffs against prior months, and sets the flags by the four rules. Nothing enters the ledger without a page behind it.
+- **The board priority list** (January, per company). Sets what the skill looks for.
+- **Matt's own words.** Dictated notes after calls and site visits. They become learning-log entries and current-state lines in his format, as drafts.
+- **Associate call notes and board decks.** Secondary sources; cited the same way; the ledger says when they disagree with the report.
+- **The financial table inside the same report.** Read for benefit realization ("margin moved after the pricing rollout; the report does not connect them"). In production this is Scott's Fabric data, not a second extraction.
+- **Out.** Questions to the CEO call. The quarterly slide to the associate. The learning log to the team. Patterns to whichever deal lead owns the other company.
+- **Production.** A watcher on the SharePoint folder the packs already land in (on the AI Council connector list) runs the same skill on arrival. No new system of record for the reports; the ledger is the one new store, because no system holds initiative state today.
+
 ## Flags, one meaning per color
 
 Same status system as the scheduler. Rules live in `lib/flags.ts` and are printed on the company page so the screen and the code cannot disagree.

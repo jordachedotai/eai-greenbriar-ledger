@@ -66,3 +66,16 @@ Jordache's read of the Phase 3 screenshots. Accepted in full. The tool shows res
 Click budget for the demo: Portfolio to the ERP story with zero clicks (hover), to the questions with one click, to a cited page with two. Rewrite `docs/DEMO_SCRIPT.md` to the slider and the reading log once built.
 
 Held: the dictate beat and Reset stay in the presenter menu. Deploy after Phase 5 is green.
+
+## Round 5: "Apple Time Machine, going back in time", 2026-09-10
+
+Replaces the slider control from round 4 item 1. The cutoff-month model stays. The control and the motion become Time Machine:
+
+- "Go back in time" button in the header. Pressing it dims the shell; the current page (Portfolio or a company page) becomes a card in a perspective stack with the earlier months behind it as receding ghost cards, each a real render of that month's state. A vertical timeline on the right edge lists January to August 2026, newest at the bottom, current highlighted. Hover previews, click or arrow keys slide that month's card forward while newer ones drop away. Cells, flags, pills, strip counts, and the quote stack animate into that month's state (about 500ms, ease-out). Bottom bar: "Return to August" primary, the viewed month in serif. Escape returns.
+- While a past month is in view, a thin amber band under the header reads "Viewing [Month] 2026. Return to August." so the presenter never loses the room.
+- The reading log (round 4 item 3) is the way forward in time: from any past month, "Add [next month] reports" streams the log and slides the next card forward. The demo goes back to March, hovers the ERP cell (green, "on plan for end of Q2"), then steps forward month by month watching it turn amber and red.
+- Optional: on a past month's company page, "Bring this forward" on a quote pins it into Harlan's Thursday questions as a cite, like restoring a file.
+- Reduced-motion users get instant swaps with the same controls.
+- Playwright: back to March, ERP cell green with the March quote on hover; forward to August via the reading log, cell red. Screenshot `phase5-time-machine.png` mid-travel.
+
+Also captured in this round, for the PRD "Workflow" section: the goal, Matt's workflow by cadence, and how data flows in. See PRD.
