@@ -18,7 +18,8 @@ import gapsJson from "@/data/gaps.json";
 import quarterlyJson from "@/data/quarterly.json";
 import statesJson from "@/data/demo-states.json";
 import notesJson from "@/data/notes/index.json";
-import type { Company, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User, View } from "./types";
+import answersJson from "@/data/answers.json";
+import type { Answer, Company, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User, View } from "./types";
 import { FLAG_ORDER } from "./flags";
 import { applyState, PRESETS, resolveView, STATE_NAMES, viewKey, withinCutoff } from "./states";
 
@@ -160,6 +161,17 @@ export function getQuestions(companyId?: string, stateName?: string): Question[]
 export function getPatterns(stateName?: string): Pattern[] {
   const ids = new Set(getDemoState(stateName).patternIds);
   return (patternsJson as Pattern[]).filter((p) => ids.has(p.id));
+}
+
+// The scripted "Ask the ledger" questions, in the order the box lists them.
+export function getAnswers(): Answer[] {
+  return answersJson as Answer[];
+}
+
+// A drafted question by id, whatever the state. lib/ask.ts decides
+// whether it exists yet.
+export function getQuestion(id: string): Question | undefined {
+  return (questionsJson as Question[]).find((q) => q.id === id);
 }
 
 export function getGap(companyId: string): Gap | undefined {

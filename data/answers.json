@@ -1,0 +1,61 @@
+[
+  {
+    "id": "erp-march",
+    "question": "What did Harlan say about the ERP date in March?",
+    "items": [
+      { "kind": "quote", "initiativeId": "harlan-erp", "month": "2026-03", "quote": "Implementation on track for a June cutover. Data migration is 60% complete." },
+      { "kind": "quote", "initiativeId": "harlan-erp", "month": "2026-05", "quote": "Now targeting a July go-live. Vendor resourcing is constrained in the integration workstream." }
+    ]
+  },
+  {
+    "id": "slipped-quarter",
+    "question": "Which initiatives slipped this quarter?",
+    "items": [
+      { "kind": "quote", "initiativeId": "harlan-erp", "month": "2026-08", "quote": "Phase 2 is now expected in Q1 2027 to avoid disruption during peak season." },
+      { "kind": "quote", "initiativeId": "meridian-drivers", "month": "2026-08", "quote": "Turnover at 46%. Recruiting pipeline remains strong." },
+      { "kind": "quote", "initiativeId": "corvus-mro", "month": "2026-07", "quote": "Now targeting December." },
+      { "kind": "quote", "initiativeId": "corvus-mro", "month": "2026-08", "quote": "Vendor resourcing has pushed the online date." }
+    ]
+  },
+  {
+    "id": "corvus-quiet",
+    "question": "What has Corvus stopped reporting?",
+    "items": [
+      { "kind": "quote", "initiativeId": "corvus-sales", "month": "2026-03", "quote": "Recruiting underway for both territory roles." },
+      { "kind": "silence", "initiativeId": "corvus-sales", "month": "2026-04" },
+      { "kind": "silence", "initiativeId": "corvus-sales", "month": "2026-05" },
+      { "kind": "silence", "initiativeId": "corvus-sales", "month": "2026-06" },
+      { "kind": "silence", "initiativeId": "corvus-sales", "month": "2026-07" },
+      { "kind": "silence", "initiativeId": "corvus-sales", "month": "2026-08" }
+    ]
+  },
+  {
+    "id": "pricing-worked",
+    "question": "Where did pricing work?",
+    "items": [
+      { "kind": "quote", "initiativeId": "meridian-pricing", "month": "2026-04", "quote": "Implemented in the East and Gulf regions." },
+      { "kind": "quote", "initiativeId": "meridian-pricing", "month": "2026-06", "quote": "All regions live." },
+      { "kind": "quote", "initiativeId": "harlan-pricing", "month": "2026-06", "quote": "Live in 2 of 3 regions. Midwest remains scheduled for Q3." },
+      { "kind": "quote", "initiativeId": "harlan-pricing", "month": "2026-08", "quote": "Live in 2 of 3 regions. Midwest scheduled for September." }
+    ]
+  },
+  {
+    "id": "same-vendor",
+    "question": "Who is using the same vendor?",
+    "items": [
+      { "kind": "quote", "initiativeId": "harlan-tms", "month": "2026-06", "quote": "The team is in final evaluation between two TMS vendors." },
+      { "kind": "quote", "initiativeId": "harlan-tms", "month": "2026-08", "quote": "The TMS vendor decision remains on plan for Q3." },
+      { "kind": "quote", "initiativeId": "corvus-tms", "month": "2026-05", "quote": "Selected a TMS vendor after a two-vendor bake-off." },
+      { "kind": "quote", "initiativeId": "corvus-tms", "month": "2026-08", "quote": "Contract in legal." }
+    ]
+  },
+  {
+    "id": "ask-dana",
+    "question": "What should I ask Dana on Thursday?",
+    "items": [
+      { "kind": "question", "questionId": "q-harlan-1" },
+      { "kind": "question", "questionId": "q-harlan-2" },
+      { "kind": "question", "questionId": "q-harlan-3" }
+    ]
+  }
+]

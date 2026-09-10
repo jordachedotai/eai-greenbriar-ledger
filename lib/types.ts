@@ -102,6 +102,17 @@ export type DemoState = {
 
 export type DemoStates = Record<string, DemoState>;
 
+// "Ask the ledger": a scripted question and its answer. An answer is only
+// what the ledger holds: a quote (the initiative's sentence for a month,
+// copied here so it reads in the file and so the check script can verify
+// it), a silence (a month the initiative was not mentioned), or one of the
+// drafted questions. No prose. scripts/check-ledger.ts verifies every item.
+export type AnswerItem =
+  | { kind: "quote"; initiativeId: string; month: Month; quote: string }
+  | { kind: "silence"; initiativeId: string; month: Month }
+  | { kind: "question"; questionId: string };
+export type Answer = { id: string; question: string; items: AnswerItem[] };
+
 // A dictated note: the transcript the "Dictate a note" beat types out, and
 // the fixture ids it produces. data/notes/index.json is generated from the
 // .txt files by scripts/gen-states.ts.

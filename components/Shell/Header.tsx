@@ -1,7 +1,8 @@
 "use client";
 
-// The header band. Dark green, serif title, subtitle, the "Go back in
-// time" button, the Demo data tag, the presenter button. On a company
+// The header band. Dark green, serif title, subtitle, the "Ask the ledger"
+// box, the "Go back in time" button, the Demo data tag, the presenter
+// button. On a company
 // page: a breadcrumb and the company name (CEO and next call sit in the
 // tabs row, where there is room). The subtitle follows the loaded state;
 // the Time Machine changes which months have arrived on every page.
@@ -12,6 +13,7 @@ import { useStore } from "@/lib/store";
 import { getCompanies, getCompany, getDemoState, getLedgerMeta } from "@/lib/data";
 import { monthLabel } from "@/lib/format";
 import { IconChevronRight, IconClockBack, IconPresenter } from "@/components/ui/icons";
+import { AskBox } from "@/components/Ask/AskBox";
 
 const TITLES: Record<string, { title: string; sub: (n: number, span: string, reports: number) => string }> = {
   "/portfolio": { title: "Portfolio", sub: (_n, span) => `Initiatives, ${span}` },
@@ -65,7 +67,14 @@ export function Header() {
           ) : null}
         </div>
       )}
-      <div className="flex shrink-0 items-center gap-4">
+      <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
+        {base !== "/settings" ? (
+          <div className="flex min-w-0 flex-1 justify-end">
+            <div className="w-full max-w-[360px]">
+              <AskBox />
+            </div>
+          </div>
+        ) : null}
         {base !== "/settings" ? (
           <button
             type="button"

@@ -126,6 +126,35 @@ test("beats 1 to 6 from the presenter menu and on-screen controls", async ({ pag
   await expect(page.getByTestId("quote-stack")).toHaveAttribute("data-initiative", "harlan-erp");
   await expect(page.getByTestId("needs-you")).toHaveAttribute("data-approved", "true");
 
+  // Ask the ledger, from the company page: the ERP question answers with
+  // the March sentence and its cite, then May; Dana's three drafted
+  // questions; an unscripted question falls back to the six.
+  await page.getByTestId("ask-input").click();
+  await expect(page.getByTestId("ask-suggestion")).toHaveCount(6);
+  await page.getByTestId("ask-input").fill("erp");
+  await expect(page.getByTestId("ask-suggestion")).toHaveCount(1);
+  await page.locator('[data-testid="ask-suggestion"][data-answer="erp-march"]').click();
+  await expect(page.getByTestId("ask-answer")).toHaveAttribute("data-answer", "erp-march");
+  await expect(page.getByTestId("ask-answer")).toHaveAttribute("data-source", "scripted");
+  await expect(page.getByTestId("ask-item")).toHaveCount(2);
+  await expect(page.getByTestId("ask-quote").first()).toHaveText("\u201cImplementation on track for a June cutover. Data migration is 60% complete.\u201d");
+  await expect(page.locator('[data-testid="ask-item"][data-month="2026-03"] [data-testid="cite"]')).toHaveAttribute("data-report", "harlan-2026-03");
+  await expect(page.locator('[data-testid="ask-item"][data-month="2026-05"] [data-testid="change-chip"]')).toHaveText("Date moved: June to July");
+  await page.getByTestId("ask-clear").click();
+  await page.getByTestId("ask-input").fill("what should I ask dana on thursday");
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("ask-answer")).toHaveAttribute("data-answer", "ask-dana");
+  await expect(page.locator('[data-testid="ask-item"][data-kind="question"]')).toHaveCount(3);
+  await expect(page.locator('[data-testid="ask-item"][data-kind="question"] [data-testid="cite"]').first()).toHaveAttribute("data-report", "harlan-2026-03");
+  await page.getByTestId("ask-clear").click();
+  await page.getByTestId("ask-input").fill("what is the weather");
+  await expect(page.getByTestId("ask-no-match")).toBeVisible();
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("ask-fallback")).toBeVisible({ timeout: 20000 });
+  await expect(page.getByTestId("ask-fallback")).toContainText("I can answer these six in the demo.");
+  await page.keyboard.press("Escape");
+  await expect(page.getByTestId("ask-panel")).toHaveCount(0);
+
   // Beat 5. Patterns: three cards, the log rail with four entries.
   await page.getByTestId("nav-patterns").click();
   await expect(page.getByTestId("pattern-card")).toHaveCount(3);
@@ -244,6 +273,13 @@ test("the Time Machine goes back to March, hovers the green ERP cell, and return
   expect(await counts(page)).toBe("0 / 1 / 0 / 11");
   await expect(page.getByTestId("header-sub")).toHaveText("Initiatives, January to March 2026");
   await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "green");
+
+  // Asked in March, the ERP question shows only the March sentence.
+  await page.getByTestId("ask-input").click();
+  await page.locator('[data-testid="ask-suggestion"][data-answer="erp-march"]').click();
+  await expect(page.getByTestId("ask-answer")).toHaveAttribute("data-count", "1");
+  await expect(page.getByTestId("ask-item")).toHaveCount(1);
+  await page.keyboard.press("Escape");
 
   // Forward is the reading log: from the band, "Add April reports"
   // streams the April findings, then April is in view.

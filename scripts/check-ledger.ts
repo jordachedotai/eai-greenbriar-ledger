@@ -7,7 +7,7 @@
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import type { Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
+import type { Answer, Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
 import { companiesIn, PRESETS, stateCounts, viewKey } from "../lib/states";
@@ -117,6 +117,42 @@ if (existsSync(join(ROOT, "data/patterns.json"))) {
       cited.add(e.cite.reportId.split("-")[0]);
     }
     for (const c of p.companyIds) if (!cited.has(c)) fail(`pattern ${p.id}: no cite for ${c}`);
+  }
+}
+
+// 3a. Answers: six scripted questions, every item a ledger read (a quote
+// that equals the initiative's sentence for that month, on its cited
+// page; a silence on an unmentioned month) or a drafted question.
+if (existsSync(join(ROOT, "data/answers.json"))) {
+  const answers = JSON.parse(read("data/answers.json")) as Answer[];
+  const qs = existsSync(join(ROOT, "data/questions.json")) ? (JSON.parse(read("data/questions.json")) as Question[]) : [];
+  if (answers.length !== 6) fail(`answers: ${answers.length} scripted questions, expected 6`);
+  for (const a of answers) {
+    if (!a.question.trim()) fail(`answer ${a.id}: empty question`);
+    if (!a.items.length) fail(`answer ${a.id}: no items`);
+    for (const it of a.items) {
+      if (it.kind === "question") {
+        if (!qs.some((q) => q.id === it.questionId)) fail(`answer ${a.id}: unknown question ${it.questionId}`);
+        continue;
+      }
+      const i = byId.get(it.initiativeId);
+      if (!i) {
+        fail(`answer ${a.id}: unknown initiative ${it.initiativeId}`);
+        continue;
+      }
+      const read = i.months[it.month];
+      if (!read) {
+        fail(`answer ${a.id}: ${it.initiativeId} has no read for ${it.month}`);
+        continue;
+      }
+      if (it.kind === "quote") {
+        if (!read.mentioned || read.quote !== it.quote) fail(`answer ${a.id}: ${it.initiativeId} ${it.month} quote is not the ledger's\n  got:  ${it.quote}\n  want: ${read.quote ?? "(not mentioned)"}`);
+        if (read.cite) checkCite(`answer ${a.id}`, read.cite.reportId, read.cite.page, it.quote);
+        else fail(`answer ${a.id}: ${it.initiativeId} ${it.month} has no cite`);
+      } else if (read.mentioned) {
+        fail(`answer ${a.id}: ${it.initiativeId} ${it.month} is mentioned, not a silence`);
+      }
+    }
   }
 }
 

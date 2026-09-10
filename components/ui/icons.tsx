@@ -140,3 +140,15 @@ export function IconClockBack({ size = 16, className, stroke = "currentColor" }:
     </svg>
   );
 }
+
+// A speech mark over a line: the "Ask the ledger" box.
+export function IconAsk({ size = 16, className, stroke = "currentColor" }: P) {
+  return (
+    <svg {...base(size, 2)} stroke={stroke} className={className} aria-hidden>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M20 20l-3.5-3.5" />
+      <path d="M9 9.5a2 2 0 1 1 3 1.7c-.7.4-1 .9-1 1.6" />
+      <path d="M11 15.2h.01" />
+    </svg>
+  );
+}
