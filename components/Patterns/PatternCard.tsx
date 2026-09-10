@@ -1,10 +1,16 @@
+"use client";
+
 // One pattern: title, company chips, a paragraph, evidence bullets with
-// cite links, an action button (a draft; nothing is sent), and the line
-// that says so. Blue dots for a parallel worth acting on, red for one
-// worth asking about.
+// cite links, an action button, and the line that says a draft is a
+// draft. Pressing the action types out its canned draft (data/drafts.json)
+// below the card with Approve and Edit; nothing is sent. Blue dots for a
+// parallel worth acting on, red for one worth asking about.
 
 import type { Pattern } from "@/lib/types";
-import { companyShortName } from "@/lib/data";
+import { companyShortName, getDraftForPattern } from "@/lib/data";
+import { useStore } from "@/lib/store";
+import { draftFromPattern } from "@/lib/actions";
+import { DraftCard } from "./DraftCard";
 import { FLAG_COLORS, YOU_COLORS } from "@/lib/flags";
 import { citeShort } from "@/lib/cites";
 import { Button } from "@/components/ui/Button";
@@ -12,6 +18,8 @@ import { CiteLink } from "@/components/ui/CiteLink";
 
 export function PatternCard({ pattern }: { pattern: Pattern }) {
   const dot = pattern.tone === "red" ? FLAG_COLORS.red.text : YOU_COLORS.text;
+  const draft = getDraftForPattern(pattern.id);
+  const entry = useStore((s) => s.patternDrafts[pattern.id]);
   return (
     <section className="flex flex-col gap-3 rounded-[14px] border border-line bg-white px-5 py-[18px] shadow-[var(--shadow-card)]" data-testid="pattern-card" data-pattern={pattern.id} data-tone={pattern.tone}>
       <div className="flex items-start justify-between gap-4">
@@ -35,12 +43,15 @@ export function PatternCard({ pattern }: { pattern: Pattern }) {
           </li>
         ))}
       </ul>
-      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-        <Button variant="secondary" size={36} testId="pattern-action">
-          {pattern.action}
-        </Button>
-        <span className="text-[13px] text-mut">Draft. Nothing is sent until you approve it.</span>
-      </div>
+      {entry ? null : (
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+          <Button variant="secondary" size={36} testId="pattern-action" onClick={() => draftFromPattern(pattern.id)} className={draft ? "" : "pointer-events-none opacity-60"}>
+            {pattern.action}
+          </Button>
+          <span className="text-[13px] text-mut">Draft. Nothing is sent until you approve it.</span>
+        </div>
+      )}
+      {draft && entry ? <DraftCard draft={draft} /> : null}
     </section>
   );
 }

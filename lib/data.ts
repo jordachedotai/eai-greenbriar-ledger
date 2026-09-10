@@ -19,7 +19,8 @@ import quarterlyJson from "@/data/quarterly.json";
 import statesJson from "@/data/demo-states.json";
 import notesJson from "@/data/notes/index.json";
 import answersJson from "@/data/answers.json";
-import type { Answer, Company, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User, View } from "./types";
+import draftsJson from "@/data/drafts.json";
+import type { Answer, Company, Draft, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User, View } from "./types";
 import { FLAG_ORDER } from "./flags";
 import { applyState, PRESETS, resolveView, STATE_NAMES, viewKey, withinCutoff } from "./states";
 
@@ -166,6 +167,15 @@ export function getPatterns(stateName?: string): Pattern[] {
 // The scripted "Ask the ledger" questions, in the order the box lists them.
 export function getAnswers(): Answer[] {
   return answersJson as Answer[];
+}
+
+// The canned drafts behind the pattern cards' action buttons.
+export function getDrafts(): Draft[] {
+  return draftsJson as Draft[];
+}
+
+export function getDraftForPattern(patternId: string): Draft | undefined {
+  return getDrafts().find((d) => d.patternId === patternId);
 }
 
 // A drafted question by id, whatever the state. lib/ask.ts decides

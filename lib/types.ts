@@ -113,6 +113,15 @@ export type AnswerItem =
   | { kind: "question"; questionId: string };
 export type Answer = { id: string; question: string; items: AnswerItem[] };
 
+// "Actions that draft": what a pattern card's action button produces,
+// canned in data/drafts.json. An intro (a note to two people) or one or
+// more questions for the next CEO calls. Every cite resolves to a report
+// page; the check script verifies them. Nothing is sent.
+export type DraftQuestion = { companyId: string; initiativeId: string; text: string; cites: string[] };
+export type Draft =
+  | { id: string; patternId: string; kind: "intro"; title: string; to: string[]; subject: string; text: string; cites: string[] }
+  | { id: string; patternId: string; kind: "question"; title: string; source?: string; questions: DraftQuestion[] };
+
 // A dictated note: the transcript the "Dictate a note" beat types out, and
 // the fixture ids it produces. data/notes/index.json is generated from the
 // .txt files by scripts/gen-states.ts.

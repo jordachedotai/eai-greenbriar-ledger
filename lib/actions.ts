@@ -5,7 +5,7 @@
 // re-render in place from the loaded state.
 
 import type { Month } from "./types";
-import { getNotes } from "./data";
+import { getDraftForPattern, getNotes } from "./data";
 import { nextMonth } from "./states";
 import { useStore, viewOf } from "./store";
 
@@ -44,5 +44,26 @@ export function dictateNote(noteId?: string): boolean {
   const note = (noteId && getNotes().find((n) => n.id === noteId)) || getNotes()[0];
   if (!note) return false;
   s.startDictation(note.id);
+  return true;
+}
+
+// "Actions that draft": a pattern card's action button types out its
+// canned draft (data/drafts.json) over this long, then offers Approve and
+// Edit. Approving a question draft adds it to the company's questions for
+// the next call. Nothing is sent, and nothing here is a model call.
+export const DRAFT_MS = 2000;
+
+export function draftTexts(patternId: string): string[] | null {
+  const d = getDraftForPattern(patternId);
+  if (!d) return null;
+  return d.kind === "intro" ? [d.text] : d.questions.map((q) => q.text);
+}
+
+export function draftFromPattern(patternId: string): boolean {
+  const s = useStore.getState();
+  if (s.patternDrafts[patternId]) return false;
+  const texts = draftTexts(patternId);
+  if (!texts) return false;
+  s.startDraft(patternId, texts);
   return true;
 }

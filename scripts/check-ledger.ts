@@ -7,7 +7,7 @@
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import type { Answer, Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
+import type { Answer, Arc, Draft, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
 import { companiesIn, PRESETS, stateCounts, viewKey } from "../lib/states";
@@ -151,6 +151,39 @@ if (existsSync(join(ROOT, "data/answers.json"))) {
         else fail(`answer ${a.id}: ${it.initiativeId} ${it.month} has no cite`);
       } else if (read.mentioned) {
         fail(`answer ${a.id}: ${it.initiativeId} ${it.month} is mentioned, not a silence`);
+      }
+    }
+  }
+}
+
+// 3a2. Drafts: one per pattern, every cite a real page, every company
+// and initiative and log source real, every text present.
+if (existsSync(join(ROOT, "data/drafts.json"))) {
+  const drafts = JSON.parse(read("data/drafts.json")) as Draft[];
+  const patterns = existsSync(join(ROOT, "data/patterns.json")) ? (JSON.parse(read("data/patterns.json")) as Pattern[]) : [];
+  const logIds = new Set((existsSync(join(ROOT, "data/log.json")) ? (JSON.parse(read("data/log.json")) as LogEntry[]) : []).map((e) => e.id));
+  for (const p of patterns) if (!drafts.some((d) => d.patternId === p.id)) fail(`drafts: no draft for pattern ${p.id}`);
+  const cite = (where: string, c: string) => {
+    const m = /^([a-z]+-\d{4}-\d{2}):(\d+)$/.exec(c);
+    if (!m) return fail(`${where}: cite "${c}" is not reportId:page`);
+    checkCite(where, m[1], Number(m[2]));
+  };
+  for (const d of drafts) {
+    if (!patterns.some((p) => p.id === d.patternId)) fail(`draft ${d.id}: unknown pattern ${d.patternId}`);
+    if (!d.title.trim()) fail(`draft ${d.id}: empty title`);
+    if (d.kind === "intro") {
+      if (!d.text.trim() || !d.subject.trim() || !d.to.length) fail(`draft ${d.id}: intro needs to, subject, and text`);
+      for (const c of d.cites) cite(`draft ${d.id}`, c);
+    } else {
+      if (!d.questions.length) fail(`draft ${d.id}: no questions`);
+      if (d.source && !logIds.has(d.source)) fail(`draft ${d.id}: unknown log entry ${d.source}`);
+      for (const q of d.questions) {
+        if (!ledger.companies.some((c) => c.id === q.companyId)) fail(`draft ${d.id}: unknown company ${q.companyId}`);
+        const i = byId.get(q.initiativeId);
+        if (!i) fail(`draft ${d.id}: unknown initiative ${q.initiativeId}`);
+        else if (i.companyId !== q.companyId) fail(`draft ${d.id}: ${q.initiativeId} is not ${q.companyId}'s`);
+        if (!q.text.trim()) fail(`draft ${d.id}: empty question for ${q.companyId}`);
+        for (const c of q.cites) cite(`draft ${d.id}`, c);
       }
     }
   }

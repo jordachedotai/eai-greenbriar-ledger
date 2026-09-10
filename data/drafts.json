@@ -1,0 +1,47 @@
+[
+  {
+    "id": "draft-tms-intro",
+    "patternId": "pattern-tms",
+    "kind": "intro",
+    "title": "Intro between the two operations leads",
+    "to": ["Marcus Bell, COO, Harlan Industrial Services", "Tom Reyes, VP Maintenance, Corvus Aviation Services"],
+    "subject": "TMS selection: comparing notes",
+    "text": "Marcus, Tom. You are both partway through a TMS decision, and Corvus is a few months ahead. Tom's team selected a vendor in May after a two-vendor bake-off and the contract is in legal. Harlan is in final evaluation between two vendors. Thirty minutes on what the reference calls turned up and how the contract terms landed would be time well spent. I will leave it with you two to find a slot.",
+    "cites": ["corvus-2026-05:2", "harlan-2026-06:3", "corvus-2026-08:3"]
+  },
+  {
+    "id": "draft-comp-plan",
+    "patternId": "pattern-pricing",
+    "kind": "question",
+    "title": "A fourth question for Thursday",
+    "source": "log-meridian-0612",
+    "questions": [
+      {
+        "companyId": "harlan",
+        "initiativeId": "harlan-pricing",
+        "text": "Meridian's regional pricing held after the sales comp plan changed first. The Midwest rollout is scheduled for September. Has Harlan's sales comp plan changed ahead of it?",
+        "cites": ["harlan-2026-08:3", "meridian-2026-06:2"]
+      }
+    ]
+  },
+  {
+    "id": "draft-name-vendor",
+    "patternId": "pattern-vendor",
+    "kind": "question",
+    "title": "One question for each CEO",
+    "questions": [
+      {
+        "companyId": "harlan",
+        "initiativeId": "harlan-erp",
+        "text": "May's report put the ERP slip on vendor resourcing in the integration workstream. Which vendor, and is the same firm on the phase 2 plan for Q1 2027?",
+        "cites": ["harlan-2026-05:2", "harlan-2026-08:2"]
+      },
+      {
+        "companyId": "corvus",
+        "initiativeId": "corvus-mro",
+        "text": "August's report says vendor resourcing pushed the Hangar 3 online date. Which vendor, and what date is now planned?",
+        "cites": ["corvus-2026-08:2", "corvus-2026-07:2"]
+      }
+    ]
+  }
+]

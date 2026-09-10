@@ -12,6 +12,7 @@ import { useSearchParams } from "next/navigation";
 import { draftModeOf, getCompany, getCurrentState, getGap, getInitiatives, getLogSorted, getMonths, getQuarterly, getQuestions, worstInitiative } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { useStateName } from "@/lib/view";
+import { draftQuestionsFor } from "@/lib/drafts";
 import { CompanyTabs, isTabId, type TabId } from "./Tabs";
 import { InitiativeList } from "./InitiativeList";
 import { QuoteStack } from "./QuoteStack";
@@ -25,6 +26,7 @@ export function CompanyView({ id }: { id: string }) {
   const stateName = useStateName();
   const noteDictated = useStore((s) => s.noteDictated);
   const noteReviewed = useStore((s) => s.noteReviewed);
+  const patternDrafts = useStore((s) => s.patternDrafts);
   const drafts = draftModeOf({ noteDictated, noteReviewed });
   const company = getCompany(id);
   if (!company) {
@@ -50,7 +52,7 @@ export function CompanyView({ id }: { id: string }) {
         <div className="grid grid-cols-[272px_1fr_360px] items-start gap-5 px-7 pb-7 pt-[22px]" data-testid="initiatives-tab">
           <InitiativeList companyId={company.id} initiatives={initiatives} selectedId={selected.id} months={getMonths(stateName)} />
           <QuoteStack key={selected.id} initiative={selected} />
-          <QuestionsRail company={company} questions={getQuestions(company.id, stateName)} gap={getGap(company.id)} />
+          <QuestionsRail company={company} questions={getQuestions(company.id, stateName)} gap={getGap(company.id)} extras={draftQuestionsFor(company.id, stateName, patternDrafts, getQuestions(company.id, stateName).length)} />
         </div>
       ) : null}
       {tab === "current-state" ? <CurrentState state={getCurrentState(company.id, { drafts, stateName })} companyName={company.name} /> : null}

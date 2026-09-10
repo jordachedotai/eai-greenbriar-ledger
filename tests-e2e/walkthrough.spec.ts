@@ -162,6 +162,37 @@ test("beats 1 to 6 from the presenter menu and on-screen controls", async ({ pag
   await expect(page.locator('[data-testid="pattern-card"][data-pattern="pattern-vendor"]')).toContainText("vendor resourcing");
   await expect(page.locator('[data-testid="log-rail"] [data-testid="log-entry"]')).toHaveCount(4);
 
+  // Actions that draft: the comp-plan action types out a fourth question
+  // for Harlan; Approve adds it to Thursday's list with a From Patterns
+  // note. The intro action drafts a note; Edit and Save keep the change.
+  const pricingCard = page.locator('[data-testid="pattern-card"][data-pattern="pattern-pricing"]');
+  await pricingCard.getByTestId("pattern-action").click();
+  const compDraft = page.locator('[data-testid="pattern-draft"][data-pattern="pattern-pricing"]');
+  await expect(compDraft).toHaveAttribute("data-status", "typing");
+  await expect(compDraft).toHaveAttribute("data-status", "drafted", { timeout: 6000 });
+  await expect(compDraft.getByTestId("draft-text")).toContainText("sales comp plan changed first");
+  await expect(compDraft.locator('[data-testid="cite"]').first()).toHaveAttribute("data-report", "harlan-2026-08");
+  await compDraft.getByTestId("draft-approve").click();
+  await expect(compDraft).toHaveAttribute("data-status", "approved");
+  await expect(compDraft.getByTestId("draft-done")).toContainText("Added to Harlan's Thursday questions.");
+  const tmsCard = page.locator('[data-testid="pattern-card"][data-pattern="pattern-tms"]');
+  await tmsCard.getByTestId("pattern-action").click();
+  const intro = page.locator('[data-testid="pattern-draft"][data-pattern="pattern-tms"]');
+  await expect(intro).toHaveAttribute("data-kind", "intro");
+  await expect(intro).toHaveAttribute("data-status", "drafted", { timeout: 6000 });
+  await expect(intro).toContainText("Marcus Bell, COO");
+  await intro.getByTestId("draft-edit").click();
+  await intro.getByTestId("draft-textarea").fill("Marcus, Tom. Worth thirty minutes on the TMS reference calls.");
+  await intro.getByTestId("draft-save").click();
+  await expect(intro.getByTestId("draft-text")).toHaveText("Marcus, Tom. Worth thirty minutes on the TMS reference calls.");
+  await page.goto("/portfolio/harlan");
+  await expect(page.getByTestId("question")).toHaveCount(4);
+  const fourth = page.locator('[data-testid="question"][data-question="draft-pattern-pricing-harlan"]');
+  await expect(fourth).toContainText("sales comp plan");
+  await expect(fourth.getByTestId("from-patterns")).toHaveText("From Patterns");
+  await page.getByTestId("nav-patterns").click();
+  await expect(page.getByTestId("pattern-card")).toHaveCount(3);
+
   // Beat 6. Dictate a note: the transcript plays, then the draft log entry
   // and current-state line appear on Meridian with a Review control.
   await openPresenter(page);

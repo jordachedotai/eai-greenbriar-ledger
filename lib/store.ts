@@ -15,7 +15,7 @@ import type { Flag, Month, View } from "./types";
 import { DEFAULT_STATE, getDemoState, getPreset, resolveStateKey } from "./data";
 import { viewKey } from "./states";
 
-export const STORE_VERSION = 4; // 4: stateName is a view key (core-2026-07), the cutoff the scrubber sets. 3: month dropped (derived from stateName); + noteReviewed. 2: + questionsApproved, noteDictated. 1: loggedIn, sidebarCollapsed, stateName, month, showDemoTag
+export const STORE_VERSION = 5; // 5: + patternDrafts (the drafts the pattern cards produced and their approvals). 4: stateName is a view key (core-2026-07), the cutoff the scrubber sets. 3: month dropped (derived from stateName); + noteReviewed. 2: + questionsApproved, noteDictated. 1: loggedIn, sidebarCollapsed, stateName, month, showDemoTag
 export { DEFAULT_STATE };
 
 const DEFAULT_MOCK = process.env.MOCK_MODE !== "false";
@@ -25,6 +25,11 @@ export type Dictation = { noteId: string; status: DictationStatus };
 // The reading log while it streams: the month being added, how many lines
 // have appeared, and whether the month has been applied.
 export type Reading = { from: Month; to: Month; shown: number; done: boolean };
+// A pattern card's draft: typing out, drafted (Approve or Edit), being
+// edited, or approved. texts are the editable parts, one per question
+// (one for an intro).
+export type PatternDraftStatus = "typing" | "drafted" | "editing" | "approved";
+export type PatternDraft = { status: PatternDraftStatus; texts: string[] };
 
 export type AppState = {
   mockMode: boolean;
@@ -41,6 +46,7 @@ export type AppState = {
   dictation: Dictation | null; // the dictation panel, while it is open
   timeMachineOpen: boolean; // the Time Machine overlay: the page as a stack of month cards
   reading: Reading | null; // the reading log, while it is open
+  patternDrafts: Record<string, PatternDraft>; // by pattern id: the drafts the action buttons produced
 
   setMockMode: (v: boolean) => void;
   setLoggedIn: (v: boolean) => void;
@@ -61,16 +67,21 @@ export type AppState = {
   revealLine: () => void;
   finishReading: () => void; // the month arrives: the cutoff moves to it
   closeReading: () => void;
+  startDraft: (patternId: string, texts: string[]) => void;
+  finishDraft: (patternId: string) => void;
+  editDraft: (patternId: string) => void;
+  saveDraft: (patternId: string, texts: string[]) => void;
+  approveDraft: (patternId: string) => void;
   reset: () => void;
 };
 
 // What loading a demo state sets. A state is a full snapshot: approvals
 // come from the preset (none for a bare view key), and the dictated
 // drafts start over.
-function stateDefaults(name: string): Pick<AppState, "stateName" | "questionsApproved" | "noteDictated" | "noteReviewed" | "dictation" | "workFilter" | "working" | "timeMachineOpen" | "reading"> {
+function stateDefaults(name: string): Pick<AppState, "stateName" | "questionsApproved" | "noteDictated" | "noteReviewed" | "dictation" | "workFilter" | "working" | "timeMachineOpen" | "reading" | "patternDrafts"> {
   const state = getDemoState(name);
   const preset = getPreset(name);
-  return { stateName: state.name, questionsApproved: [...(preset?.questionsApproved ?? [])], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null, timeMachineOpen: false, reading: null };
+  return { stateName: state.name, questionsApproved: [...(preset?.questionsApproved ?? [])], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null, timeMachineOpen: false, reading: null, patternDrafts: {} };
 }
 
 export const useStore = create<AppState>()(
@@ -103,6 +114,11 @@ export const useStore = create<AppState>()(
       finishReading: () =>
         set((s) => (s.reading && !s.reading.done ? { stateName: viewKey({ set: getDemoState(s.stateName).set, cutoff: s.reading.to }), reading: { ...s.reading, done: true } } : {})),
       closeReading: () => set({ reading: null }),
+      startDraft: (patternId, texts) => set((s) => ({ patternDrafts: { ...s.patternDrafts, [patternId]: { status: "typing", texts } } })),
+      finishDraft: (patternId) => set((s) => (s.patternDrafts[patternId]?.status === "typing" ? { patternDrafts: { ...s.patternDrafts, [patternId]: { ...s.patternDrafts[patternId], status: "drafted" } } } : {})),
+      editDraft: (patternId) => set((s) => (s.patternDrafts[patternId] ? { patternDrafts: { ...s.patternDrafts, [patternId]: { ...s.patternDrafts[patternId], status: "editing" } } } : {})),
+      saveDraft: (patternId, texts) => set((s) => (s.patternDrafts[patternId] ? { patternDrafts: { ...s.patternDrafts, [patternId]: { status: "drafted", texts } } } : {})),
+      approveDraft: (patternId) => set((s) => (s.patternDrafts[patternId] ? { patternDrafts: { ...s.patternDrafts, [patternId]: { ...s.patternDrafts[patternId], status: "approved" } } } : {})),
       reset: () => set(stateDefaults(DEFAULT_STATE)),
     }),
     {
@@ -118,6 +134,7 @@ export const useStore = create<AppState>()(
         questionsApproved: s.questionsApproved,
         noteDictated: s.noteDictated,
         noteReviewed: s.noteReviewed,
+        patternDrafts: s.patternDrafts,
       }),
       migrate: () => ({ mockMode: DEFAULT_MOCK, loggedIn: false, ...stateDefaults(DEFAULT_STATE) }) as Partial<AppState>,
       // A saved state name that no longer exists falls back to the default.

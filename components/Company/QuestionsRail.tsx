@@ -6,7 +6,8 @@
 // nothing is sent. Before the newest report arrives (state `july`) the
 // card says questions are drafted when it does. Then "What the reports do
 // not say." Then "After the call" with the dictate control, which runs
-// the same beat as the presenter menu.
+// the same beat as the presenter menu. Questions approved from a pattern
+// card's draft follow the drafted three with a "From Patterns" note.
 
 import type { Company, Gap, Question } from "@/lib/types";
 import { companyShortName, getNotes } from "@/lib/data";
@@ -20,7 +21,7 @@ import { IconMic } from "@/components/ui/icons";
 
 const CARD = "flex flex-col rounded-[14px] border border-line bg-white shadow-[var(--shadow-card)]";
 
-export function QuestionsRail({ company, questions, gap }: { company: Company; questions: Question[]; gap?: Gap }) {
+export function QuestionsRail({ company, questions, gap, extras = [] }: { company: Company; questions: Question[]; gap?: Gap; extras?: Question[] }) {
   const approvedIds = useStore((s) => s.questionsApproved);
   const approve = useStore((s) => s.approveQuestions);
   const startDictation = useStore((s) => s.startDictation);
@@ -61,6 +62,22 @@ export function QuestionsRail({ company, questions, gap }: { company: Company; q
               <div className="flex flex-col gap-1">
                 <span className="text-[15px] leading-[1.4]">{q.text}</span>
                 <QuestionCites cites={q.cites} companyId={company.id} />
+              </div>
+            </div>
+          ))}
+          {extras.map((q) => (
+            <div key={q.id} className="flex items-start gap-3" data-testid="question" data-question={q.id} data-from="patterns">
+              <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full text-[13px] font-bold" style={{ background: FLAG_COLORS.green.bg, color: FLAG_COLORS.green.text }}>
+                {q.n}
+              </span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[15px] leading-[1.4]">{q.text}</span>
+                <span className="flex flex-wrap items-center gap-x-2 text-[12px] text-mut">
+                  <span className="rounded-full bg-panel2 px-2 py-[1px] font-semibold text-txt" data-testid="from-patterns">
+                    From Patterns
+                  </span>
+                  <QuestionCites cites={q.cites} companyId={company.id} />
+                </span>
               </div>
             </div>
           ))}
