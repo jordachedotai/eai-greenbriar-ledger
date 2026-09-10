@@ -1,5 +1,5 @@
 // Dev helper: full-page screenshots at 1440 wide.
-//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2|phase3]
+//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2|phase3|phase4]
 // The shell scrolls inside <main>, so each capture sizes the viewport to
 // the page's own height instead of using fullPage.
 import { chromium } from "@playwright/test";
@@ -40,7 +40,56 @@ async function presenter() {
   await page.getByTestId("presenter-menu").waitFor();
 }
 
-if (phase === "phase3") {
+if (phase === "phase4") {
+  const result = { consoleErrors: errors };
+  await signIn();
+  await page.getByTestId("sign-in").click();
+  await page.getByTestId("work-strip").waitFor();
+
+  // Portfolio, August, with the greyed Deals item in the sidebar.
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: `${out}/phase4-sidebar.png` });
+  result.deals = { soon: await page.getByTestId("nav-deals").getAttribute("data-soon"), cursor: await page.getByTestId("nav-deals").evaluate((el) => getComputedStyle(el).cursor) };
+
+  // Monday: twelve companies.
+  await presenter();
+  await page.getByTestId("jump-state").click();
+  await page.getByTestId("jump-state-opt-monday").click();
+  await page.keyboard.press("Shift+P");
+  await page.locator('[data-testid="portfolio"][data-state="monday"]').waitFor();
+  await fit();
+  await page.screenshot({ path: `${out}/phase4-monday-portfolio.png` });
+  const counts = [];
+  for (const f of ["red", "amber", "grey", "green"]) counts.push(await page.getByTestId(`count-${f}`).innerText());
+  result.monday = { counts: counts.join(" / "), companies: await page.getByTestId("company-card").count(), rows: await page.getByTestId("initiative-row").count() };
+
+  // Back to August, then the dictation panel beside Meridian's Learning log tab.
+  await presenter();
+  await page.getByTestId("presenter-reset").click();
+  await page.locator('[data-testid="portfolio"][data-state="august"]').waitFor();
+  await page.keyboard.press("Shift+P");
+  await page.goto(`${base}/portfolio/meridian?tab=log`, { waitUntil: "networkidle" });
+  await page.getByTestId("log-tab").waitFor();
+  await presenter();
+  await page.getByTestId("beat-dictate").click();
+  await page.locator('[data-testid="dictation"][data-status="drafted"]').waitFor({ timeout: 8000 });
+  await page.locator('[data-testid="log-tab"] [data-testid="log-entry"][data-status="draft"]').waitFor();
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: `${out}/phase4-dictate.png` });
+  const draft = await page.locator('[data-testid="log-tab"] [data-testid="log-entry"][data-status="draft"]').boundingBox();
+  const panel = await page.getByTestId("dictation").boundingBox();
+  result.dictate = { layout: await page.getByTestId("dictation").getAttribute("data-layout"), draftRight: draft.x + draft.width, panelLeft: panel.x, overlap: draft.x + draft.width > panel.x };
+  await page.getByTestId("dictation-close").click();
+
+  // Harlan's quarterly prep slide.
+  await page.goto(`${base}/portfolio/harlan?tab=quarterly`, { waitUntil: "networkidle" });
+  await page.getByTestId("quarterly-slide").waitFor();
+  await fit();
+  await page.screenshot({ path: `${out}/phase4-quarterly.png` });
+  result.quarterly = { title: await page.getByTestId("quarterly-title").innerText(), under12px: await page.evaluate(() => [...document.querySelectorAll("main *")].filter((e) => e.childNodes.length && parseFloat(getComputedStyle(e).fontSize) < 12).length) };
+
+  console.log(JSON.stringify(result, null, 1));
+} else if (phase === "phase3") {
   const result = { consoleErrors: errors };
   await signIn();
   await page.getByTestId("sign-in").click();

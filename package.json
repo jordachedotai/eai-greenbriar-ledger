@@ -12,7 +12,8 @@
     "gen:reports": "tsx scripts/gen-reports.ts",
     "run:ledger": "tsx scripts/run-ledger.ts",
     "check:ledger": "tsx scripts/check-ledger.ts",
-    "gen:states": "tsx scripts/gen-states.ts"
+    "gen:states": "tsx scripts/gen-states.ts",
+    "render:spine": "node scripts/render-spine.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
