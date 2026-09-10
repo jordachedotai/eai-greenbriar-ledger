@@ -118,8 +118,11 @@ export function conditionsAt(init: InitiativeInput, months: MonthInput[], at: Mo
 
 // The change chip for each month, or nothing. One chip per month: a move
 // first, then a repeated reason, then a measure moving the wrong way, then
-// the first month a target is restated without a date, then the month an
-// initiative goes quiet.
+// the first month a target is restated without a date, then the first
+// month a date is stated more precisely without moving (Q2 becomes June),
+// then the month an initiative goes quiet. A stated date is not a move; it
+// never changes the flag. It earns a chip because it is the first time
+// management named the month, which is what the quote stack is for.
 export function changesFor(init: InitiativeInput, months: MonthInput[]): Partial<Record<Month, Change>> {
   const out: Partial<Record<Month, Change>> = {};
   const moves = movesFor(init, months);
@@ -129,6 +132,8 @@ export function changesFor(init: InitiativeInput, months: MonthInput[]): Partial
   let prevRestated = false;
   let lastDate: string | undefined = init.targetDate;
   let seenReasonRepeat: string | undefined;
+  const lastValue: Record<string, string> = {};
+  let primaryKey: string | null = null;
   for (const m of months) {
     const cond = conditionsAt(init, months, m.month, moves);
     if (!m.mentioned) {
@@ -141,6 +146,19 @@ export function changesFor(init: InitiativeInput, months: MonthInput[]): Partial
     const here = moves.filter((mv) => mv.month === m.month).sort((a, b) => order[a.kind] - order[b.kind]);
     const measure = f.measure?.value;
     const measureMoved = measure !== undefined && prevMeasure !== undefined && (dir === "down" ? measure > prevMeasure : measure < prevMeasure);
+    let stated: { prev: string; value: string } | undefined;
+    for (const c of f.commitments ?? []) {
+      let prev: string | undefined = lastValue[c.key];
+      if (prev === undefined && c.kind === "date" && primaryKey === null) {
+        primaryKey = c.key;
+        prev = init.targetDate;
+      }
+      if (!stated && prev !== undefined && c.kind === "date" && prev !== c.value) {
+        const a = monthIndex(prev);
+        if (a !== null && a === monthIndex(c.value)) stated = { prev, value: c.value };
+      }
+      lastValue[c.key] = c.value;
+    }
     if (here.length) {
       const mv = here[0];
       out[m.month] = mv.kind === "scope" ? { kind: "scope", to: mv.to, label: mv.label } : { kind: mv.kind, from: mv.from ? fmtDateValue(mv.from) : undefined, to: fmtDateValue(mv.to), label: mv.label };
@@ -150,6 +168,8 @@ export function changesFor(init: InitiativeInput, months: MonthInput[]): Partial
       out[m.month] = { kind: "number", from: `${prevMeasure}${f.measure.unit}`, to: `${measure}${f.measure.unit}`, label: `Number moved: ${prevMeasure}${f.measure.unit} to ${measure}${f.measure.unit}` };
     } else if (f.restatedWithoutDate && !prevRestated) {
       out[m.month] = { kind: "date", from: lastDate ? fmtDateValue(lastDate) : undefined, label: "Restated without a date" };
+    } else if (stated) {
+      out[m.month] = { kind: "date", from: fmtDateValue(stated.prev), to: fmtDateValue(stated.value), label: `Date stated: ${fmtDateValue(stated.value)}` };
     }
     if (cond.reasonRepeat) seenReasonRepeat = cond.reasonRepeat.reason;
     if (measure !== undefined) prevMeasure = measure;

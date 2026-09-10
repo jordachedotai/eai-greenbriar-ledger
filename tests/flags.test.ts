@@ -102,6 +102,15 @@ describe("flag rules", () => {
     expect(ch["2026-05"]).toBeUndefined();
   });
 
+  it("a date stated more precisely without moving stays green and earns a chip, once", () => {
+    const ms = months({ "2026-01": "2026-Q2", "2026-03": "2026-06", "2026-04": "2026-06" });
+    expect(flagsFor(init, ms)).toEqual(Object.fromEntries(MONTHS.map((m) => [m, "green"])));
+    const ch = changesFor(init, ms);
+    expect(ch["2026-01"]).toBeUndefined();
+    expect(ch["2026-03"]).toEqual({ kind: "date", from: "Q2 2026", to: "June", label: "Date stated: June" });
+    expect(ch["2026-04"]).toBeUndefined();
+  });
+
   it("grey after two consecutive unmentioned months, not one", () => {
     const ms = months({ "2026-01": "2026-Q2", "2026-04": null, "2026-05": null, "2026-06": null, "2026-07": null, "2026-08": null });
     expect(flagAt(init, ms, "2026-04")).toBe("green");

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T23:55:56.772Z",
+  "generatedAt": "2026-09-10T00:05:53.332Z",
   "mode": "code",
   "companies": [
     {
@@ -455,6 +455,12 @@
             "reportId": "harlan-2026-03",
             "page": 2,
             "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q2 2026",
+            "to": "June",
+            "label": "Date stated: June"
           }
         },
         "2026-04": {
@@ -707,6 +713,12 @@
             "reportId": "harlan-2026-07",
             "page": 3,
             "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
           }
         },
         "2026-08": {
@@ -1115,6 +1127,12 @@
             "reportId": "meridian-2026-08",
             "page": 3,
             "section": "People"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
           }
         }
       },

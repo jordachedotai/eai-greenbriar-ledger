@@ -9,7 +9,7 @@
     "months": {
       "2026-01": { "sentence": "ERP go-live remains on plan for the end of Q2.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-Q2" }] } },
       "2026-02": { "sentence": "The ERP program remains on plan for a Q2 go-live, with testing of the finance module underway.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-Q2" }] } },
-      "2026-03": { "sentence": "Implementation on track for a June cutover. Data migration is 60% complete.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-06" }] } },
+      "2026-03": { "sentence": "Implementation on track for a June cutover. Data migration is 60% complete.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-06" }] }, "change": { "kind": "date", "from": "Q2 2026", "to": "June", "label": "Date stated: June" } },
       "2026-04": { "sentence": "Cutover planning for June is proceeding, and user training begins in May.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-06" }] } },
       "2026-05": { "sentence": "Now targeting a July go-live. Vendor resourcing is constrained in the integration workstream.", "section": "CEO commentary", "flag": "amber", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-07" }], "reason": "vendor resourcing" }, "change": { "kind": "date", "from": "June", "to": "July", "label": "Date moved: June to July" } },
       "2026-06": { "sentence": "Phase 1 (finance and procurement) goes live July 1. Phase 2 (operations) is planned for Q4.", "section": "Strategic initiatives", "flag": "amber", "facts": { "commitments": [{ "key": "go-live", "kind": "date", "value": "2026-07" }, { "key": "phase-2", "kind": "date", "value": "2026-Q4", "label": "Scope split: phase 2 added" }] }, "change": { "kind": "scope", "to": "phase-2", "label": "Scope split: phase 2 added" } },
@@ -52,7 +52,7 @@
       "2026-04": { "sentence": "The Southeast pricing rollout started on April 6.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
       "2026-05": { "sentence": "Pricing is live in the Northeast and Southeast regions.", "section": "Strategic initiatives", "flag": "green", "facts": {} },
       "2026-06": { "sentence": "Live in 2 of 3 regions. Midwest remains scheduled for Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-Q3" }] } },
-      "2026-07": { "sentence": "The Midwest pricing rollout is scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] } },
+      "2026-07": { "sentence": "The Midwest pricing rollout is scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] }, "change": { "kind": "date", "from": "Q3 2026", "to": "September", "label": "Date stated: September" } },
       "2026-08": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] } }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Live in 2 of 3 regions. Midwest scheduled for September." }
@@ -132,7 +132,7 @@
       "2026-05": { "sentence": "The restarted CFO search is producing candidates. A start date has not been set.", "section": "People", "flag": "amber", "facts": { "restatedWithoutDate": true } },
       "2026-06": { "sentence": "A CFO finalist has been identified, with a start expected in Q3.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-Q3" }] } },
       "2026-07": { "sentence": "CFO offer negotiations are in progress for a Q3 start.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-Q3" }] } },
-      "2026-08": { "sentence": "Offer accepted August 20. Start date September 15.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-09" }], "completed": "Done" } }
+      "2026-08": { "sentence": "Offer accepted August 20. Start date September 15.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-09" }], "completed": "Done" }, "change": { "kind": "date", "from": "Q3 2026", "to": "September", "label": "Date stated: September" } }
     },
     "status": { "flag": "green", "pill": "Done", "sentence": "Offer accepted Aug 20. Start date Sep 15." }
   },
