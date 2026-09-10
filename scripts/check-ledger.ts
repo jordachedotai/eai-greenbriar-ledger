@@ -6,7 +6,7 @@
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import type { Arc, Ledger, Pattern, Question } from "../lib/types";
+import type { Arc, CurrentState, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
 
@@ -107,6 +107,39 @@ if (existsSync(join(ROOT, "data/patterns.json"))) {
     }
     for (const c of p.companyIds) if (!cited.has(c)) fail(`pattern ${p.id}: no cite for ${c}`);
   }
+}
+
+// 3b. Gaps: one short paragraph per company, absences only.
+if (existsSync(join(ROOT, "data/gaps.json"))) {
+  const gaps = JSON.parse(read("data/gaps.json")) as Gap[];
+  for (const c of ledger.companies) {
+    const g = gaps.find((x) => x.companyId === c.id);
+    if (!g) fail(`gaps: no entry for ${c.id}`);
+    else if (!g.text.trim()) fail(`gaps: empty text for ${c.id}`);
+  }
+  for (const g of gaps) if (!ledger.companies.some((c) => c.id === g.companyId)) fail(`gaps: unknown company ${g.companyId}`);
+}
+
+// 3c. Quarterly prep: every initiative id resolves to the named company, marked draft.
+if (existsSync(join(ROOT, "data/quarterly.json"))) {
+  const qp = JSON.parse(read("data/quarterly.json")) as QuarterlyPrep[];
+  for (const q of qp) {
+    if (!ledger.companies.some((c) => c.id === q.companyId)) fail(`quarterly ${q.companyId}: unknown company`);
+    if (q.status !== "draft") fail(`quarterly ${q.companyId}: status must be draft`);
+    for (const row of [...q.prior, ...q.next]) {
+      const i = byId.get(row.initiativeId);
+      if (!i) fail(`quarterly ${q.companyId}: unknown initiative ${row.initiativeId}`);
+      else if (i.companyId !== q.companyId) fail(`quarterly ${q.companyId}: ${row.initiativeId} belongs to ${i.companyId}`);
+    }
+  }
+}
+
+// 3d. Log and current state name real companies.
+for (const e of JSON.parse(read("data/log.json")) as LogEntry[]) {
+  if (!ledger.companies.some((c) => c.id === e.companyId)) fail(`log ${e.id}: unknown company ${e.companyId}`);
+}
+for (const s of JSON.parse(read("data/current-state.json")) as CurrentState[]) {
+  if (!ledger.companies.some((c) => c.id === s.companyId)) fail(`current-state: unknown company ${s.companyId}`);
 }
 
 // 4. No em-dashes in fixtures or UI copy

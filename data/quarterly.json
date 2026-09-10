@@ -1,0 +1,19 @@
+[
+  {
+    "companyId": "harlan",
+    "quarter": "2026-Q3",
+    "prior": [
+      { "initiativeId": "harlan-erp", "outcome": "Phase 1 (finance and procurement) live July 1. Phase 2 (operations) now expected Q1 2027.", "note": "Board target was go-live end of Q2. The plan changed in May, June, and August." },
+      { "initiativeId": "harlan-plant", "outcome": "Dayton lease exit signed March 6. No move date stated in any report since.", "note": "Restated without a date in every report from March to August." },
+      { "initiativeId": "harlan-pricing", "outcome": "Live in the Northeast and Southeast regions. Midwest scheduled for September.", "note": "Board target was all three regions by Q3." },
+      { "initiativeId": "harlan-tms", "outcome": "Shortlist down to two vendors. Decision still planned for Q3.", "note": "Corvus chose from a two-vendor bake-off in May. Contract in legal." }
+    ],
+    "next": [
+      { "initiativeId": "harlan-erp", "plan": "A phase 2 date, a named owner, and a revised budget stated in writing before the Q3 board meeting." },
+      { "initiativeId": "harlan-plant", "plan": "A Dayton move date, or a stated reason there is none yet." },
+      { "initiativeId": "harlan-pricing", "plan": "Midwest live in September. A first net price read across all three regions." },
+      { "initiativeId": "harlan-tms", "plan": "Vendor decision by end of Q3, as agreed in January. Reference calls before the decision." }
+    ],
+    "status": "draft"
+  }
+]

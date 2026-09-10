@@ -58,3 +58,29 @@ export function fmtShortDate(iso: string): string {
 export function plural(n: number, one: string, many = `${one}s`): string {
   return `${n} ${n === 1 ? one : many}`;
 }
+
+// "Thursday" from an ISO date. Computed, never typed, so a changed call
+// date in the fixtures changes every button that names the day.
+export function fmtWeekday(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  return date.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" });
+}
+
+// "Q3 2026" from "2026-Q3"; other values pass through.
+export function fmtQuarter(q: string): string {
+  return fmtDateValue(q);
+}
+
+const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+
+export function numberWord(n: number): string {
+  return NUMBER_WORDS[n] ?? String(n);
+}
+
+// "February, April, and July". Two items: "February and April".
+export function joinList(items: string[]): string {
+  if (items.length <= 1) return items.join("");
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+}

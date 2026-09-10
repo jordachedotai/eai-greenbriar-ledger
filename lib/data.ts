@@ -8,7 +8,10 @@ import questionsJson from "@/data/questions.json";
 import patternsJson from "@/data/patterns.json";
 import logJson from "@/data/log.json";
 import currentStateJson from "@/data/current-state.json";
-import type { Company, CurrentState, Flag, Initiative, Ledger, LogEntry, Pattern, Question, Report, User } from "./types";
+import gapsJson from "@/data/gaps.json";
+import quarterlyJson from "@/data/quarterly.json";
+import type { Company, CurrentState, Flag, Gap, Initiative, Ledger, LogEntry, Pattern, Question, QuarterlyPrep, Report, User } from "./types";
+import { FLAG_ORDER } from "./flags";
 
 const ledger = ledgerJson as Ledger;
 
@@ -85,4 +88,31 @@ export function getLog(companyId?: string): LogEntry[] {
 
 export function getCurrentState(companyId: string): CurrentState | undefined {
   return (currentStateJson as CurrentState[]).find((c) => c.companyId === companyId);
+}
+
+export function getGap(companyId: string): Gap | undefined {
+  return (gapsJson as Gap[]).find((g) => g.companyId === companyId);
+}
+
+export function getQuarterly(companyId: string): QuarterlyPrep | undefined {
+  return (quarterlyJson as QuarterlyPrep[]).find((q) => q.companyId === companyId);
+}
+
+// The company's worst-flagged initiative, first in board order among
+// equals. The company page opens on it.
+export function worstInitiative(companyId: string): Initiative | undefined {
+  const own = getInitiatives(companyId);
+  for (const flag of FLAG_ORDER) {
+    const hit = own.find((i) => i.status.flag === flag);
+    if (hit) return hit;
+  }
+  return own[0];
+}
+
+// Log entries newest first. Drafts are the payload of "Dictate a note";
+// they stay hidden until that beat runs.
+export function getLogSorted(opts: { companyId?: string; includeDrafts?: boolean } = {}): LogEntry[] {
+  return getLog(opts.companyId)
+    .filter((e) => opts.includeDrafts || e.status !== "draft")
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }

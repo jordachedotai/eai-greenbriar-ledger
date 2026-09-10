@@ -66,6 +66,10 @@ export type QuarterlyPrep = {
 
 export type Report = { id: string; companyId: string; month: Month; title: string; pages: { n: number; section: string; text: string }[] };
 
+// "What the reports do not say": one short authored paragraph per company.
+// States only absences. Never an outcome the reports do not state.
+export type Gap = { companyId: string; text: string };
+
 export type User = { id: string; name: string; title: string; isCurrentUser: boolean };
 
 // ---- source and pipeline types --------------------------------------------
