@@ -58,9 +58,12 @@ The company page prints these from the same module. If Matt gives his own rules 
 ## Mock behaviors in the app
 
 The presenter beats are code over fixtures, not model calls:
-- **August report arrives:** loads state `august` over `july` after a 1.5 to 2.5 second working indicator. The diff between the two states is what the audience sees change.
+- **Add [month] reports** (and the presenter menu's "[Month] reports arrive"): the reading log streams one line per finding from the ledger for the next month (`lib/reading.ts`: the report, the page and section, the sentence, the change the diff found, the flag), about six seconds, then the cutoff moves to that month. Nothing on the log is generated at demo time.
+- **Go back in time:** the Time Machine renders the same page for every month from the generated states (`data/demo-states.json`). No model.
+- **Ask the ledger:** six scripted questions in `data/answers.json`, every item a ledger read or a drafted question, verified by `check:ledger`. Answers follow the month in view.
+- **Actions that draft:** `data/drafts.json`, typed out over two seconds. Approve adds a question to the company's call list.
 - **Dictate a note:** types the fixed transcript from `data/notes/meridian-site-visit-2026-08-28.txt` over four seconds, then inserts the pre-drafted log entry and current-state line with `status: "draft"`.
 
-## Live mode (optional, Sunday)
+## Live mode (optional, never in the room)
 
-If there is time: "Dictate a note" can call Claude through `app/api/agent/route.ts` with the same prompt as step 10, key in `.env.local`, fallback to the fixture on any failure with a small "offline draft" tag. Same pattern as the scheduler. Not required for the room.
+`app/api/ask/route.ts` answers an unscripted question only when the server has `ANTHROPIC_API_KEY`. The question and the ledger for the months in view go to claude-sonnet-5 (raw HTTP; the SDK stays in the skill script) with a system prompt that allows only sentences already in the ledger, returned as JSON. `verifyLiveItems` in `lib/ask.ts` keeps only candidates that are character-exact ledger quotes for an initiative and month in the state, and the client verifies again before rendering. Anything else falls back to "I can answer these six in the demo." "Dictate a note" stays a fixture.

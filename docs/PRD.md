@@ -61,7 +61,16 @@ Delivered and Done are green with different pill text. A delivered initiative wh
 Mock sign-in, Greenbriar logo, fields prefilled, one button. Lands on Portfolio. No real auth.
 
 ### Shell
-Left sidebar, collapsible: Portfolio, Patterns, Reports, Learning log, Settings. Avatar bottom left: Matt Burke, Managing Director (from `users.json`). Header band: page title in serif, subtitle, month selector (July / August 2026), Demo data tag, presenter icon. Presenter menu on Shift+P.
+Left sidebar, collapsible: Portfolio, Patterns, Reports, Learning log, Settings. Avatar bottom left: Matt Burke, Managing Director (from `users.json`). Header band: page title in serif, subtitle, the Ask the ledger box, the Go back in time button, Demo data tag, presenter icon. Under the header, while a past month is in view, a thin amber band: "Viewing March 2026," Add April reports, Go back in time, Return to August. Presenter menu on Shift+P.
+
+### Time Machine
+Go back in time turns the current page (Portfolio, a company, Patterns, Reports, or the Learning log) into a card in a stack: one real render per month, January to August, the viewed month in front, earlier months receding behind it, later months dropped away. A timeline down the right edge, newest at the bottom, with the strip counts on hover. Click a month, a card's strip, or use the arrow keys; the cards slide over about 500ms (instant with reduced motion). The front card is live: hover a cell for its quote. Bottom bar: the viewed month in serif, Keep viewing [month], Add [next month] reports, Return to August. Escape keeps the month in view.
+
+### Reading log
+Add [month] reports, on Portfolio, in the amber band, in the stack, and in the presenter menu, opens a panel bottom right that streams one line per finding over about six seconds: the report, then each initiative with its page and section, the sentence, the change, the flag, then a summary. When the last line has appeared the month arrives: cells, flags, pills, counts, questions, patterns, and reports all follow. Skip to the end applies it at once.
+
+### Ask the ledger
+One box in the header. Typing filters six scripted questions; Enter or a click answers. Answers are quotes with page links and change chips, grouped by company and month, silences where an initiative was not mentioned, and the drafted questions when the question is about the next call. Never uncited prose. Answers follow the month in view. An unscripted question goes to the live path when a key exists and otherwise falls back to the six.
 
 ### Portfolio (default)
 - Work strip: four counts as tiles in the status colors. Need a conversation, Slipping, Not reported, On track. State `august`: 2, 2, 1, 7. Clicking a tile filters rows.
@@ -80,7 +89,7 @@ Initiatives tab, three columns:
 Current state tab: the current-state file for the company, a short list of bullets with dates, in James's format. Learning log tab: the company's entries. Quarterly prep tab: a draft slide, prior quarter priorities with outcome and note, next quarter priorities with plan, marked Draft, one button Send to [associate].
 
 ### Patterns
-Two columns. Left: an intro sentence, then pattern cards. Each: title, company chips, one paragraph, evidence bullets with cites, an action button (Draft an intro, Add to Thursday's questions, Ask both CEOs), and "Draft. Nothing is sent until you approve it." Right, 380px: Learning log, latest, four entries with date, company, status pill (On bench, Confirmed), and "Add from a note."
+Two columns. Left: an intro sentence, then pattern cards. Each: title, company chips, one paragraph, evidence bullets with cites, an action button (Draft an intro, Add to Thursday's questions, Ask both CEOs), and "Draft. Nothing is sent until you approve it." Pressing the action types out its draft below the card over two seconds with Approve and Edit. An approved question joins the company's call questions with a From Patterns note; an approved intro is ready to send from the deal lead's own mail. Right, 380px: Learning log, latest, four entries with date, company, status pill (On bench, Confirmed), and "Add from a note."
 
 ### Reports
 A list of the 24 monthly reports by company and month. Opening one renders it with visible page markers. Every cite anywhere in the app links here at the page. This is what makes "cites the page" true.
@@ -95,7 +104,7 @@ Placeholder sentence.
 Dark green panel bottom right, same as the scheduler. Controls:
 - Reset (to `august`).
 - Jump to state: july, august, august-approved, monday.
-- **August report arrives.** From `july`: a two-second working indicator, then Harlan's ERP row turns red, the work strip changes from 1 / 3 / 1 / 7 to 2 / 2 / 1 / 7, and the Harlan page's rail fills with the three questions. This is the wow beat.
+- **[Month] reports arrive.** The reading log for the month after the one in view, the same flow as Add [month] reports on screen. From `july`: the ERP row turns red, the work strip changes from 1 / 3 / 1 / 7 to 2 / 2 / 1 / 7, and the Harlan page's rail fills with the three questions. Off at August.
 - **Dictate a note.** Plays a fixed synthetic transcript (Meridian site visit) as text appearing over four seconds, then a draft learning-log entry and a draft current-state line appear on Meridian with Review buttons.
 - Toggle Demo tag.
 
