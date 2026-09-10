@@ -52,3 +52,17 @@ Polish for Phase 4:
 3. Darken the month cell fills one step if they read faint on a projector; check on the Friday call.
 
 Open: deploy (new GitHub repo and Vercel project) still held for Jordache's go-ahead.
+
+## Round 4: "not very interactive, lots of clicking", 2026-09-10
+
+Jordache's read of the Phase 3 screenshots. Accepted in full. The tool shows results; the demo has to show the reading happen and let the deal lead touch the data. Phase 5, in priority order:
+
+1. **Month scrubber in the header.** A slider from January to August replaces the July / August toggle. Dragging it changes which months have arrived; cells, flags, pills, strip counts, questions, patterns, and the Reports list all follow. Counts animate. The "August report arrives" presenter control stays as a keyboard fallback but the script uses the slider.
+2. **Hover quotes on month cells.** Hovering any cell shows a card with the verbatim quote, the cite as a link, and the change chip if any. Keyboard focus shows the same card. Cells with no mention show "Not mentioned in [month]."
+3. **Watch it read.** A visible "Add August reports" control on Portfolio (and in the presenter menu). Pressing it opens a reading log that streams one line per finding over about six seconds, in order: report, page, section, initiative, what changed, flag. Then the grid updates. Lines come from the diff between july and august, so nothing is invented.
+4. **Ask the ledger.** A single question box in the header on every page. Answers are quotes with page links, grouped by company and month, never uncited prose. Mock mode: six scripted questions with typeahead (what did Harlan say about the ERP date in March; which initiatives slipped this quarter; what has Corvus stopped reporting; where did pricing work; who is using the same vendor; what should I ask Dana on Thursday). Live mode if `ANTHROPIC_API_KEY` exists: the question plus the ledger JSON go to claude-sonnet-5 with a system prompt that returns only quotes present in the ledger, verified by code before display. Fallback to "I can answer these six in the demo" with the list.
+5. **Actions that draft.** "Draft an intro between the two operations leads" and "Add the comp-plan learning to Harlan's Thursday questions" type out a draft over two seconds with Approve and Edit. Canned drafts in `data/drafts.json`.
+
+Click budget for the demo: Portfolio to the ERP story with zero clicks (hover), to the questions with one click, to a cited page with two. Rewrite `docs/DEMO_SCRIPT.md` to the slider and the reading log once built.
+
+Held: the dictate beat and Reset stay in the presenter menu. Deploy after Phase 5 is green.
