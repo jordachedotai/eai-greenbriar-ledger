@@ -3,16 +3,19 @@
 // Client state. Persists to localStorage so a rehearsal can be resumed.
 // Any change to the persisted shape bumps STORE_VERSION in the same commit.
 //
-// The loaded demo state (july, august, august-approved) is a name; what it
-// shows comes from data/demo-states.json through lib/data.ts. The month
-// toggle in the header is derived from it, never stored on its own.
+// The loaded demo state is a view key (core-2026-07): which companies are
+// in and which month the reports have arrived through. What it shows
+// comes from data/demo-states.json through lib/data.ts. The month
+// scrubber in the header moves the cutoff; the presenter menu's named
+// states (july, august, august-approved, monday) are presets over it.
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import type { Flag } from "./types";
-import { DEFAULT_STATE, getDemoState } from "./data";
+import type { Flag, Month, View } from "./types";
+import { DEFAULT_STATE, getDemoState, getPreset, resolveStateKey } from "./data";
+import { viewKey } from "./states";
 
-export const STORE_VERSION = 3; // 3: month dropped (derived from stateName); + noteReviewed. 2: + questionsApproved, noteDictated. 1: loggedIn, sidebarCollapsed, stateName, month, showDemoTag
+export const STORE_VERSION = 4; // 4: stateName is a view key (core-2026-07), the cutoff the scrubber sets. 3: month dropped (derived from stateName); + noteReviewed. 2: + questionsApproved, noteDictated. 1: loggedIn, sidebarCollapsed, stateName, month, showDemoTag
 export { DEFAULT_STATE };
 
 const DEFAULT_MOCK = process.env.MOCK_MODE !== "false";
@@ -25,7 +28,7 @@ export type AppState = {
   loggedIn: boolean;
   sidebarCollapsed: boolean;
   workFilter: Flag | null;
-  stateName: string; // the loaded demo state: july, august, august-approved
+  stateName: string; // the loaded view key: core-2026-07, all-2026-08
   showDemoTag: boolean;
   presenterOpen: boolean;
   working: string | null; // a working indicator label, or null
@@ -46,15 +49,18 @@ export type AppState = {
   finishDictation: () => void;
   reviewNote: () => void;
   closeDictation: () => void;
-  loadState: (name: string) => void;
+  loadState: (name: string) => void; // a preset name or a view key
+  setCutoff: (month: Month) => void; // the scrubber: keeps the company set and the approvals
   reset: () => void;
 };
 
 // What loading a demo state sets. A state is a full snapshot: approvals
-// come from it, and the dictated drafts start over.
+// come from the preset (none for a bare view key), and the dictated
+// drafts start over.
 function stateDefaults(name: string): Pick<AppState, "stateName" | "questionsApproved" | "noteDictated" | "noteReviewed" | "dictation" | "workFilter" | "working"> {
   const state = getDemoState(name);
-  return { stateName: state.name, questionsApproved: [...state.questionsApproved], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null };
+  const preset = getPreset(name);
+  return { stateName: state.name, questionsApproved: [...(preset?.questionsApproved ?? [])], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null };
 }
 
 export const useStore = create<AppState>()(
@@ -80,6 +86,7 @@ export const useStore = create<AppState>()(
       reviewNote: () => set((s) => ({ noteReviewed: true, dictation: s.dictation ? { ...s.dictation, status: "reviewed" } : null })),
       closeDictation: () => set({ dictation: null }),
       loadState: (name) => set(stateDefaults(name)),
+      setCutoff: (month) => set((s) => ({ stateName: viewKey({ set: getDemoState(s.stateName).set, cutoff: month }), working: null })),
       reset: () => set(stateDefaults(DEFAULT_STATE)),
     }),
     {
@@ -100,14 +107,15 @@ export const useStore = create<AppState>()(
       // A saved state name that no longer exists falls back to the default.
       merge: (persisted, current) => {
         const saved = (persisted ?? {}) as Partial<AppState>;
-        const known = saved.stateName && getDemoState(saved.stateName).name === saved.stateName;
+        const known = saved.stateName && resolveStateKey(saved.stateName) === saved.stateName;
         return { ...current, ...saved, ...(known ? {} : stateDefaults(DEFAULT_STATE)) };
       },
     },
   ),
 );
 
-// The header's month toggle: the last month of the loaded state.
-export function monthOf(stateName: string): string {
-  return getDemoState(stateName).month;
+// The view the loaded state is: the company set and the cutoff month.
+export function viewOf(stateName: string): View {
+  const state = getDemoState(stateName);
+  return { set: state.set, cutoff: state.month };
 }

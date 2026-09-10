@@ -1,7 +1,539 @@
 {
-  "july": {
-    "name": "july",
+  "core-2026-01": {
+    "name": "core-2026-01",
+    "label": "January 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01"
+    ],
+    "month": "2026-01",
+    "cutoff": "2026-01-31",
+    "status": {
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two territory roles open. Both hires targeted for Q2."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan to be online in Q3."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Not mentioned in January."
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 38% of revenue. Plan is under 30% through new account wins."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for the end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan to complete in Q3."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Region by region rollout. All three regions by Q3."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor selection underway. Decision expected in Q3."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Targeting 2 to 3 points of net price by Q3 through the regional rollout."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 48%. Target under 40% by year end."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Search underway with a retained firm. Q3 start targeted."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Memphis pilot on plan. Results expected in Q4."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "core-2026-02": {
+    "name": "core-2026-02",
+    "label": "February 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02"
+    ],
+    "month": "2026-02",
+    "cutoff": "2026-02-28",
+    "status": {
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Search with a recruiter."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Steel erection complete. On plan for Q3."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two-vendor bake-off. Decision expected in Q2.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 37%, from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for a Q2 go-live. Finance module in testing."
+      },
+      "harlan-plant": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for Q3. Lease exit in negotiation."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rollout began in the Northeast in February."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Requirements finalized in February. Corvus is running the same evaluation.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rollout begins in the East region in March."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 47%. Referral bonuses launched."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "First-round interviews scheduled for March."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Pilot equipment ordered in February."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "core-2026-03": {
+    "name": "core-2026-03",
+    "label": "March 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03"
+    ],
+    "month": "2026-03",
+    "cutoff": "2026-03-31",
+    "status": {
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Recruiting underway for both territory roles."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for Q3. Fit-out starts in April."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Not mentioned in March. Two-vendor bake-off stated in February.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 37%. Two new accounts onboarded."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "June cutover stated. Data migration 60% complete."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed March 6. Move date to be confirmed."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Northeast live. Southeast begins in April."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Four vendors responded to the request for proposal.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "East region live in March."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 46%. Home-time schedule live at all terminals."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Candidate interviews held in March."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site preparation began in March."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "core-2026-04": {
+    "name": "core-2026-04",
+    "label": "April 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "month": "2026-04",
+    "cutoff": "2026-04-30",
+    "status": {
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Not mentioned in April. Last mentioned in March."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Fit-out underway. Online date remains Q3."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Reference calls with both vendors complete.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 36%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Cutover planning for June. Training begins in May."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. Move date to follow the Toledo line extension."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Northeast live. Southeast started April 6."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor demonstrations completed in April. Corvus finished reference calls.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in the East and Gulf regions."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 45%."
+      },
+      "meridian-cfo": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Search restarted with a new firm. No start date stated."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site preparation complete."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "core-2026-05": {
+    "name": "core-2026-05",
+    "label": "May 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05"
+    ],
+    "month": "2026-05",
+    "cutoff": "2026-05-31",
+    "status": {
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Online date moved to October."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May after a two-vendor bake-off.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 35%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Go-live moved to July. Vendor resourcing cited. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Central region rollout underway."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 44%. On plan for under 40% by year end."
+      },
+      "meridian-cfo": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Restarted search producing candidates. No start date set."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment delivery scheduled for July."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "core-2026-06": {
+    "name": "core-2026-06",
+    "label": "June 2026",
+    "set": "core",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ],
+    "month": "2026-06",
+    "cutoff": "2026-06-30",
+    "status": {
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "On plan for October. Moved from Q3 in May."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Not mentioned in June.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 35%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Phase 1 goes live July 1. Phase 2 planned for Q4. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for Q3."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Final evaluation between two vendors. Corvus chose in May.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "All regions live in June."
+      },
+      "meridian-drivers": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 45%, was 44% in May."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Finalist identified. Start expected in Q3. The search restarted in April."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment delivery remains scheduled for July."
+      }
+    },
+    "questionIds": [],
+    "patternIds": [
+      "pattern-tms"
+    ]
+  },
+  "core-2026-07": {
+    "name": "core-2026-07",
     "label": "July 2026",
+    "set": "core",
     "companyIds": [
       "harlan",
       "meridian",
@@ -93,14 +625,14 @@
       }
     },
     "questionIds": [],
-    "questionsApproved": [],
     "patternIds": [
       "pattern-tms"
     ]
   },
-  "august": {
-    "name": "august",
+  "core-2026-08": {
+    "name": "core-2026-08",
     "label": "August 2026",
+    "set": "core",
     "companyIds": [
       "harlan",
       "meridian",
@@ -203,48 +735,249 @@
       "q-corvus-2",
       "q-corvus-3"
     ],
-    "questionsApproved": [],
     "patternIds": [
       "pattern-tms",
       "pattern-pricing",
       "pattern-vendor"
     ]
   },
-  "august-approved": {
-    "name": "august-approved",
-    "label": "August 2026",
+  "all-2026-01": {
+    "name": "all-2026-01",
+    "label": "January 2026, twelve companies",
+    "set": "all",
     "companyIds": [
       "harlan",
       "meridian",
-      "corvus"
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
     ],
     "months": [
-      "2026-01",
-      "2026-02",
-      "2026-03",
-      "2026-04",
-      "2026-05",
-      "2026-06",
-      "2026-07",
-      "2026-08"
+      "2026-01"
     ],
-    "month": "2026-08",
-    "cutoff": null,
+    "month": "2026-01",
+    "cutoff": "2026-01-31",
     "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The automated blast booth is on plan to be online by the end of Q2."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Field crew scheduling software selection is underway with a Q3 go-live planned."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Trailer temperature monitoring will cover the full fleet by the end of Q2."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Greenville cold storage expansion adds 40,000 pallet positions by Q4."
+      },
       "corvus-sales": {
-        "flag": "grey",
-        "pill": "Not reported",
-        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two territory roles open. Both hires targeted for Q2."
       },
       "corvus-mro": {
-        "flag": "red",
-        "pill": "Needs a conversation",
-        "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan."
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan to be online in Q3."
       },
       "corvus-tms": {
         "flag": "green",
         "pill": "On track",
-        "sentence": "Vendor chosen in May. Contract in legal.",
+        "sentence": "Not mentioned in January."
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 38% of revenue. Plan is under 30% through new account wins."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Consolidation from eleven branches to eight is planned to complete by the end of Q3."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The vendor managed inventory program targets 25 customer sites by Q4."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for the end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan to complete in Q3."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Region by region rollout. All three regions by Q3."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor selection underway. Decision expected in Q3."
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The second hangar line at Tulsa is planned to be operational in Q3."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The rotable parts pool will be stocked to plan by the end of Q2."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The new paint line is planned to be running in Q3."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The order backlog stands at 12 months and the target is under 9 months by Q4."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Targeting 2 to 3 points of net price by Q3 through the regional rollout."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 48%. Target under 40% by year end."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Search underway with a retained firm. Q3 start targeted."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Memphis pilot on plan. Results expected in Q4."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The yard management system will be live at all three ramps by the end of Q3."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Forty new drayage tractors are on order for delivery through Q4."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Columbus distribution center expansion is on plan to open in Q4."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Online orders were 20% of order volume and the target is 30% by Q4."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Telematics will be fitted across the rental fleet by the end of Q2."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The recordable incident rate was 1.8 and the target is under 1.0 by Q4."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The renewal program covers the top twenty contracts, with all renewals targeted by the end of Q3."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The payroll and HR platform consolidation is on plan for the end of Q2."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "all-2026-02": {
+    "name": "all-2026-02",
+    "label": "February 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02"
+    ],
+    "month": "2026-02",
+    "cutoff": "2026-02-28",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Booth foundations were poured in February and the equipment is on order."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The crew scheduling vendor was selected in February."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Monitoring units were fitted to 120 trailers in February."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Design of the Greenville expansion was completed in February."
+      },
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Search with a recruiter."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Steel erection complete. On plan for Q3."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two-vendor bake-off. Decision expected in Q2.",
         "chip": {
           "text": "Parallel with Harlan",
           "tone": "you"
@@ -253,12 +986,974 @@
       "corvus-concentration": {
         "flag": "green",
         "pill": "On track",
-        "sentence": "Top customer 33%, down from 38% in January."
+        "sentence": "Top customer 37%, from 38% in January."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Racine branch was merged into Milwaukee in February."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Three customer sites joined the vendor managed inventory program in February."
       },
       "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for a Q2 go-live. Finance module in testing."
+      },
+      "harlan-plant": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for Q3. Lease exit in negotiation."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rollout began in the Northeast in February."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Requirements finalized in February. Corvus is running the same evaluation.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Tooling for the second hangar line was ordered in February."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Purchase orders for the rotable parts pool were placed in February."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The paint line equipment contract was signed in February."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Second shift hiring to work down the backlog began in February."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rollout begins in the East region in March."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 47%. Referral bonuses launched."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "First-round interviews scheduled for March."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Pilot equipment ordered in February."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Yard management hardware was installed at the Kansas City ramp in February."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The first ten drayage tractors were delivered in February."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Permits for the Columbus expansion were issued in February."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Online orders reached 22% of volume in February."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Telematics units were fitted to the first 200 rental units in February."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site safety leads were appointed at every branch in February."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Four of the top twenty contracts were renewed in February."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Data migration for the payroll platform began in February."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "all-2026-03": {
+    "name": "all-2026-03",
+    "label": "March 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03"
+    ],
+    "month": "2026-03",
+    "cutoff": "2026-03-31",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The blast booth equipment shipped from the manufacturer in March."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Configuration of the crew scheduling system started in March."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Half of the trailer fleet now carries temperature monitoring."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The general contractor for the Greenville expansion was appointed in March."
+      },
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Recruiting underway for both territory roles."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "On plan for Q3. Fit-out starts in April."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Not mentioned in March. Two-vendor bake-off stated in February.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 37%. Two new accounts onboarded."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Customer transfers from the Racine branch were completed in March."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Eight customer sites are live on vendor managed inventory."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "June cutover stated. Data migration 60% complete."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed March 6. Move date to be confirmed."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Northeast live. Southeast begins in April."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Four vendors responded to the request for proposal.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Structural work on the second hangar line finished in March."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "About half of the rotable pool inventory had arrived by the end of March."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Paint line foundation work started in March during the planned shutdown."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The order backlog was 11 months at the end of March."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "East region live in March."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 46%. Home-time schedule live at all terminals."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Candidate interviews held in March."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site preparation began in March."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Kansas City ramp went live on the yard management system in March."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Twenty of the forty drayage tractors are now in service."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site work on the Columbus expansion began in March."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The new customer portal launched in March with reorder features."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Telematics installation passed the halfway point in March."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The recordable incident rate was 1.5 at the end of March."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Nine of the top twenty contracts have now been renewed."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Payroll data migration was two thirds complete at the end of March."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "all-2026-04": {
+    "name": "all-2026-04",
+    "label": "April 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "month": "2026-04",
+    "cutoff": "2026-04-30",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Booth installation began in April with the mechanical contractor on site."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Crew leads began scheduling system training in April."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Monitoring installation continued in April at the planned rate."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Ground was broken on the Greenville expansion in April."
+      },
+      "corvus-sales": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Not mentioned in April. Last mentioned in March."
+      },
+      "corvus-mro": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Fit-out underway. Online date remains Q3."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Reference calls with both vendors complete.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 36%, down from 38% in January."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Rockford branch consolidation is scheduled for June."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Twelve customer sites are live on vendor managed inventory."
+      },
+      "harlan-erp": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Cutover planning for June. Training begins in May."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. Move date to follow the Toledo line extension."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Northeast live. Southeast started April 6."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor demonstrations completed in April. Corvus finished reference calls.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Hiring for the second hangar line started with twelve technician openings."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rotable pool receipts continued in April and the pool is on plan for the end of Q2."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Paint line equipment fabrication is on schedule at the supplier."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Second shift output reached plan in April."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in the East and Gulf regions."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 45%."
+      },
+      "meridian-cfo": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Search restarted with a new firm. No start date stated."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Site preparation complete."
+      },
+      "pellston-yard": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "The yard management rollout to the other two ramps remains on plan."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Drayage tractor deliveries continued in April at the planned pace."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Steel for the Columbus expansion is going up on schedule."
+      },
+      "redfern-online": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Online orders were 21% of volume in April, down slightly on a seasonal mix."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Telematics installation is on plan for completion in June."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Daily equipment inspections were added to the safety program in April."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Renewal discussions are underway on eight further contracts."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Parallel payroll runs start in May ahead of a June cutover."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "all-2026-05": {
+    "name": "all-2026-05",
+    "label": "May 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05"
+    ],
+    "month": "2026-05",
+    "cutoff": "2026-05-31",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Commissioning of the blast booth is scheduled for the second week of June."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The crew scheduling pilot is running in the Erie district."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Monitoring units are fitted to 90% of the trailer fleet."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Last mentioned in April: \"Ground was broken on the Greenville expansion in April.\" No closure stated since."
+      },
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Online date moved to October."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May after a two-vendor bake-off.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 35%, down from 38% in January."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Lease notice on the Rockford branch was served in May."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Fifteen customer sites are live on vendor managed inventory."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Go-live moved to July. Vendor resourcing cited. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Nine of the twelve technician roles for the second line have been filled."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "The rotable parts pool was fully stocked in May, ahead of the Q2 target."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The paint line equipment is due on site in July."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The order backlog was 10 months at the end of May."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Central region rollout underway."
+      },
+      "meridian-drivers": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Turnover 44%. On plan for under 40% by year end."
+      },
+      "meridian-cfo": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Restarted search producing candidates. No start date set."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment delivery scheduled for July."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Dallas goes live on the yard system in June and Memphis in September, inside the Q3 target."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Thirty drayage tractors are in service and fuel cost per mile on the new units is below the fleet average."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Columbus expansion building was enclosed in May."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Online orders were 24% of volume in May."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Telematics installation reached 85% of the rental fleet in May."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The recordable incident rate was 1.3 at the end of May."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Fourteen of the top twenty contracts have been renewed."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The first parallel payroll run in May reconciled with no material differences."
+      }
+    },
+    "questionIds": [],
+    "patternIds": []
+  },
+  "all-2026-06": {
+    "name": "all-2026-06",
+    "label": "June 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ],
+    "month": "2026-06",
+    "cutoff": "2026-06-30",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "The automated blast booth went live on June 18 and is running two shifts."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Erie pilot is producing crew schedules a week ahead."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "The full trailer fleet carried temperature monitoring by the end of June."
+      },
+      "brightwater-expansion": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in April: \"Ground was broken on the Greenville expansion in April.\" No closure stated since."
+      },
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "On plan for October. Moved from Q3 in May."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Not mentioned in June.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 35%, down from 38% in January."
+      },
+      "halvorsen-branches": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "The branch consolidation program remains on plan."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Eighteen customer sites are live on vendor managed inventory."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Phase 1 goes live July 1. Phase 2 planned for Q4. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for Q3."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Final evaluation between two vendors. Corvus chose in May.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Tooling for the second hangar line arrived and installation began in June."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "The rotable pool supported every heavy check in June without an outside lease."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Preparation of the paint line bay was completed in June."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Backlog conversion continued in June at the second shift run rate."
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "All regions live in June."
+      },
+      "meridian-drivers": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 45%, was 44% in May."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Finalist identified. Start expected in Q3. The search restarted in April."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment delivery remains scheduled for July."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Dallas ramp went live on the yard management system in June."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The final ten drayage tractors are scheduled for delivery in Q4."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Racking for the Columbus expansion has been ordered for an October installation."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Online order share held at 25% in June."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Telematics installation across the rental fleet was completed in June."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Safety training hours in June were double the prior year."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Sixteen of the top twenty contracts have been renewed at or above prior rates."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "The consolidated payroll and HR platform went live on June 26."
+      }
+    },
+    "questionIds": [],
+    "patternIds": [
+      "pattern-tms"
+    ]
+  },
+  "all-2026-07": {
+    "name": "all-2026-07",
+    "label": "July 2026, twelve companies",
+    "set": "all",
+    "companyIds": [
+      "harlan",
+      "meridian",
+      "corvus",
+      "ashcombe",
+      "pellston",
+      "larkmoor",
+      "redfern",
+      "thornbury",
+      "marlow",
+      "brightwater",
+      "halvorsen",
+      "sablecreek"
+    ],
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
+    ],
+    "month": "2026-07",
+    "cutoff": "2026-07-31",
+    "status": {
+      "ashcombe-booth": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Blast booth throughput in July was ahead of the level assumed in the plan."
+      },
+      "ashcombe-crew": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Crew scheduling go-live for the remaining districts is set for September."
+      },
+      "brightwater-monitoring": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Temperature exception reports covered the full fleet in July."
+      },
+      "brightwater-expansion": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Refrigeration equipment for the Greenville expansion was ordered in July."
+      },
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
         "flag": "red",
         "pill": "Needs a conversation",
-        "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2."
+        "sentence": "Online date moved twice: October in May, December in July."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Contract terms in negotiation.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 34%, down from 38% in January."
+      },
+      "halvorsen-branches": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The Rockford branch closed in July and the final consolidation completes in September."
+      },
+      "halvorsen-vmi": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Twenty customer sites are live on vendor managed inventory."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Phase 1 live July 1. Phase 2 planned for Q4. The whole system was due end of Q2."
       },
       "harlan-plant": {
         "flag": "amber",
@@ -273,16 +1968,36 @@
       "harlan-tms": {
         "flag": "green",
         "pill": "On track",
-        "sentence": "Down to two vendors. Corvus is running the same evaluation.",
+        "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May.",
         "chip": {
           "text": "Parallel with Corvus",
           "tone": "you"
         }
       },
+      "larkmoor-hangar": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The second hangar line is scheduled to take its first aircraft in September."
+      },
+      "larkmoor-parts": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Rotable pool turns in July were in line with the plan."
+      },
+      "marlow-paint": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Paint line equipment arrived in July and installation is underway."
+      },
+      "marlow-backlog": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The order backlog was 10 months at the end of July."
+      },
       "meridian-pricing": {
         "flag": "green",
         "pill": "Delivered",
-        "sentence": "Gross margin up 180 bps since April. The report does not connect the two.",
+        "sentence": "All regions live since June. Gross margin up 180 bps since April. The report does not connect the two.",
         "chip": {
           "text": "Benefit not rolled up",
           "tone": "you"
@@ -291,42 +2006,68 @@
       "meridian-drivers": {
         "flag": "amber",
         "pill": "Slipping",
-        "sentence": "Turnover reported at 46%, was 44% in May. No new actions named."
+        "sentence": "Turnover reported at 45%, was 44% in May. No new actions named."
       },
       "meridian-cfo": {
         "flag": "green",
-        "pill": "Done",
-        "sentence": "Offer accepted Aug 20. Start date Sep 15."
+        "pill": "On track",
+        "sentence": "Offer negotiations in progress for a Q3 start. The search restarted in April."
       },
       "meridian-warehouse": {
         "flag": "green",
         "pill": "On track",
-        "sentence": "Equipment installed. First throughput read in September."
+        "sentence": "Equipment arrived in Memphis. Installation underway."
+      },
+      "pellston-yard": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Memphis ramp preparation for the yard management system is underway."
+      },
+      "pellston-drayage": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Older drayage tractors are being retired as the new units arrive."
+      },
+      "redfern-dc": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Interior fit-out of the Columbus expansion is underway."
+      },
+      "redfern-online": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Online orders were 26% of volume in July."
+      },
+      "sablecreek-telematics": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Utilization reporting from telematics started in July."
+      },
+      "sablecreek-safety": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "The recordable incident rate was 1.1 at the end of July."
+      },
+      "thornbury-renewals": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Eighteen of the top twenty contracts are renewed, with two in final negotiation."
+      },
+      "thornbury-payroll": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "July payroll ran on the new platform without issue."
       }
     },
-    "questionIds": [
-      "q-harlan-1",
-      "q-harlan-2",
-      "q-harlan-3",
-      "q-meridian-1",
-      "q-meridian-2",
-      "q-meridian-3",
-      "q-corvus-1",
-      "q-corvus-2",
-      "q-corvus-3"
-    ],
-    "questionsApproved": [
-      "harlan"
-    ],
+    "questionIds": [],
     "patternIds": [
-      "pattern-tms",
-      "pattern-pricing",
-      "pattern-vendor"
+      "pattern-tms"
     ]
   },
-  "monday": {
-    "name": "monday",
+  "all-2026-08": {
+    "name": "all-2026-08",
     "label": "August 2026, twelve companies",
+    "set": "all",
     "companyIds": [
       "harlan",
       "meridian",
@@ -528,7 +2269,6 @@
       "q-corvus-2",
       "q-corvus-3"
     ],
-    "questionsApproved": [],
     "patternIds": [
       "pattern-tms",
       "pattern-pricing",

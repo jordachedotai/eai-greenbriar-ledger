@@ -10,7 +10,7 @@ import { join } from "node:path";
 import type { Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
-import { companiesIn, stateCounts } from "../lib/states";
+import { companiesIn, PRESETS, stateCounts, viewKey } from "../lib/states";
 import { generateNotes, generateStates } from "./gen-states";
 
 const ROOT = join(__dirname, "..");
@@ -154,26 +154,64 @@ for (const s of JSON.parse(read("data/current-state.json")) as CurrentState[]) {
 }
 
 // 3e. Demo states and the notes index are exactly what the generator
-// produces from the fixtures now. Anything else is drift.
+// produces from the fixtures now. Anything else is drift. One state per
+// company set per cutoff; the named presets resolve to them; the core
+// twelve carry an authored status sentence for every month before August.
 if (existsSync(join(ROOT, "data/demo-states.json"))) {
   const committed = read("data/demo-states.json");
   const fresh = JSON.stringify(generateStates(), null, 2) + "\n";
   if (committed !== fresh) fail("data/demo-states.json differs from what scripts/gen-states.ts produces; run npm run gen:states");
   const states = JSON.parse(committed) as DemoStates;
-  const want: Record<string, Record<string, number>> = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, "august-approved": { red: 2, amber: 2, grey: 1, green: 7 }, monday: { red: 2, amber: 2, grey: 1, green: 25 } };
-  for (const [name, counts] of Object.entries(want)) {
-    if (!states[name]) {
-      fail(`demo state ${name} is missing`);
+  const keys = Object.keys(states);
+  if (keys.length !== 16) fail(`demo states: ${keys.length} states, expected 16 (two company sets by eight cutoffs)`);
+  for (const [name, preset] of Object.entries(PRESETS)) if (!states[viewKey(preset.view)]) fail(`demo state for preset ${name} (${viewKey(preset.view)}) is missing`);
+  const wantCore: Record<string, Record<string, number>> = {
+    "2026-01": { red: 0, amber: 0, grey: 0, green: 12 },
+    "2026-02": { red: 0, amber: 0, grey: 0, green: 12 },
+    "2026-03": { red: 0, amber: 1, grey: 0, green: 11 },
+    "2026-04": { red: 0, amber: 2, grey: 0, green: 10 },
+    "2026-05": { red: 0, amber: 4, grey: 1, green: 7 },
+    "2026-06": { red: 0, amber: 4, grey: 1, green: 7 },
+    "2026-07": { red: 1, amber: 3, grey: 1, green: 7 },
+    "2026-08": { red: 2, amber: 2, grey: 1, green: 7 },
+  };
+  for (const [month, counts] of Object.entries(wantCore)) {
+    const state = states[`core-${month}`];
+    if (!state) {
+      fail(`demo state core-${month} is missing`);
       continue;
     }
-    const got = stateCounts(states[name]);
-    if (JSON.stringify(got) !== JSON.stringify(counts)) fail(`demo state ${name}: counts ${JSON.stringify(got)}, expected ${JSON.stringify(counts)}`);
+    const got = stateCounts(state);
+    if (JSON.stringify(got) !== JSON.stringify(counts)) fail(`demo state core-${month}: counts ${JSON.stringify(got)}, expected ${JSON.stringify(counts)}`);
+    if (state.companyIds.length !== 3) fail(`demo state core-${month}: should show three companies`);
+    if (state.months.length !== MONTHS.indexOf(month as (typeof MONTHS)[number]) + 1) fail(`demo state core-${month}: wrong months`);
+    for (const i of ledger.initiatives) {
+      if (!core.has(i.companyId)) continue;
+      if (!state.status[i.id]?.sentence) fail(`demo state core-${month}: ${i.id} has no status sentence`);
+    }
   }
-  if (states.july?.questionIds.length) fail("demo state july should have no questions");
-  if (states.july?.status["harlan-erp"]?.flag !== "amber") fail("demo state july: harlan-erp should be amber");
-  if (JSON.stringify(states["august-approved"]?.questionsApproved) !== JSON.stringify(["harlan"])) fail("demo state august-approved: Harlan's questions should be approved");
-  for (const name of ["july", "august", "august-approved"]) if (states[name]?.companyIds.length !== 3) fail(`demo state ${name}: should show three companies`);
-  if (states.monday?.companyIds.length !== 12) fail("demo state monday: should show twelve companies");
+  const monday = states[viewKey(PRESETS.monday.view)];
+  if (JSON.stringify(stateCounts(monday)) !== JSON.stringify({ red: 2, amber: 2, grey: 1, green: 25 })) fail(`demo state monday: counts ${JSON.stringify(stateCounts(monday))}`);
+  if (monday.companyIds.length !== 12) fail("demo state monday: should show twelve companies");
+  const july = states[viewKey(PRESETS.july.view)];
+  if (july.questionIds.length) fail("demo state july should have no questions");
+  if (july.status["harlan-erp"]?.flag !== "amber") fail("demo state july: harlan-erp should be amber");
+  if (JSON.stringify(PRESETS["august-approved"].questionsApproved) !== JSON.stringify(["harlan"])) fail("preset august-approved: Harlan's questions should be approved");
+  // Questions and patterns only once every cite in them has arrived.
+  for (const state of Object.values(states)) {
+    const months = new Set<string>(state.months);
+    const qs = JSON.parse(read("data/questions.json")) as Question[];
+    for (const id of state.questionIds) {
+      const q = qs.find((x) => x.id === id);
+      if (!q) fail(`demo state ${state.name}: unknown question ${id}`);
+      else for (const c of q.cites) if (!months.has(c.split(":")[0].slice(-7))) fail(`demo state ${state.name}: question ${id} cites a month that has not arrived`);
+    }
+  }
+  // The core twelve carry an authored status sentence for every month before August.
+  for (const a of arcs) {
+    if (!core.has(a.companyId)) continue;
+    for (const m of MONTHS.slice(0, -1)) if (!a.statusAt?.[m]?.sentence) fail(`${a.id}: arcs.json has no statusAt sentence for ${m}`);
+  }
   // Every cell in monday: a mentioned month carries a quote and a cite that
   // resolves; an unmentioned month is a quiet one with neither.
   for (const i of ledger.initiatives) {

@@ -8,9 +8,11 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useStore } from "@/lib/store";
-import { getDemoStates } from "@/lib/data";
-import { augustReportArrives, dictateNote } from "@/lib/actions";
+import { useStore, viewOf } from "@/lib/store";
+import { getPreset, getStateNames } from "@/lib/data";
+import { presetFor } from "@/lib/states";
+import { monthLabel } from "@/lib/format";
+import { augustReportArrives, canAugustArrive, dictateNote } from "@/lib/actions";
 import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
 import { Menu } from "@/components/ui/Menu";
 
@@ -21,6 +23,7 @@ export function PresenterMenu() {
   const open = useStore((s) => s.presenterOpen);
   const setOpen = useStore((s) => s.setPresenterOpen);
   const stateName = useStore((s) => s.stateName);
+  const questionsApproved = useStore((s) => s.questionsApproved);
   const working = useStore((s) => s.working);
   const dictation = useStore((s) => s.dictation);
   const noteDictated = useStore((s) => s.noteDictated);
@@ -47,12 +50,12 @@ export function PresenterMenu() {
   }, [setOpen]);
 
   if (!open) return null;
-  const states = getDemoStates();
+  const preset = presetFor(viewOf(stateName), questionsApproved);
   const busy = !!working || dictation?.status === "playing";
-  const augustLive = stateName === "july";
+  const augustLive = canAugustArrive();
 
   return (
-    <div className="fixed bottom-7 right-7 z-50 flex w-[340px] flex-col overflow-hidden rounded-[14px] bg-header text-white shadow-[0_18px_48px_-12px_rgba(20,63,31,0.55),inset_0_0_0_1px_rgba(255,255,255,0.08)]" data-testid="presenter-menu" data-state={stateName}>
+    <div className="fixed bottom-7 right-7 z-50 flex w-[340px] flex-col overflow-hidden rounded-[14px] bg-header text-white shadow-[0_18px_48px_-12px_rgba(20,63,31,0.55),inset_0_0_0_1px_rgba(255,255,255,0.08)]" data-testid="presenter-menu" data-state={preset ?? stateName}>
       <div className="flex items-center justify-between border-b border-white/12 px-[18px] py-3.5">
         <div className="flex items-center gap-2.5">
           <IconPresenter size={18} />
@@ -95,8 +98,9 @@ export function PresenterMenu() {
           <span>Jump to state</span>
           <Menu
             dark
-            value={stateName}
-            options={Object.values(states).map((s) => ({ value: s.name, label: s.name, sub: s.label }))}
+            value={preset}
+            placeholder={`through ${monthLabel(viewOf(stateName).cutoff)}`}
+            options={getStateNames().map((name) => ({ value: name, label: name, sub: getPreset(name)?.label ?? name }))}
             onChange={(k) => {
               if (!busy) loadState(k);
             }}

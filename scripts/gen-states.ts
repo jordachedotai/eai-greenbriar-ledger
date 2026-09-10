@@ -1,13 +1,14 @@
 // Writes data/demo-states.json from the fixtures (ledger, arcs, questions,
-// patterns) and data/notes/index.json from the dictated-note transcripts,
-// so the demo states never drift from the ledger. Run with
+// patterns), one state per company set per cutoff month, and
+// data/notes/index.json from the dictated-note transcripts, so the demo
+// states never drift from the ledger. Run with
 // `npm run gen:states` after any fixture change. scripts/check-ledger.ts
 // regenerates both in memory and fails on any difference.
 
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Arc, DemoStates, Ledger, LogEntry, Note, Pattern, Question } from "../lib/types";
-import { buildStates, stateCounts } from "../lib/states";
+import { buildStates, PRESETS, stateCounts, viewKey } from "../lib/states";
 
 const ROOT = join(__dirname, "..");
 const read = (p: string) => readFileSync(join(ROOT, p), "utf8");
@@ -53,7 +54,7 @@ if (require.main === module) {
   const notes = generateNotes();
   const want = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, monday: { red: 2, amber: 2, grey: 1, green: 25 } };
   for (const [name, counts] of Object.entries(want)) {
-    const got = stateCounts(states[name]);
+    const got = stateCounts(states[viewKey(PRESETS[name].view)]);
     if (JSON.stringify(got) !== JSON.stringify(counts)) throw new Error(`${name}: counts ${JSON.stringify(got)}, expected ${JSON.stringify(counts)}`);
   }
   writeFileSync(join(ROOT, "data/demo-states.json"), JSON.stringify(states, null, 2) + "\n");

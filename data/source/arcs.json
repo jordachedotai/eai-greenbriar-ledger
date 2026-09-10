@@ -17,7 +17,15 @@
       "2026-08": { "sentence": "Phase 2 is now expected in Q1 2027 to avoid disruption during peak season.", "section": "Strategic initiatives", "flag": "red", "facts": { "commitments": [{ "key": "phase-2", "kind": "date", "value": "2027-Q1" }], "reason": "peak season" }, "change": { "kind": "date", "from": "Q4 2026", "to": "Q1 2027", "label": "Date moved: Q4 2026 to Q1 2027" } }
     },
     "status": { "flag": "red", "pill": "Needs a conversation", "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2." },
-    "statusAt": { "2026-07": { "sentence": "Phase 1 live July 1. Phase 2 planned for Q4. The whole system was due end of Q2." } }
+    "statusAt": {
+      "2026-01": { "sentence": "On plan for the end of Q2." },
+      "2026-02": { "sentence": "On plan for a Q2 go-live. Finance module in testing." },
+      "2026-03": { "sentence": "June cutover stated. Data migration 60% complete." },
+      "2026-04": { "sentence": "Cutover planning for June. Training begins in May." },
+      "2026-05": { "sentence": "Go-live moved to July. Vendor resourcing cited. The whole system was due end of Q2." },
+      "2026-06": { "sentence": "Phase 1 goes live July 1. Phase 2 planned for Q4. The whole system was due end of Q2." },
+      "2026-07": { "sentence": "Phase 1 live July 1. Phase 2 planned for Q4. The whole system was due end of Q2." }
+    }
   },
   {
     "id": "harlan-plant",
@@ -37,7 +45,15 @@
       "2026-08": { "sentence": "Dayton consolidation remains in planning. A move date has not been set.", "section": "Strategic initiatives", "flag": "amber", "facts": { "restatedWithoutDate": true } }
     },
     "status": { "flag": "amber", "pill": "Slipping", "sentence": "Lease exit signed in March. No move date stated since." },
-    "statusAt": { "2026-07": { "sentence": "Lease exit signed in March. No move date stated since." } }
+    "statusAt": {
+      "2026-01": { "sentence": "On plan to complete in Q3." },
+      "2026-02": { "sentence": "On plan for Q3. Lease exit in negotiation." },
+      "2026-03": { "sentence": "Lease exit signed March 6. Move date to be confirmed." },
+      "2026-04": { "sentence": "Lease exit signed in March. Move date to follow the Toledo line extension." },
+      "2026-05": { "sentence": "Lease exit signed in March. No move date stated since." },
+      "2026-06": { "sentence": "Lease exit signed in March. No move date stated since." },
+      "2026-07": { "sentence": "Lease exit signed in March. No move date stated since." }
+    }
   },
   {
     "id": "harlan-pricing",
@@ -58,7 +74,15 @@
       "2026-08": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for September.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "all-regions", "kind": "date", "value": "2026-09" }] } }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Live in 2 of 3 regions. Midwest scheduled for September." },
-    "statusAt": { "2026-07": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for September." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Region by region rollout. All three regions by Q3." },
+      "2026-02": { "sentence": "Rollout began in the Northeast in February." },
+      "2026-03": { "sentence": "Northeast live. Southeast begins in April." },
+      "2026-04": { "sentence": "Northeast live. Southeast started April 6." },
+      "2026-05": { "sentence": "Live in 2 of 3 regions." },
+      "2026-06": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for Q3." },
+      "2026-07": { "sentence": "Live in 2 of 3 regions. Midwest scheduled for September." }
+    }
   },
   {
     "id": "harlan-tms",
@@ -78,7 +102,15 @@
       "2026-08": { "sentence": "The TMS vendor decision remains on plan for Q3.", "section": "Strategic initiatives", "flag": "green", "facts": { "commitments": [{ "key": "decision", "kind": "date", "value": "2026-Q3" }] } }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Down to two vendors. Corvus is running the same evaluation.", "chip": { "text": "Parallel with Corvus", "tone": "you" } },
-    "statusAt": { "2026-07": { "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May." } },
+    "statusAt": {
+      "2026-01": { "sentence": "Vendor selection underway. Decision expected in Q3." },
+      "2026-02": { "sentence": "Requirements finalized in February. Corvus is running the same evaluation." },
+      "2026-03": { "sentence": "Four vendors responded to the request for proposal." },
+      "2026-04": { "sentence": "Vendor demonstrations completed in April. Corvus finished reference calls." },
+      "2026-05": { "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May." },
+      "2026-06": { "sentence": "Final evaluation between two vendors. Corvus chose in May." },
+      "2026-07": { "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May." }
+    },
     "parallelWith": ["corvus-tms"]
   },
   {
@@ -100,7 +132,15 @@
       "2026-08": { "sentence": null, "flag": "green" }
     },
     "status": { "flag": "green", "pill": "Delivered", "sentence": "Gross margin up 180 bps since April. The report does not connect the two.", "chip": { "text": "Benefit not rolled up", "tone": "you" } },
-    "statusAt": { "2026-07": { "sentence": "All regions live since June. Gross margin up 180 bps since April. The report does not connect the two." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Targeting 2 to 3 points of net price by Q3 through the regional rollout." },
+      "2026-02": { "sentence": "Rollout begins in the East region in March." },
+      "2026-03": { "sentence": "East region live in March." },
+      "2026-04": { "sentence": "Live in the East and Gulf regions." },
+      "2026-05": { "sentence": "Central region rollout underway." },
+      "2026-06": { "sentence": "All regions live in June." },
+      "2026-07": { "sentence": "All regions live since June. Gross margin up 180 bps since April. The report does not connect the two." }
+    }
   },
   {
     "id": "meridian-drivers",
@@ -121,7 +161,15 @@
       "2026-08": { "sentence": "Turnover at 46%. Recruiting pipeline remains strong.", "section": "Strategic initiatives", "flag": "amber", "facts": { "measure": { "value": 46, "unit": "%" } }, "change": { "kind": "number", "from": "45%", "to": "46%", "label": "Number moved: 45% to 46%" } }
     },
     "status": { "flag": "amber", "pill": "Slipping", "sentence": "Turnover reported at 46%, was 44% in May. No new actions named." },
-    "statusAt": { "2026-07": { "sentence": "Turnover reported at 45%, was 44% in May. No new actions named." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Turnover 48%. Target under 40% by year end." },
+      "2026-02": { "sentence": "Turnover 47%. Referral bonuses launched." },
+      "2026-03": { "sentence": "Turnover 46%. Home-time schedule live at all terminals." },
+      "2026-04": { "sentence": "Turnover 45%." },
+      "2026-05": { "sentence": "Turnover 44%. On plan for under 40% by year end." },
+      "2026-06": { "sentence": "Turnover reported at 45%, was 44% in May." },
+      "2026-07": { "sentence": "Turnover reported at 45%, was 44% in May. No new actions named." }
+    }
   },
   {
     "id": "meridian-cfo",
@@ -141,7 +189,15 @@
       "2026-08": { "sentence": "Offer accepted August 20. Start date September 15.", "section": "People", "flag": "green", "facts": { "commitments": [{ "key": "start", "kind": "date", "value": "2026-09" }], "completed": "Done" }, "change": { "kind": "date", "from": "Q3 2026", "to": "September", "label": "Date stated: September" } }
     },
     "status": { "flag": "green", "pill": "Done", "sentence": "Offer accepted Aug 20. Start date Sep 15." },
-    "statusAt": { "2026-07": { "sentence": "Offer negotiations in progress for a Q3 start. The search restarted in April." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Search underway with a retained firm. Q3 start targeted." },
+      "2026-02": { "sentence": "First-round interviews scheduled for March." },
+      "2026-03": { "sentence": "Candidate interviews held in March." },
+      "2026-04": { "sentence": "Search restarted with a new firm. No start date stated." },
+      "2026-05": { "sentence": "Restarted search producing candidates. No start date set." },
+      "2026-06": { "sentence": "Finalist identified. Start expected in Q3. The search restarted in April." },
+      "2026-07": { "sentence": "Offer negotiations in progress for a Q3 start. The search restarted in April." }
+    }
   },
   {
     "id": "meridian-warehouse",
@@ -161,7 +217,15 @@
       "2026-08": { "sentence": "Equipment installed. First throughput read in September.", "section": "Strategic initiatives", "flag": "green", "facts": {} }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Equipment installed. First throughput read in September." },
-    "statusAt": { "2026-07": { "sentence": "Equipment arrived in Memphis. Installation underway." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Memphis pilot on plan. Results expected in Q4." },
+      "2026-02": { "sentence": "Pilot equipment ordered in February." },
+      "2026-03": { "sentence": "Site preparation began in March." },
+      "2026-04": { "sentence": "Site preparation complete." },
+      "2026-05": { "sentence": "Equipment delivery scheduled for July." },
+      "2026-06": { "sentence": "Equipment delivery remains scheduled for July." },
+      "2026-07": { "sentence": "Equipment arrived in Memphis. Installation underway." }
+    }
   },
   {
     "id": "corvus-sales",
@@ -181,7 +245,15 @@
       "2026-08": { "sentence": null, "flag": "grey" }
     },
     "status": { "flag": "grey", "pill": "Not reported", "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." },
-    "statusAt": { "2026-07": { "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Two territory roles open. Both hires targeted for Q2." },
+      "2026-02": { "sentence": "Search with a recruiter." },
+      "2026-03": { "sentence": "Recruiting underway for both territory roles." },
+      "2026-04": { "sentence": "Not mentioned in April. Last mentioned in March." },
+      "2026-05": { "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." },
+      "2026-06": { "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." },
+      "2026-07": { "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since." }
+    }
   },
   {
     "id": "corvus-mro",
@@ -201,7 +273,15 @@
       "2026-08": { "sentence": "Vendor resourcing has pushed the online date.", "section": "Strategic initiatives", "flag": "red", "facts": { "reason": "vendor resourcing", "restatedWithoutDate": true }, "change": { "kind": "date", "from": "December", "label": "Restated without a date" } }
     },
     "status": { "flag": "red", "pill": "Needs a conversation", "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan." },
-    "statusAt": { "2026-07": { "sentence": "Online date moved twice: October in May, December in July." } }
+    "statusAt": {
+      "2026-01": { "sentence": "On plan to be online in Q3." },
+      "2026-02": { "sentence": "Steel erection complete. On plan for Q3." },
+      "2026-03": { "sentence": "On plan for Q3. Fit-out starts in April." },
+      "2026-04": { "sentence": "Fit-out underway. Online date remains Q3." },
+      "2026-05": { "sentence": "Online date moved to October." },
+      "2026-06": { "sentence": "On plan for October. Moved from Q3 in May." },
+      "2026-07": { "sentence": "Online date moved twice: October in May, December in July." }
+    }
   },
   {
     "id": "corvus-tms",
@@ -221,7 +301,15 @@
       "2026-08": { "sentence": "Contract in legal.", "section": "Strategic initiatives", "flag": "green", "facts": {} }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Vendor chosen in May. Contract in legal.", "chip": { "text": "Parallel with Harlan", "tone": "you" } },
-    "statusAt": { "2026-07": { "sentence": "Vendor chosen in May. Contract terms in negotiation." } },
+    "statusAt": {
+      "2026-01": { "sentence": "Not mentioned in January." },
+      "2026-02": { "sentence": "Two-vendor bake-off. Decision expected in Q2." },
+      "2026-03": { "sentence": "Not mentioned in March. Two-vendor bake-off stated in February." },
+      "2026-04": { "sentence": "Reference calls with both vendors complete." },
+      "2026-05": { "sentence": "Vendor chosen in May after a two-vendor bake-off." },
+      "2026-06": { "sentence": "Vendor chosen in May. Not mentioned in June." },
+      "2026-07": { "sentence": "Vendor chosen in May. Contract terms in negotiation." }
+    },
     "parallelWith": ["harlan-tms"]
   },
   {
@@ -243,7 +331,15 @@
       "2026-08": { "sentence": "Top customer at 33% of revenue, down from 38% in January.", "section": "Strategic initiatives", "flag": "green", "facts": { "measure": { "value": 33, "unit": "%" } } }
     },
     "status": { "flag": "green", "pill": "On track", "sentence": "Top customer 33%, down from 38% in January." },
-    "statusAt": { "2026-07": { "sentence": "Top customer 34%, down from 38% in January." } }
+    "statusAt": {
+      "2026-01": { "sentence": "Top customer 38% of revenue. Plan is under 30% through new account wins." },
+      "2026-02": { "sentence": "Top customer 37%, from 38% in January." },
+      "2026-03": { "sentence": "Top customer 37%. Two new accounts onboarded." },
+      "2026-04": { "sentence": "Top customer 36%, down from 38% in January." },
+      "2026-05": { "sentence": "Top customer 35%, down from 38% in January." },
+      "2026-06": { "sentence": "Top customer 35%, down from 38% in January." },
+      "2026-07": { "sentence": "Top customer 34%, down from 38% in January." }
+    }
   },
   {
     "id": "ashcombe-booth",

@@ -1,11 +1,11 @@
 // Single data-access layer. Everything reads fixtures from /data today.
 // Swap this file for a real backend later without touching components.
 //
-// Most readers take an optional demo-state name (july, august,
-// august-approved, monday). Without one they read the `august` state. The
-// state decides which companies are in, which months have arrived, what
-// each initiative's status is as of then, and which questions, patterns,
-// reports, and dated notes exist yet.
+// Most readers take an optional state name: a view key (core-2026-05) or
+// a preset (july, august, august-approved, monday). Without one they read
+// the `august` state. The state decides which companies are in, which
+// months have arrived, what each initiative's status is as of then, and
+// which questions, patterns, reports, and dated notes exist yet.
 
 import usersJson from "@/data/users.json";
 import ledgerJson from "@/data/ledger.json";
@@ -18,9 +18,9 @@ import gapsJson from "@/data/gaps.json";
 import quarterlyJson from "@/data/quarterly.json";
 import statesJson from "@/data/demo-states.json";
 import notesJson from "@/data/notes/index.json";
-import type { Company, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User } from "./types";
+import type { Company, CurrentState, DemoState, DemoStates, Flag, Gap, Initiative, Ledger, LogEntry, Month, Note, Pattern, Question, QuarterlyPrep, Report, User, View } from "./types";
 import { FLAG_ORDER } from "./flags";
-import { applyState, withinCutoff } from "./states";
+import { applyState, PRESETS, resolveView, STATE_NAMES, viewKey, withinCutoff } from "./states";
 
 const ledger = ledgerJson as Ledger;
 const states = statesJson as DemoStates;
@@ -42,13 +42,26 @@ export function getDemoStates(): DemoStates {
   return states;
 }
 
-// An unknown name reads as the default, so a stale store never crashes a page.
-export function getDemoState(name: string = DEFAULT_STATE): DemoState {
-  return states[name] ?? states[DEFAULT_STATE];
+// A preset name or a view key, resolved to the key the states are
+// generated under. An unknown name reads as the default, so a stale store
+// never crashes a page.
+export function resolveStateKey(name: string = DEFAULT_STATE): string {
+  const view = resolveView(name);
+  const key = view ? viewKey(view) : "";
+  return states[key] ? key : viewKey(PRESETS[DEFAULT_STATE].view);
 }
 
+export function getDemoState(name: string = DEFAULT_STATE): DemoState {
+  return states[resolveStateKey(name)];
+}
+
+// The named states the presenter menu jumps to.
 export function getStateNames(): string[] {
-  return Object.keys(states);
+  return STATE_NAMES;
+}
+
+export function getPreset(name: string): { view: View; questionsApproved: string[]; label: string } | undefined {
+  return PRESETS[name];
 }
 
 // The months that have arrived in a state, in order.
@@ -62,8 +75,8 @@ export function getLedgerMeta(stateName?: string): { generatedAt: string; mode: 
 
 // ---- companies and initiatives ---------------------------------------------
 
-// The companies the state shows, in board order. Three in july, august,
-// and august-approved; all twelve in monday.
+// The companies the state shows, in board order. The core three, or all
+// twelve in monday.
 export function getCompanies(stateName?: string): Company[] {
   const ids = new Set(getDemoState(stateName).companyIds);
   return ledger.companies.filter((c) => ids.has(c.id));
