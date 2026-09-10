@@ -3,9 +3,11 @@
 // before and after "August report arrives," the ERP flag change, the three
 // questions, the May cite landing on the May report page with the sentence
 // marked, the three pattern cards, and the draft log entry after "Dictate
-// a note." Then Beat 7: jump to monday shows twelve companies, and Reset
-// to August returns to the three-company august state. Fails on any
-// console error.
+// a note." Then the Time Machine: back to March, the ERP cell green with
+// the March quote on hover, the arrow keys, Escape keeping March in view
+// with the amber band, Return to August. Then Beat 7: jump to monday shows
+// twelve companies, and Reset to August returns to the three-company
+// august state. Fails on any console error.
 
 import { expect, test, type Page } from "@playwright/test";
 
@@ -25,9 +27,15 @@ async function signIn(page: Page): Promise<string[]> {
   return errors;
 }
 
+// The strip counts, once they have finished counting to their values.
 async function counts(page: Page): Promise<string> {
   const out: string[] = [];
-  for (const f of ["red", "amber", "grey", "green"]) out.push(await page.getByTestId(`count-${f}`).innerText());
+  for (const f of ["red", "amber", "grey", "green"]) {
+    const tile = page.getByTestId(`count-${f}`);
+    const target = (await tile.getAttribute("data-value")) ?? "";
+    await expect(tile).toHaveText(target);
+    out.push(target);
+  }
   return out.join(" / ");
 }
 
@@ -50,7 +58,7 @@ test("beats 1 to 6 from the presenter menu and on-screen controls", async ({ pag
 
   // Beat 1. Portfolio, July: 1 / 3 / 1 / 7, seven months, the ERP amber.
   await jumpTo(page, "july");
-  await expect(page.getByTestId("month-2026-07")).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByTestId("time-band")).toHaveAttribute("data-month", "2026-07");
   expect(await counts(page)).toBe("1 / 3 / 1 / 7");
   const erpRow = page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]');
   await expect(erpRow).toHaveAttribute("data-flag", "amber");
@@ -72,7 +80,7 @@ test("beats 1 to 6 from the presenter menu and on-screen controls", async ({ pag
   await expect(page.getByTestId("working")).toHaveCount(0);
   await expect(page.getByTestId("presenter-menu")).toHaveCount(0);
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
-  await expect(page.getByTestId("month-2026-08")).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByTestId("time-band")).toHaveCount(0);
   await expect(erpRow.locator('[data-testid="flag-cell"]')).toHaveCount(8);
   expect(await page.evaluate(() => (window as unknown as { __noReload?: number }).__noReload)).toBe(1);
 
@@ -172,19 +180,77 @@ test("on the Harlan page, August report arrives fills the rail and adds the Augu
   expect(errors).toEqual([]);
 });
 
-test("the header month toggle loads july and august like Jump to state", async ({ page }) => {
+const MARCH_QUOTE = "Implementation on track for a June cutover. Data migration is 60% complete.";
+
+test("the Time Machine goes back to March, hovers the green ERP cell, and returns to August", async ({ page }) => {
   const errors = await signIn(page);
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
-  await page.getByTestId("month-2026-07").click();
-  await expect(page.getByTestId("month-2026-07")).toHaveAttribute("aria-selected", "true");
-  expect(await counts(page)).toBe("1 / 3 / 1 / 7");
-  await expect(page.getByTestId("header-sub")).toHaveText("Initiatives, January to July 2026");
-  await page.getByTestId("month-2026-08").click();
-  await expect(page.getByTestId("month-2026-08")).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByTestId("time-band")).toHaveCount(0);
+
+  // Go back in time: the page becomes the front card, August in view,
+  // July, June, and May behind it.
+  await page.getByTestId("time-machine-open").click();
+  const tm = page.getByTestId("time-machine");
+  await expect(tm).toHaveAttribute("data-viewed", "2026-08");
+  await expect(page.getByTestId("tm-card")).toHaveCount(8);
+  const front = page.locator('[data-testid="tm-card"][data-front="true"]');
+  await expect(front).toHaveAttribute("data-month", "2026-08");
+  await expect(page.locator('[data-testid="tm-card"][data-month="2026-07"]')).toHaveAttribute("data-depth", "1");
+  await expect(page.getByTestId("month-2026-08")).toHaveAttribute("aria-current", "true");
+
+  // Click March on the timeline: the March card slides forward. Its ERP
+  // cell is green, and hovering it shows the March sentence with its cite.
+  await page.getByTestId("month-2026-03").click();
+  await expect(tm).toHaveAttribute("data-viewed", "2026-03");
+  await expect(front).toHaveAttribute("data-month", "2026-03");
+  await expect(page.getByTestId("tm-viewed")).toHaveText("March 2026");
+  await expect(page.locator('[data-testid="tm-card"][data-month="2026-08"]')).toHaveAttribute("data-depth", "-5");
+  const marchErp = front.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]');
+  await expect(marchErp).toHaveAttribute("data-flag", "green");
+  await expect(marchErp.locator('[data-testid="flag-cell"]')).toHaveCount(3);
+  await marchErp.locator('[data-testid="hover-cell"][data-month="2026-03"]').hover();
+  await expect(page.getByTestId("cell-card")).toBeVisible();
+  await expect(page.getByTestId("cell-quote")).toHaveText(`\u201c${MARCH_QUOTE}\u201d`);
+  await expect(page.locator('[data-testid="cell-card"] [data-testid="cite"]')).toHaveAttribute("data-report", "harlan-2026-03");
+  await expect(page.locator('[data-testid="cell-card"] [data-testid="change-chip"]')).toHaveText("Date stated: June");
+  await page.mouse.move(10, 450);
+  await expect(page.getByTestId("cell-card")).toHaveCount(0);
+
+  // The arrow keys step a month at a time; ghost cards behind are inert.
+  await page.keyboard.press("ArrowUp");
+  await expect(tm).toHaveAttribute("data-viewed", "2026-02");
+  await page.keyboard.press("ArrowDown");
+  await expect(tm).toHaveAttribute("data-viewed", "2026-03");
+  await expect(page.locator('[data-testid="tm-card"][data-month="2026-02"] [data-testid="portfolio"]')).toHaveAttribute("data-state", "core-2026-02");
+
+  // Escape keeps March in view: the band under the header says so, and
+  // the page reads as of March.
+  await page.keyboard.press("Escape");
+  await expect(tm).toHaveCount(0);
+  await expect(page.getByTestId("time-band")).toHaveAttribute("data-month", "2026-03");
+  await expect(page.getByTestId("time-band")).toContainText("Viewing March 2026.");
+  expect(await counts(page)).toBe("0 / 1 / 0 / 11");
+  await expect(page.getByTestId("header-sub")).toHaveText("Initiatives, January to March 2026");
+  await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "green");
+
+  // Return to August from the band.
+  await page.getByTestId("time-band-return").click();
+  await expect(page.getByTestId("time-band")).toHaveCount(0);
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
+  await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "red");
+
+  // And from the stack: back to July, then the primary button returns.
+  await page.getByTestId("time-machine-open").click();
+  await page.getByTestId("month-2026-07").click();
+  await expect(tm).toHaveAttribute("data-viewed", "2026-07");
+  await page.getByTestId("tm-return").click();
+  await expect(tm).toHaveCount(0);
+  await expect(page.getByTestId("time-band")).toHaveCount(0);
+  expect(await counts(page)).toBe("2 / 2 / 1 / 7");
+
   // Beat 7. Monday: twelve company cards, thirty rows, the strip recomputed.
   await jumpTo(page, "monday");
-  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "monday");
+  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "all-2026-08");
   await expect(page.getByTestId("company-card")).toHaveCount(12);
   await expect(page.getByTestId("initiative-row")).toHaveCount(30);
   expect(await counts(page)).toBe("2 / 2 / 1 / 25");
@@ -194,7 +260,7 @@ test("the header month toggle loads july and august like Jump to state", async (
   // Reset from the presenter menu lands on Portfolio in August, three companies.
   await openPresenter(page);
   await page.getByTestId("presenter-reset").click();
-  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "august");
+  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "core-2026-08");
   await expect(page.getByTestId("company-card")).toHaveCount(3);
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
   await page.keyboard.press("Shift+P");
@@ -205,6 +271,6 @@ test("the header month toggle loads july and august like Jump to state", async (
   await expect(page.getByTestId("needs-you")).toHaveAttribute("data-approved", "true");
   await openPresenter(page);
   await page.getByTestId("presenter-reset").click();
-  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "august");
+  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "core-2026-08");
   expect(errors).toEqual([]);
 });

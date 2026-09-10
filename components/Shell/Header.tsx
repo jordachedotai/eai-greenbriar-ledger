@@ -1,19 +1,17 @@
 "use client";
 
-// The header band. Dark green, serif title, subtitle, the month scrubber,
-// the Demo data tag, the presenter button. On a company page: a
-// breadcrumb and the company name (CEO and next call sit in the tabs row,
-// where there is room). The subtitle and the scrubber follow the loaded
-// state; dragging the scrubber changes which months have arrived on
-// every page.
+// The header band. Dark green, serif title, subtitle, the "Go back in
+// time" button, the Demo data tag, the presenter button. On a company
+// page: a breadcrumb and the company name (CEO and next call sit in the
+// tabs row, where there is room). The subtitle follows the loaded state;
+// the Time Machine changes which months have arrived on every page.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { getCompanies, getCompany, getDemoState, getLedgerMeta } from "@/lib/data";
 import { monthLabel } from "@/lib/format";
-import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
-import { MonthScrubber } from "./MonthScrubber";
+import { IconChevronRight, IconClockBack, IconPresenter } from "@/components/ui/icons";
 
 const TITLES: Record<string, { title: string; sub: (n: number, span: string, reports: number) => string }> = {
   "/portfolio": { title: "Portfolio", sub: (_n, span) => `Initiatives, ${span}` },
@@ -33,6 +31,9 @@ export function Header() {
   const stateName = useStore((s) => s.stateName);
   const setPresenterOpen = useStore((s) => s.setPresenterOpen);
   const presenterOpen = useStore((s) => s.presenterOpen);
+  const timeMachineOpen = useStore((s) => s.timeMachineOpen);
+  const setTimeMachineOpen = useStore((s) => s.setTimeMachineOpen);
+  const working = useStore((s) => s.working);
   const state = getDemoState(stateName);
   const companyCount = getCompanies(stateName).length;
   const span = `January to ${monthLabel(state.month)} 2026`;
@@ -64,7 +65,19 @@ export function Header() {
         </div>
       )}
       <div className="flex shrink-0 items-center gap-4">
-        {base !== "/settings" ? <MonthScrubber /> : null}
+        {base !== "/settings" ? (
+          <button
+            type="button"
+            onClick={() => setTimeMachineOpen(!timeMachineOpen)}
+            disabled={!!working}
+            title="See the ledger as it stood in an earlier month"
+            data-testid="time-machine-open"
+            className={"inline-flex h-[30px] items-center gap-2 rounded-[8px] px-3 text-[14px] font-semibold disabled:opacity-60 " + (timeMachineOpen ? "bg-white text-header" : "bg-white/12 text-white hover:bg-white/20")}
+          >
+            <IconClockBack size={16} />
+            Go back in time
+          </button>
+        ) : null}
         {showDemoTag ? (
           <span className="rounded-full bg-white/12 px-2.5 py-1 text-[13px] font-medium text-white/90" data-testid="mode-tag">
             {mockMode ? "Demo data" : "Live agent"}

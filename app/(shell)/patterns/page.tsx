@@ -9,12 +9,13 @@
 import Link from "next/link";
 import { draftModeOf, getLedgerMeta, getLogSorted, getNotes, getPatterns } from "@/lib/data";
 import { useStore } from "@/lib/store";
+import { useStateName } from "@/lib/view";
 import { PatternCard } from "@/components/Patterns/PatternCard";
 import { LogList } from "@/components/Company/LogList";
 import { Button, LABEL } from "@/components/ui/Button";
 
 export default function PatternsPage() {
-  const stateName = useStore((s) => s.stateName);
+  const stateName = useStateName();
   const noteDictated = useStore((s) => s.noteDictated);
   const noteReviewed = useStore((s) => s.noteReviewed);
   const startDictation = useStore((s) => s.startDictation);

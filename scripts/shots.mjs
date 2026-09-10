@@ -1,5 +1,5 @@
 // Dev helper: full-page screenshots at 1440 wide.
-//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2|phase3|phase4]
+//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2|phase3|phase4|phase5]
 // The shell scrolls inside <main>, so each capture sizes the viewport to
 // the page's own height instead of using fullPage.
 import { chromium } from "@playwright/test";
@@ -40,7 +40,31 @@ async function presenter() {
   await page.getByTestId("presenter-menu").waitFor();
 }
 
-if (phase === "phase4") {
+if (phase === "phase5") {
+  // The Time Machine: the stack open on August, mid-travel to March, the
+  // March card in front with the ERP quote on hover, and the amber band
+  // after Escape.
+  const result = { consoleErrors: errors };
+  await signIn();
+  await page.getByTestId("sign-in").click();
+  await page.getByTestId("work-strip").waitFor();
+  await page.getByTestId("time-machine-open").click();
+  await page.getByTestId("time-machine").waitFor();
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: `${out}/phase5-time-machine-open.png` });
+  await page.getByTestId("month-2026-03").click();
+  await page.waitForTimeout(180);
+  await page.screenshot({ path: `${out}/phase5-time-machine.png` });
+  await page.waitForTimeout(600);
+  await page.locator('[data-testid="tm-card"][data-front="true"] [data-testid="hover-cell"][data-initiative="harlan-erp"][data-month="2026-03"]').hover();
+  await page.getByTestId("cell-card").waitFor();
+  await page.screenshot({ path: `${out}/phase5-march-hover.png` });
+  await page.keyboard.press("Escape");
+  await page.getByTestId("time-band").waitFor();
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: `${out}/phase5-march-band.png` });
+  console.log(JSON.stringify(result, null, 2));
+} else if (phase === "phase4") {
   const result = { consoleErrors: errors };
   await signIn();
   await page.getByTestId("sign-in").click();

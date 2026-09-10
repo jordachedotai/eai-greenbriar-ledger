@@ -5,11 +5,11 @@
 
 import Link from "next/link";
 import { getCompanies, getMonths, getReports } from "@/lib/data";
-import { useStore } from "@/lib/store";
+import { useStateName } from "@/lib/view";
 import { monthLabel, numberWord, plural } from "@/lib/format";
 
 export default function ReportsPage() {
-  const stateName = useStore((s) => s.stateName);
+  const stateName = useStateName();
   const companies = getCompanies(stateName);
   const all = getReports(undefined, stateName);
   const months = getMonths(stateName);

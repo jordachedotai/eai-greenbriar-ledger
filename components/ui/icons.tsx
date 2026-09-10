@@ -129,3 +129,14 @@ export function IconMic({ size = 18, stroke = "currentColor" }: P) {
     </svg>
   );
 }
+
+// A clock with an arrow running back: the Time Machine.
+export function IconClockBack({ size = 16, className, stroke = "currentColor" }: P) {
+  return (
+    <svg {...base(size, 2)} stroke={stroke} className={className} aria-hidden>
+      <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1" />
+      <path d="M3 4.5V9h4.5" />
+      <path d="M12 7.5V12l3 2" />
+    </svg>
+  );
+}

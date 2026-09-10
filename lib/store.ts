@@ -6,8 +6,8 @@
 // The loaded demo state is a view key (core-2026-07): which companies are
 // in and which month the reports have arrived through. What it shows
 // comes from data/demo-states.json through lib/data.ts. The month
-// scrubber in the header moves the cutoff; the presenter menu's named
-// states (july, august, august-approved, monday) are presets over it.
+// Time Machine moves the cutoff; the presenter menu's named states (july,
+// august, august-approved, monday) are presets over it.
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
@@ -36,6 +36,7 @@ export type AppState = {
   noteDictated: boolean; // "Dictate a note" has run: the draft log entry and current-state line exist
   noteReviewed: boolean; // the deal lead pressed Review: the drafts are confirmed
   dictation: Dictation | null; // the dictation panel, while it is open
+  timeMachineOpen: boolean; // the Time Machine overlay: the page as a stack of month cards
 
   setMockMode: (v: boolean) => void;
   setLoggedIn: (v: boolean) => void;
@@ -50,17 +51,18 @@ export type AppState = {
   reviewNote: () => void;
   closeDictation: () => void;
   loadState: (name: string) => void; // a preset name or a view key
-  setCutoff: (month: Month) => void; // the scrubber: keeps the company set and the approvals
+  setCutoff: (month: Month) => void; // the Time Machine: keeps the company set and the approvals
+  setTimeMachineOpen: (v: boolean) => void;
   reset: () => void;
 };
 
 // What loading a demo state sets. A state is a full snapshot: approvals
 // come from the preset (none for a bare view key), and the dictated
 // drafts start over.
-function stateDefaults(name: string): Pick<AppState, "stateName" | "questionsApproved" | "noteDictated" | "noteReviewed" | "dictation" | "workFilter" | "working"> {
+function stateDefaults(name: string): Pick<AppState, "stateName" | "questionsApproved" | "noteDictated" | "noteReviewed" | "dictation" | "workFilter" | "working" | "timeMachineOpen"> {
   const state = getDemoState(name);
   const preset = getPreset(name);
-  return { stateName: state.name, questionsApproved: [...(preset?.questionsApproved ?? [])], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null };
+  return { stateName: state.name, questionsApproved: [...(preset?.questionsApproved ?? [])], noteDictated: false, noteReviewed: false, dictation: null, workFilter: null, working: null, timeMachineOpen: false };
 }
 
 export const useStore = create<AppState>()(
@@ -87,6 +89,7 @@ export const useStore = create<AppState>()(
       closeDictation: () => set({ dictation: null }),
       loadState: (name) => set(stateDefaults(name)),
       setCutoff: (month) => set((s) => ({ stateName: viewKey({ set: getDemoState(s.stateName).set, cutoff: month }), working: null })),
+      setTimeMachineOpen: (v) => set({ timeMachineOpen: v, presenterOpen: v ? false : undefined } as Partial<AppState>),
       reset: () => set(stateDefaults(DEFAULT_STATE)),
     }),
     {

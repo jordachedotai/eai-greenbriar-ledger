@@ -87,55 +87,21 @@ body {
   content: attr(data-initials);
 }
 
-/* The month scrubber in the header: a native range input over its own
-   track and ticks. The track is drawn behind it, so the input's own is
-   transparent; the thumb is what shows. */
-.scrubber {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  margin: 0;
-  outline: none;
+/* The Time Machine: cards slide into place over 500ms, ease-out, scaling
+   from the top edge and stepping up so the cards behind peek out above
+   the front one. Reduced motion gets instant swaps. */
+.tm-card {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 500ms ease-out;
+  transform-origin: 50% 0;
+  will-change: transform, opacity;
 }
-.scrubber::-webkit-slider-runnable-track {
-  height: 44px;
-  background: transparent;
+.tm-backdrop {
+  animation: tm-in 220ms ease-out;
 }
-.scrubber::-moz-range-track {
-  height: 44px;
-  background: transparent;
+@keyframes tm-in {
+  from { opacity: 0; }
 }
-.scrubber::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  margin-top: 11px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid #1f9d57;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-  cursor: grab;
-}
-.scrubber::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid #1f9d57;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-  cursor: grab;
-}
-.scrubber:active::-webkit-slider-thumb {
-  cursor: grabbing;
-}
-.scrubber:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35);
-}
-.scrubber:focus-visible::-moz-range-thumb {
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35);
-}
-.scrubber:disabled {
-  cursor: default;
-  opacity: 0.6;
+@media (prefers-reduced-motion: reduce) {
+  .tm-card { transition: none; }
+  .tm-backdrop { animation: none; }
 }

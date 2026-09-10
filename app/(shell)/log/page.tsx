@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { LogEntry } from "@/lib/types";
 import { draftModeOf, getCompanies, getLogSorted } from "@/lib/data";
 import { useStore } from "@/lib/store";
+import { useStateName } from "@/lib/view";
 import { LogList } from "@/components/Company/LogList";
 import { plural } from "@/lib/format";
 
@@ -19,7 +20,7 @@ const STATUS: { id: StatusFilter; label: string }[] = [
 ];
 
 export default function LogPage() {
-  const stateName = useStore((s) => s.stateName);
+  const stateName = useStateName();
   const noteDictated = useStore((s) => s.noteDictated);
   const noteReviewed = useStore((s) => s.noteReviewed);
   const [company, setCompany] = useState<string>("all");

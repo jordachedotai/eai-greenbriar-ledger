@@ -7,12 +7,13 @@
 
 import { getCompanies, getInitiatives, getLedgerMeta, getMonths, statusCounts } from "@/lib/data";
 import { useStore } from "@/lib/store";
+import { useStateName } from "@/lib/view";
 import { WorkStrip } from "@/components/Portfolio/WorkStrip";
 import { CompanyCard } from "@/components/Portfolio/CompanyCard";
 
 export default function PortfolioPage() {
   const filter = useStore((s) => s.workFilter);
-  const stateName = useStore((s) => s.stateName);
+  const stateName = useStateName();
   const companies = getCompanies(stateName);
   const months = getMonths(stateName);
   const all = getInitiatives(undefined, stateName);

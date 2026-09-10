@@ -12,7 +12,7 @@ import { useStore, viewOf } from "@/lib/store";
 import { getPreset, getStateNames } from "@/lib/data";
 import { presetFor } from "@/lib/states";
 import { monthLabel } from "@/lib/format";
-import { augustReportArrives, canAugustArrive, dictateNote } from "@/lib/actions";
+import { augustReportArrives, dictateNote } from "@/lib/actions";
 import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
 import { Menu } from "@/components/ui/Menu";
 
@@ -52,7 +52,8 @@ export function PresenterMenu() {
   if (!open) return null;
   const preset = presetFor(viewOf(stateName), questionsApproved);
   const busy = !!working || dictation?.status === "playing";
-  const augustLive = canAugustArrive();
+  const view = viewOf(stateName);
+  const augustLive = view.set === "core" && view.cutoff === "2026-07";
 
   return (
     <div className="fixed bottom-7 right-7 z-50 flex w-[340px] flex-col overflow-hidden rounded-[14px] bg-header text-white shadow-[0_18px_48px_-12px_rgba(20,63,31,0.55),inset_0_0_0_1px_rgba(255,255,255,0.08)]" data-testid="presenter-menu" data-state={preset ?? stateName}>
