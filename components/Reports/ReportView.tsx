@@ -3,7 +3,8 @@
 // One monthly report, rendered from its markdown with a visible "Page N"
 // rule between pages. Scrolls to the requested page; when the URL carries
 // the cited sentence, marks it and scrolls there instead. This is what
-// makes "cites the page" true.
+// makes "cites the page" true. The bar with "Back to [company]" sticks to
+// the top of the scroll, so it is there when the page lands deep in.
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -29,8 +30,8 @@ export function ReportView({ report, page, quote }: { report: Report; page: numb
   }, [report.id, target, quote]);
 
   return (
-    <div className="flex flex-col gap-4 px-7 pb-10 pt-[22px]" data-testid="report-view" data-report={report.id} data-page={String(target)}>
-      <div className="flex items-center justify-between gap-4">
+    <div className="flex flex-col gap-2 px-7 pb-10" data-testid="report-view" data-report={report.id} data-page={String(target)}>
+      <div className="sticky top-0 z-10 -mx-7 flex items-center justify-between gap-4 border-b border-line bg-bg/95 px-7 py-3 backdrop-blur-sm" data-testid="report-bar">
         <Link href={`/portfolio/${report.companyId}`} className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand hover:text-brand2" data-testid="back-to-company">
           <IconChevronLeft size={14} />
           Back to {company?.name ?? report.companyId}
@@ -42,7 +43,7 @@ export function ReportView({ report, page, quote }: { report: Report; page: numb
         </span>
       </div>
 
-      <article className="mx-auto w-full max-w-[860px] rounded-[14px] border border-line bg-white px-10 py-8 shadow-[var(--shadow-card)]" data-testid="report">
+      <article className="mx-auto mt-2 w-full max-w-[860px] rounded-[14px] border border-line bg-white px-10 py-8 shadow-[var(--shadow-card)]" data-testid="report">
         <div className="flex flex-col gap-4">
           {report.pages.map((p) => (
             <section key={p.n} className="flex flex-col gap-3" data-testid="report-page" data-page={p.n}>
@@ -60,7 +61,7 @@ export function ReportView({ report, page, quote }: { report: Report; page: numb
 
 function PageRule({ n, current }: { n: number; current: boolean }) {
   return (
-    <div id={`page-${n}`} className={"flex items-center gap-3 scroll-mt-4 " + (n === 1 ? "" : "pt-4")} data-testid="page-marker" data-page={n}>
+    <div id={`page-${n}`} className={"flex items-center gap-3 scroll-mt-16 " + (n === 1 ? "" : "pt-4")} data-testid="page-marker" data-page={n}>
       <span className="h-px flex-1" style={{ background: current ? "#1f5a2d" : "#dde3da" }} />
       <span className={"text-[12px] font-semibold uppercase tracking-[0.06em] " + (current ? "text-brand" : "text-mut")}>Page {n}</span>
       <span className="h-px flex-1" style={{ background: current ? "#1f5a2d" : "#dde3da" }} />
