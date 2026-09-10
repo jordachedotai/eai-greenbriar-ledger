@@ -1,42 +1,72 @@
 "use client";
 
-// Company page. Phase 1 placeholder: the initiatives and their August read.
-// The quote stack, questions rail, and tabs arrive in Phase 2.
+// Company page. Tabs: Initiatives, Current state, Learning log, Quarterly
+// prep. The Initiatives tab is three columns: the initiative list, the
+// quote stack for the selected one, the questions rail. Selection and tab
+// live in the URL. The default selection is the worst-flagged initiative.
 
-import { use } from "react";
+import { Suspense, use } from "react";
 import Link from "next/link";
-import { getCompany, getInitiatives } from "@/lib/data";
-import { StatusPill, FlagCell } from "@/components/Portfolio/StatusPill";
+import { useSearchParams } from "next/navigation";
+import { getCompany, getCurrentState, getGap, getInitiatives, getLogSorted, getQuarterly, getQuestions, worstInitiative } from "@/lib/data";
+import { useStore } from "@/lib/store";
+import { CompanyTabs, isTabId, type TabId } from "@/components/Company/Tabs";
+import { InitiativeList } from "@/components/Company/InitiativeList";
+import { QuoteStack } from "@/components/Company/QuoteStack";
+import { QuestionsRail } from "@/components/Company/QuestionsRail";
+import { CurrentState } from "@/components/Company/CurrentState";
+import { LogList } from "@/components/Company/LogList";
+import { QuarterlyPrep } from "@/components/Company/QuarterlyPrep";
 
 export default function CompanyPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  return (
+    <Suspense fallback={null}>
+      <CompanyView id={id} />
+    </Suspense>
+  );
+}
+
+function CompanyView({ id }: { id: string }) {
+  const sp = useSearchParams();
+  const noteDictated = useStore((s) => s.noteDictated);
   const company = getCompany(id);
   if (!company) {
     return (
       <div className="px-7 py-6 text-[15px] text-mut">
-        No company with id {id}. <Link href="/portfolio" className="font-semibold text-brand">Back to Portfolio</Link>
+        No company with id {id}.{" "}
+        <Link href="/portfolio" className="font-semibold text-brand">
+          Back to Portfolio
+        </Link>
       </div>
     );
   }
+  const tabParam = sp.get("tab");
+  const tab: TabId = isTabId(tabParam) ? tabParam : "initiatives";
   const initiatives = getInitiatives(company.id);
+  const requested = sp.get("initiative");
+  const selected = initiatives.find((i) => i.id === requested) ?? worstInitiative(company.id) ?? initiatives[0];
+
   return (
-    <div className="flex flex-col gap-4 px-7 pb-7 pt-[22px]">
-      <span className="text-[13px] font-semibold uppercase tracking-[0.04em] text-mut">{initiatives.length} initiatives</span>
-      <div className="flex max-w-[640px] flex-col gap-2">
-        {initiatives.map((i) => (
-          <div key={i.id} className="flex items-center justify-between gap-3 rounded-[10px] border border-line bg-white px-3.5 py-3" data-testid="company-initiative" data-initiative={i.id}>
-            <div className="flex min-w-0 flex-col gap-0.5">
-              <span className="text-[15px] font-semibold">{i.name}</span>
-              <span className="truncate text-[13px] text-mut">{i.status.sentence}</span>
-            </div>
-            <div className="flex shrink-0 items-center gap-2.5">
-              <StatusPill flag={i.status.flag} text={i.status.pill} />
-              <FlagCell flag={i.status.flag} />
-            </div>
+    <div className="flex min-h-full flex-col" data-testid="company-page" data-company={company.id} data-tab={tab}>
+      <CompanyTabs companyId={company.id} active={tab} initiativeId={requested ?? undefined} />
+      {tab === "initiatives" && selected ? (
+        <div className="grid grid-cols-[272px_1fr_360px] items-start gap-5 px-7 pb-7 pt-[22px]" data-testid="initiatives-tab">
+          <InitiativeList companyId={company.id} initiatives={initiatives} selectedId={selected.id} />
+          <QuoteStack key={selected.id} initiative={selected} />
+          <QuestionsRail company={company} questions={getQuestions(company.id)} gap={getGap(company.id)} />
+        </div>
+      ) : null}
+      {tab === "current-state" ? <CurrentState state={getCurrentState(company.id)} companyName={company.name} /> : null}
+      {tab === "log" ? (
+        <div className="px-7 pb-7 pt-[22px]" data-testid="log-tab">
+          <div className="flex max-w-[760px] flex-col gap-3">
+            <span className="text-[15px] text-mut">What the team has learned about {company.name}. Each entry is a draft until it is confirmed.</span>
+            <LogList entries={getLogSorted({ companyId: company.id, includeDrafts: noteDictated })} showSource empty={`No entries for ${company.name} yet.`} />
           </div>
-        ))}
-      </div>
-      <p className="text-[14px] text-mut">The month by month quote stack and the drafted questions arrive in Phase 2.</p>
+        </div>
+      ) : null}
+      {tab === "quarterly" ? <QuarterlyPrep prep={getQuarterly(company.id)} companyName={company.name} /> : null}
     </div>
   );
 }
