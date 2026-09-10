@@ -1,14 +1,21 @@
 "use client";
 
 // Four counts as tiles in the status colors. Clicking one filters the rows.
-// The counts animate when they change (the scrubber, the reading log), so
-// a move reads as a move. To the right: what the counts are made of.
+// The counts animate when they change (the Time Machine, the reading log),
+// so a move reads as a move. To the right: what the counts are made of,
+// and, before the last month, "Add [month] reports", which streams the
+// reading log and moves the month forward.
 
 import { useEffect, useRef, useState } from "react";
 import type { Flag } from "@/lib/types";
 import { FLAG_COLORS, FLAG_ORDER } from "@/lib/flags";
 import type { StatusCounts } from "@/lib/data";
 import { useStore } from "@/lib/store";
+import { useStateName } from "@/lib/view";
+import { readingTarget } from "@/lib/reading";
+import { addNextReports } from "@/lib/actions";
+import { monthLabel } from "@/lib/format";
+import { Button } from "@/components/ui/Button";
 
 const SUB: Record<Flag, (c: StatusCounts) => string> = {
   red: () => "before the next CEO call",
@@ -50,6 +57,9 @@ export function useAnimatedNumber(value: number, ms = COUNT_MS): number {
 export function WorkStrip({ counts, initiativeCount, companyCount, reportCount }: { counts: StatusCounts; initiativeCount: number; companyCount: number; reportCount: number }) {
   const filter = useStore((s) => s.workFilter);
   const setFilter = useStore((s) => s.setWorkFilter);
+  const reading = useStore((s) => s.reading);
+  const working = useStore((s) => s.working);
+  const next = readingTarget(useStateName());
   return (
     <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3" data-testid="work-strip">
       <div className="flex gap-3">
@@ -62,6 +72,13 @@ export function WorkStrip({ counts, initiativeCount, companyCount, reportCount }
           {initiativeCount} initiatives across {companyCount} companies. Read from {reportCount} monthly reports.
         </span>
         <span>Every flag cites the page it came from.</span>
+        {next ? (
+          <span className="mt-1.5">
+            <Button variant="brand" size={36} testId="add-reports" onClick={() => addNextReports()} className={reading || working ? "pointer-events-none opacity-60" : ""} title={`Read the ${monthLabel(next)} reports into the ledger`}>
+              {reading ? `Reading the ${monthLabel(reading.to)} reports` : `Add ${monthLabel(next)} reports`}
+            </Button>
+          </span>
+        ) : null}
       </div>
     </div>
   );

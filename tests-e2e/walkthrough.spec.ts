@@ -66,20 +66,32 @@ test("beats 1 to 6 from the presenter menu and on-screen controls", async ({ pag
   await expect(page.locator('[data-testid="initiative-row"][data-initiative="corvus-mro"]')).toHaveAttribute("data-flag", "red");
   await expect(page.getByTestId("initiative-row")).toHaveCount(12);
 
-  // Beat 2. August report arrives: a working indicator, then the ERP row
-  // turns red in place and the strip reads 2 / 2 / 1 / 7.
+  // Beat 2. August reports arrive: the reading log streams one line per
+  // finding, then the ERP row turns red in place and the strip reads
+  // 2 / 2 / 1 / 7.
   await openPresenter(page);
-  await expect(page.getByTestId("beat-august-arrives")).toHaveAttribute("data-state", "next");
+  await expect(page.getByTestId("beat-add-reports")).toHaveAttribute("data-state", "next");
+  await expect(page.getByTestId("beat-add-reports")).toHaveText(/August reports arrive/);
   await page.evaluate(() => {
     (window as unknown as { __noReload: number }).__noReload = 1;
   });
-  await page.getByTestId("beat-august-arrives").click();
-  await expect(page.getByTestId("working")).toContainText("Reading the August reports");
-  await expect(page.getByTestId("beat-august-arrives")).toHaveAttribute("data-state", "working");
-  await expect(erpRow).toHaveAttribute("data-flag", "red", { timeout: 6000 });
-  await expect(page.getByTestId("working")).toHaveCount(0);
+  await page.getByTestId("beat-add-reports").click();
+  const log = page.getByTestId("reading-log");
+  await expect(log).toHaveAttribute("data-status", "reading");
+  await expect(log).toHaveAttribute("data-month", "2026-08");
+  await expect(page.getByTestId("reading-title")).toContainText("Reading the August reports");
   await expect(page.getByTestId("presenter-menu")).toHaveCount(0);
+  await expect(page.locator('[data-testid="reading-line"][data-kind="open"]').first()).toContainText("Harlan Industrial Services, August 2026 report");
+  await expect(erpRow).toHaveAttribute("data-flag", "amber");
+  const erpLine = page.locator('[data-testid="reading-line"][data-initiative="harlan-erp"]');
+  await expect(erpLine).toContainText("Date moved: Q4 2026 to Q1 2027", { timeout: 10000 });
+  await expect(erpLine).toHaveAttribute("data-flag", "red");
+  await expect(erpLine.getByTestId("reading-cite")).toHaveAttribute("href", /\/reports\/harlan-2026-08\?page=2/);
+  await expect(erpRow).toHaveAttribute("data-flag", "red", { timeout: 10000 });
+  await expect(log).toHaveAttribute("data-status", "done");
+  await expect(page.locator('[data-testid="reading-line"][data-kind="done"]')).toContainText("August read. 12 initiatives, 4 changes.");
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
+  await expect(log).toHaveCount(0, { timeout: 5000 });
   await expect(page.getByTestId("time-band")).toHaveCount(0);
   await expect(erpRow.locator('[data-testid="flag-cell"]')).toHaveCount(8);
   expect(await page.evaluate(() => (window as unknown as { __noReload?: number }).__noReload)).toBe(1);
@@ -169,9 +181,9 @@ test("on the Harlan page, August report arrives fills the rail and adds the Augu
   await expect(page.locator('[data-testid="quote-stack"] [data-testid="status-pill"]')).toHaveText("Slipping");
 
   await openPresenter(page);
-  await page.getByTestId("beat-august-arrives").click();
-  await expect(page.getByTestId("working")).toBeVisible();
-  await expect(page.getByTestId("question")).toHaveCount(3, { timeout: 6000 });
+  await page.getByTestId("beat-add-reports").click();
+  await expect(page.getByTestId("reading-log")).toBeVisible();
+  await expect(page.getByTestId("question")).toHaveCount(3, { timeout: 12000 });
   await expect(page.getByTestId("questions-empty")).toHaveCount(0);
   await expect(page.getByTestId("stack-entry")).toHaveCount(5);
   await expect(page.locator('[data-testid="stack-entry"][data-month="2026-08"]')).toBeVisible();
@@ -233,20 +245,35 @@ test("the Time Machine goes back to March, hovers the green ERP cell, and return
   await expect(page.getByTestId("header-sub")).toHaveText("Initiatives, January to March 2026");
   await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "green");
 
-  // Return to August from the band.
-  await page.getByTestId("time-band-return").click();
-  await expect(page.getByTestId("time-band")).toHaveCount(0);
-  expect(await counts(page)).toBe("2 / 2 / 1 / 7");
-  await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "red");
+  // Forward is the reading log: from the band, "Add April reports"
+  // streams the April findings, then April is in view.
+  await expect(page.getByTestId("time-band-add")).toHaveText("Add April reports");
+  await expect(page.getByTestId("add-reports")).toHaveText("Add April reports");
+  await page.getByTestId("time-band-add").click();
+  await expect(page.getByTestId("reading-log")).toHaveAttribute("data-month", "2026-04");
+  await expect(page.getByTestId("time-band")).toHaveAttribute("data-month", "2026-04", { timeout: 12000 });
+  await expect(page.getByTestId("reading-log")).toHaveCount(0, { timeout: 5000 });
+  await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"] [data-testid="flag-cell"]')).toHaveCount(4);
 
-  // And from the stack: back to July, then the primary button returns.
+  // In the stack, the same control slides the next card forward: from
+  // July, the August card comes to the front with the ERP cell red.
   await page.getByTestId("time-machine-open").click();
   await page.getByTestId("month-2026-07").click();
   await expect(tm).toHaveAttribute("data-viewed", "2026-07");
+  await expect(front.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "amber");
+  await page.getByTestId("tm-add-reports").click();
+  await expect(page.getByTestId("reading-log")).toHaveAttribute("data-status", "reading");
+  await expect(page.getByTestId("month-2026-03")).toBeDisabled();
+  await expect(tm).toHaveAttribute("data-viewed", "2026-08", { timeout: 12000 });
+  await expect(front).toHaveAttribute("data-month", "2026-08");
+  await expect(front.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "red");
+  await expect(page.getByTestId("tm-add-reports")).toHaveCount(0);
+  await expect(page.getByTestId("reading-log")).toHaveCount(0, { timeout: 5000 });
   await page.getByTestId("tm-return").click();
   await expect(tm).toHaveCount(0);
   await expect(page.getByTestId("time-band")).toHaveCount(0);
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
+  await expect(page.getByTestId("add-reports")).toHaveCount(0);
 
   // Beat 7. Monday: twelve company cards, thirty rows, the strip recomputed.
   await jumpTo(page, "monday");

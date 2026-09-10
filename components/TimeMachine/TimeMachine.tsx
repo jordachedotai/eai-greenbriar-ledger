@@ -9,9 +9,11 @@
 // the bottom. Clicking a month, a strip, or pressing the arrow keys moves
 // the cutoff, and the cards slide into place over about 500ms; the front
 // card is live (hover a cell for its quote), the others are inert. The
-// bottom bar names the viewed month and offers Return to August. Escape
-// closes the stack and keeps the viewed month; the amber band under the
-// header then says so. Reduced motion gets instant swaps.
+// bottom bar names the viewed month and offers "Add [next month]
+// reports", which streams the reading log and slides the next card
+// forward, and Return to August. Escape closes the stack and keeps the
+// viewed month; the amber band under the header then says so. Reduced
+// motion gets instant swaps.
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -22,6 +24,7 @@ import { LAST_MONTH, stateCounts, viewKey } from "@/lib/states";
 import { FLAG_COLORS, FLAG_ORDER } from "@/lib/flags";
 import { MONTHS, type Month } from "@/lib/types";
 import { monthLabel, plural } from "@/lib/format";
+import { addNextReports } from "@/lib/actions";
 import { Button } from "@/components/ui/Button";
 import { IconClockBack } from "@/components/ui/icons";
 import { CompanyView } from "@/components/Company/CompanyView";
@@ -69,13 +72,19 @@ function Stack({ pathname }: { pathname: string }) {
   const stateName = useStore((s) => s.stateName);
   const setCutoff = useStore((s) => s.setCutoff);
   const setOpen = useStore((s) => s.setTimeMachineOpen);
+  const reading = useStore((s) => s.reading);
+  const working = useStore((s) => s.working);
   const state = getDemoState(stateName);
   const viewed = state.month;
   const idx = MONTHS.indexOf(viewed);
   const [hover, setHover] = useState<Month | null>(null);
   const current = useRef<HTMLButtonElement>(null);
+  const busy = !!reading || !!working;
 
-  const travel = (m: Month) => setCutoff(m);
+  const travel = (m: Month) => {
+    const s = useStore.getState();
+    if (!s.reading && !s.working) setCutoff(m);
+  };
   const close = () => setOpen(false);
   const home = () => {
     setCutoff(LAST_MONTH);
@@ -115,6 +124,7 @@ function Stack({ pathname }: { pathname: string }) {
 
   const atHome = viewed === LAST_MONTH;
   const unread = MONTHS.slice(idx + 1);
+  const next = unread[0];
   const unreadLine = unread.length === 0 ? "Every report has arrived." : unread.length === 1 ? `${monthLabel(unread[0])} not yet read.` : `${monthLabel(unread[0])} to ${monthLabel(unread[unread.length - 1])} not yet read.`;
 
   return (
@@ -136,17 +146,22 @@ function Stack({ pathname }: { pathname: string }) {
           </div>
           <div className="flex items-center gap-3">
             {atHome ? null : (
-              <button type="button" onClick={close} className="h-10 rounded-[10px] border border-white/30 px-[18px] text-[15px] font-semibold text-white hover:bg-white/10" data-testid="tm-stay">
+              <button type="button" onClick={close} disabled={busy} className="h-10 rounded-[10px] border border-white/30 px-[18px] text-[15px] font-semibold text-white hover:bg-white/10 disabled:opacity-50" data-testid="tm-stay">
                 Keep viewing {monthLabel(viewed)}
               </button>
             )}
+            {next ? (
+              <button type="button" onClick={() => addNextReports()} disabled={busy} className="h-10 rounded-[10px] bg-white px-[18px] text-[15px] font-semibold text-header hover:bg-white/90 disabled:opacity-60" data-testid="tm-add-reports">
+                {reading ? `Reading the ${monthLabel(reading.to)} reports` : `Add ${monthLabel(next)} reports`}
+              </button>
+            ) : null}
             <Button variant="brand" onClick={home} testId="tm-return" className="bg-green hover:bg-[#178a4b]">
               {atHome ? "Close" : `Return to ${monthLabel(LAST_MONTH)}`}
             </Button>
           </div>
         </div>
       </div>
-      <Timeline viewed={viewed} set={state.set} hover={hover} setHover={setHover} onPick={travel} currentRef={current} />
+      <Timeline viewed={viewed} set={state.set} hover={hover} setHover={setHover} onPick={travel} currentRef={current} busy={busy} />
     </div>
   );
 }
@@ -202,7 +217,7 @@ function Card({ stateName, month, depth, pathname, onPick }: { stateName: string
   );
 }
 
-function Timeline({ viewed, set, hover, setHover, onPick, currentRef }: { viewed: Month; set: string; hover: Month | null; setHover: (m: Month | null) => void; onPick: (m: Month) => void; currentRef: React.RefObject<HTMLButtonElement | null> }) {
+function Timeline({ viewed, set, hover, setHover, onPick, currentRef, busy }: { viewed: Month; set: string; hover: Month | null; setHover: (m: Month | null) => void; onPick: (m: Month) => void; currentRef: React.RefObject<HTMLButtonElement | null>; busy: boolean }) {
   const idx = MONTHS.indexOf(viewed);
   return (
     <div className="flex w-[220px] shrink-0 flex-col border-l border-white/10 px-6 pb-6 pt-7 text-white" data-testid="tm-timeline">
@@ -227,6 +242,7 @@ function Timeline({ viewed, set, hover, setHover, onPick, currentRef }: { viewed
               role="option"
               aria-selected={on}
               aria-current={on ? "true" : undefined}
+              disabled={busy && !on}
               onClick={() => onPick(m)}
               onMouseEnter={() => setHover(m)}
               onMouseLeave={() => setHover(null)}

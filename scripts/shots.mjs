@@ -142,7 +142,7 @@ if (phase === "phase5") {
   await page.screenshot({ path: `${out}/phase3-presenter-open.png` });
 
   // August report arrives, on the Harlan page.
-  await page.getByTestId("beat-august-arrives").click();
+  await page.getByTestId("beat-add-reports").click();
   await page.getByTestId("working").waitFor();
   await page.locator('[data-testid="question"]').first().waitFor({ timeout: 6000 });
   await page.locator('[data-testid="stack-entry"][data-month="2026-08"]').waitFor();

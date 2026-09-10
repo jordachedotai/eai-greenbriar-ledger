@@ -101,7 +101,14 @@ body {
 @keyframes tm-in {
   from { opacity: 0; }
 }
+.reading-line {
+  animation: line-in 220ms ease-out;
+}
+@keyframes line-in {
+  from { opacity: 0; transform: translateY(4px); }
+}
 @media (prefers-reduced-motion: reduce) {
   .tm-card { transition: none; }
   .tm-backdrop { animation: none; }
+  .reading-line { animation: none; }
 }

@@ -4,32 +4,32 @@
 // "Mock behaviors in the app"). Each one changes the store; the pages
 // re-render in place from the loaded state.
 
+import type { Month } from "./types";
 import { getNotes } from "./data";
+import { nextMonth } from "./states";
 import { useStore, viewOf } from "./store";
 
-// "August report arrives": from `july`, a working indicator for this long,
-// then `august` loads over it. The diff between the two states is what the
-// audience sees change: the ERP row turns red, the strip goes from
-// 1 / 3 / 1 / 7 to 2 / 2 / 1 / 7, the Harlan rail fills.
-export const AUGUST_ARRIVES_MS = 2000;
-export const AUGUST_ARRIVES_LABEL = "Reading the August reports";
-
-export function canAugustArrive(): boolean {
-  const s = useStore.getState();
-  const view = viewOf(s.stateName);
-  return view.set === "core" && view.cutoff === "2026-07" && !s.working;
+// "Add [month] reports": from any month before the last, the reading log
+// opens and streams one line per finding from the ledger for the next
+// month (lib/reading.ts), then the cutoff moves to that month. The diff
+// between the two states is what the audience sees change: from July, the
+// ERP row turns red, the strip goes from 1 / 3 / 1 / 7 to 2 / 2 / 1 / 7,
+// the Harlan rail fills. The presenter menu's "[Month] reports arrive"
+// runs the same flow.
+export function nextReportsMonth(): Month | null {
+  return nextMonth(viewOf(useStore.getState().stateName).cutoff);
 }
 
-export function augustReportArrives(): boolean {
-  if (!canAugustArrive()) return false;
-  useStore.getState().setWorking(AUGUST_ARRIVES_LABEL);
-  window.setTimeout(() => {
-    const s = useStore.getState();
-    // A reset or a jump in the meantime clears the indicator; do nothing then.
-    if (s.working !== AUGUST_ARRIVES_LABEL) return;
-    s.loadState("august");
-    s.setPresenterOpen(false);
-  }, AUGUST_ARRIVES_MS);
+export function canAddReports(): boolean {
+  const s = useStore.getState();
+  return !!nextReportsMonth() && !s.reading && !s.working && s.dictation?.status !== "playing";
+}
+
+export function addNextReports(): boolean {
+  if (!canAddReports()) return false;
+  const to = nextReportsMonth();
+  if (!to) return false;
+  useStore.getState().startReading(to);
   return true;
 }
 

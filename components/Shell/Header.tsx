@@ -34,6 +34,7 @@ export function Header() {
   const timeMachineOpen = useStore((s) => s.timeMachineOpen);
   const setTimeMachineOpen = useStore((s) => s.setTimeMachineOpen);
   const working = useStore((s) => s.working);
+  const reading = useStore((s) => s.reading);
   const state = getDemoState(stateName);
   const companyCount = getCompanies(stateName).length;
   const span = `January to ${monthLabel(state.month)} 2026`;
@@ -69,7 +70,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setTimeMachineOpen(!timeMachineOpen)}
-            disabled={!!working}
+            disabled={!!working || !!reading}
             title="See the ledger as it stood in an earlier month"
             data-testid="time-machine-open"
             className={"inline-flex h-[30px] items-center gap-2 rounded-[8px] px-3 text-[14px] font-semibold disabled:opacity-60 " + (timeMachineOpen ? "bg-white text-header" : "bg-white/12 text-white hover:bg-white/20")}

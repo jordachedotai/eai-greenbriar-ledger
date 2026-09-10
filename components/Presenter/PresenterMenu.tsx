@@ -2,17 +2,17 @@
 
 // Presenter menu. Shift+P or the header icon. Dark brand-green panel,
 // bottom right, same as the scheduler's. The demo-script beats first
-// ("August report arrives" is live only from `july`; "Dictate a note"
-// always), then the demo controls: jump to a state, the demo tag, reset,
-// sign out and reset.
+// ("[Month] reports arrive" runs the reading log for the month after the
+// one in view, off at August; "Dictate a note" always), then the demo
+// controls: jump to a state, the demo tag, reset, sign out and reset.
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useStore, viewOf } from "@/lib/store";
 import { getPreset, getStateNames } from "@/lib/data";
-import { presetFor } from "@/lib/states";
+import { nextMonth, presetFor } from "@/lib/states";
 import { monthLabel } from "@/lib/format";
-import { augustReportArrives, dictateNote } from "@/lib/actions";
+import { addNextReports, dictateNote } from "@/lib/actions";
 import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
 import { Menu } from "@/components/ui/Menu";
 
@@ -25,6 +25,7 @@ export function PresenterMenu() {
   const stateName = useStore((s) => s.stateName);
   const questionsApproved = useStore((s) => s.questionsApproved);
   const working = useStore((s) => s.working);
+  const reading = useStore((s) => s.reading);
   const dictation = useStore((s) => s.dictation);
   const noteDictated = useStore((s) => s.noteDictated);
   const showDemoTag = useStore((s) => s.showDemoTag);
@@ -51,9 +52,9 @@ export function PresenterMenu() {
 
   if (!open) return null;
   const preset = presetFor(viewOf(stateName), questionsApproved);
-  const busy = !!working || dictation?.status === "playing";
+  const busy = !!working || !!reading || dictation?.status === "playing";
   const view = viewOf(stateName);
-  const augustLive = view.set === "core" && view.cutoff === "2026-07";
+  const next = nextMonth(view.cutoff);
 
   return (
     <div className="fixed bottom-7 right-7 z-50 flex w-[340px] flex-col overflow-hidden rounded-[14px] bg-header text-white shadow-[0_18px_48px_-12px_rgba(20,63,31,0.55),inset_0_0_0_1px_rgba(255,255,255,0.08)]" data-testid="presenter-menu" data-state={preset ?? stateName}>
@@ -69,22 +70,22 @@ export function PresenterMenu() {
 
       <div className="flex flex-col gap-1.5 p-3">
         <span className={HEAD + " pt-1"}>Demo script</span>
-        {augustLive ? (
+        {next ? (
           <button
             type="button"
-            onClick={() => augustReportArrives()}
+            onClick={() => addNextReports()}
             disabled={busy}
-            data-testid="beat-august-arrives"
-            data-state={working ? "working" : "next"}
+            data-testid="beat-add-reports"
+            data-state={reading ? "working" : "next"}
             className={ROW + " bg-white/14 font-semibold hover:bg-white/20 disabled:opacity-70"}
           >
-            <span className={working ? "working" : ""}>{working ?? "August report arrives"}</span>
-            {working ? null : <IconChevronRight size={16} />}
+            <span className={reading ? "working" : ""}>{reading ? `Reading the ${monthLabel(reading.to)} reports` : `${monthLabel(next)} reports arrive`}</span>
+            {reading ? null : <IconChevronRight size={16} />}
           </button>
         ) : (
-          <div data-testid="beat-august-arrives" data-state="off" className={ROW + " bg-white/6 text-white/45"}>
-            <span>August report arrives</span>
-            <span className="text-[12px]">from July</span>
+          <div data-testid="beat-add-reports" data-state="off" className={ROW + " bg-white/6 text-white/45"}>
+            <span>Reports arrive</span>
+            <span className="text-[12px]">all in through {monthLabel(view.cutoff)}</span>
           </div>
         )}
         <button type="button" onClick={() => dictateNote()} disabled={busy} data-testid="beat-dictate" data-state={dictation?.status === "playing" ? "working" : noteDictated ? "done" : "next"} className={ROW + " bg-white/14 font-semibold hover:bg-white/20 disabled:opacity-70"}>
