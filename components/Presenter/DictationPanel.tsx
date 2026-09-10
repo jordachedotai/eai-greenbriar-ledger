@@ -7,8 +7,7 @@
 // the Patterns rail, and the Learning log page). Nothing is sent, and
 // nothing here is a model call.
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { useStore } from "@/lib/store";
 import { getCompany, getNote, getNoteDrafts } from "@/lib/data";
 import { DICTATE_MS } from "@/lib/actions";
@@ -24,6 +23,7 @@ export function DictationPanel() {
   const close = useStore((s) => s.closeDictation);
   const note = dictation ? getNote(dictation.noteId) : undefined;
   const [shown, setShown] = useState(0);
+  const box = useRef<HTMLParagraphElement>(null);
   const playing = dictation?.status === "playing";
   const total = note?.text.length ?? 0;
 
@@ -44,6 +44,11 @@ export function DictationPanel() {
     return () => cancelAnimationFrame(raf);
   }, [playing, note, finish]);
 
+  // Keep the newest words in view while the transcript types.
+  useEffect(() => {
+    if (playing && box.current) box.current.scrollTop = box.current.scrollHeight;
+  }, [playing, shown]);
+
   if (!dictation || !note) return null;
   const company = getCompany(note.companyId);
   const drafts = getNoteDrafts(note.id);
@@ -52,7 +57,7 @@ export function DictationPanel() {
   const text = status === "playing" ? note.text.slice(0, Math.min(shown, total)) : note.text;
 
   return (
-    <div className="fixed bottom-7 right-7 z-50 flex w-[460px] flex-col gap-3.5 rounded-[14px] border border-line bg-white px-5 pb-[18px] pt-4 shadow-[var(--shadow-card-hover)]" data-testid="dictation" data-status={status}>
+    <div className="fixed bottom-7 right-7 z-50 flex w-[420px] flex-col gap-3.5 rounded-[14px] border border-line bg-white px-5 pb-[18px] pt-4 shadow-[var(--shadow-card-hover)]" data-testid="dictation" data-status={status}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full" style={{ background: tone.bg }}>
@@ -77,7 +82,7 @@ export function DictationPanel() {
         </div>
       </div>
 
-      <p className="max-h-[132px] overflow-y-auto rounded-[10px] bg-bg px-3.5 py-3 text-[14px] leading-[1.5] text-txt" data-testid="dictation-text">
+      <p ref={box} className="max-h-[176px] overflow-y-auto rounded-[10px] bg-bg px-3.5 py-3 text-[14px] leading-[1.5] text-txt" data-testid="dictation-text">
         {text}
         {status === "playing" ? <span className="ml-0.5 inline-block h-[14px] w-[2px] translate-y-[2px] animate-pulse bg-txt" /> : null}
       </p>

@@ -27,13 +27,13 @@ export function stackMonths(i: Initiative, expanded: boolean): Month[] {
   return expanded ? mentionedMonths(i) : keyMonths(i);
 }
 
-// Unmentioned months after the last mention. Empty when the last report
-// mentions the initiative.
+// Unmentioned months after the last mention, among the months that have
+// arrived. Empty when the last report mentions the initiative.
 export function silentTail(i: Initiative): Month[] {
   const mentioned = mentionedMonths(i);
   if (!mentioned.length) return [];
   const last = MONTHS.indexOf(mentioned[mentioned.length - 1]);
-  return MONTHS.slice(last + 1).filter((m) => !i.months[m]?.mentioned);
+  return MONTHS.slice(last + 1).filter((m) => i.months[m] && !i.months[m].mentioned);
 }
 
 // "February, April, and July mention the initiative without a change."

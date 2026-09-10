@@ -73,6 +73,21 @@ describe("quote stack selection", () => {
   });
 });
 
+describe("the stack in the july state", () => {
+  it("Harlan ERP through July: four entries, no silent tail, and a seven-month toggle", () => {
+    const erpJuly = getInitiative("harlan-erp", "july") as Initiative;
+    expect(stackMonths(erpJuly, false)).toEqual(["2026-01", "2026-03", "2026-05", "2026-06"]);
+    expect(silentTail(erpJuly)).toEqual([]);
+    expect(quietLine(erpJuly)).toBe("February, April, and July mention the initiative without a change.");
+    expect(expandLabel(erpJuly)).toBe("Show all seven months");
+  });
+
+  it("Corvus sales through July goes quiet from April", () => {
+    const salesJuly = getInitiative("corvus-sales", "july") as Initiative;
+    expect(silentTail(salesJuly)).toEqual(["2026-04", "2026-05", "2026-06", "2026-07"]);
+  });
+});
+
 describe("format helpers the stack uses", () => {
   it("joins lists the way the artboard does", () => {
     expect(joinList([])).toBe("");
