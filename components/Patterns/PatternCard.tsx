@@ -35,7 +35,7 @@ export function PatternCard({ pattern }: { pattern: Pattern }) {
           </li>
         ))}
       </ul>
-      <div className="flex items-center gap-2.5">
+      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
         <Button variant="secondary" size={36} testId="pattern-action">
           {pattern.action}
         </Button>

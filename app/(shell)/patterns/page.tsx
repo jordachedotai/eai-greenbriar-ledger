@@ -2,7 +2,9 @@
 
 // Patterns: what shows up in more than one company, in the loaded state.
 // Left, the pattern cards. Right, 380px, the latest learning-log entries
-// and the "Add from a note" control, which runs the dictate beat.
+// and the "Add from a note" control, which runs the dictate beat. When the
+// dictation panel takes its column the page is narrower, so the rail
+// drops to 320px and the cards take what is left.
 
 import Link from "next/link";
 import { draftModeOf, getLedgerMeta, getLogSorted, getNotes, getPatterns } from "@/lib/data";
@@ -22,7 +24,7 @@ export default function PatternsPage() {
   const { reportCount } = getLedgerMeta(stateName);
   const note = getNotes()[0];
   return (
-    <div className="grid grid-cols-[1fr_380px] items-start gap-5 px-7 pb-7 pt-[22px]" data-testid="patterns" data-state={stateName}>
+    <div className="grid grid-cols-[minmax(0,1fr)_380px] items-start gap-5 px-7 pb-7 pt-[22px] @max-4xl:grid-cols-[minmax(0,1fr)_320px]" data-testid="patterns" data-state={stateName}>
       <div className="flex flex-col gap-3.5">
         <span className="text-[15px] text-mut">Things that show up in more than one company. Found by reading all {reportCount} reports at once, which nobody has time to do.</span>
         {patterns.map((p) => (
