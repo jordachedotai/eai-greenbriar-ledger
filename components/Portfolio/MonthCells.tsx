@@ -1,23 +1,24 @@
+"use client";
+
 // The month cells for one initiative: eight slots, January to August.
-// A month that has arrived is the flag that month, and its title is the
-// sentence management wrote. A month beyond the cutoff is an empty slot,
-// so the grid holds still while the scrubber moves.
+// A month that has arrived is the flag that month; hovering or focusing
+// it opens the card with the sentence management wrote and its cite. A
+// month beyond the cutoff is an empty slot with no card, so the grid
+// holds still while the scrubber moves.
 
 import type { Initiative, Month } from "@/lib/types";
 import { MONTHS } from "@/lib/types";
 import { monthLabel } from "@/lib/format";
-import { FLAG_COLORS } from "@/lib/flags";
-import { FlagCell } from "./StatusPill";
+import { HoverCell } from "./CellCard";
 
-export function MonthCells({ initiative, months }: { initiative: Initiative; months: Month[] }) {
+export function MonthCells({ initiative, months, size = 24 }: { initiative: Initiative; months: Month[]; size?: number }) {
   const arrived = new Set<string>(months);
   return (
     <div className="flex gap-1.5" data-testid="month-cells">
       {MONTHS.map((m) => {
         const r = arrived.has(m) ? initiative.months[m] : undefined;
-        if (!r) return <EmptyCell key={m} month={m} />;
-        const title = r.mentioned && r.quote ? `${monthLabel(m)}: ${FLAG_COLORS[r.flag].name}. ${r.quote}` : `${monthLabel(m)}: ${FLAG_COLORS[r.flag].name}. Not mentioned.`;
-        return <FlagCell key={m} flag={r.flag} title={title} />;
+        if (!r) return <EmptyCell key={m} month={m} size={size} />;
+        return <HoverCell key={m} initiative={initiative} month={m} read={r} size={size} />;
       })}
     </div>
   );

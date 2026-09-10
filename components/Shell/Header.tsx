@@ -2,15 +2,16 @@
 
 // The header band. Dark green, serif title, subtitle, the month scrubber,
 // the Demo data tag, the presenter button. On a company page: a
-// breadcrumb, the company name, CEO and next call. The subtitle and the
-// scrubber follow the loaded state; dragging the scrubber changes which
-// months have arrived on every page.
+// breadcrumb and the company name (CEO and next call sit in the tabs row,
+// where there is room). The subtitle and the scrubber follow the loaded
+// state; dragging the scrubber changes which months have arrived on
+// every page.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { getCompanies, getCompany, getDemoState, getLedgerMeta } from "@/lib/data";
-import { fmtCallDate, monthLabel } from "@/lib/format";
+import { monthLabel } from "@/lib/format";
 import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
 import { MonthScrubber } from "./MonthScrubber";
 
@@ -49,11 +50,6 @@ export function Header() {
           <span className="serif whitespace-nowrap text-[22px] font-semibold" data-testid="header-title">
             {company?.name ?? ""}
           </span>
-          {company ? (
-            <span className="truncate text-[15px] text-white/72">
-              {company.ceo.name}, {company.ceo.title} · Next call {fmtCallDate(company.nextCall)}
-            </span>
-          ) : null}
         </div>
       ) : (
         <div className="flex min-w-0 items-baseline gap-3.5">

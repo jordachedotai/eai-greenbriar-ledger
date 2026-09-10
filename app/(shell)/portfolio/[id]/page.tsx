@@ -8,7 +8,7 @@
 import { Suspense, use } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { draftModeOf, getCompany, getCurrentState, getGap, getInitiatives, getLogSorted, getQuarterly, getQuestions, worstInitiative } from "@/lib/data";
+import { draftModeOf, getCompany, getCurrentState, getGap, getInitiatives, getLogSorted, getMonths, getQuarterly, getQuestions, worstInitiative } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { CompanyTabs, isTabId, type TabId } from "@/components/Company/Tabs";
 import { InitiativeList } from "@/components/Company/InitiativeList";
@@ -52,10 +52,10 @@ function CompanyView({ id }: { id: string }) {
 
   return (
     <div className="flex min-h-full flex-col" data-testid="company-page" data-company={company.id} data-tab={tab} data-state={stateName}>
-      <CompanyTabs companyId={company.id} active={tab} initiativeId={requested ?? undefined} />
+      <CompanyTabs company={company} active={tab} initiativeId={requested ?? undefined} />
       {tab === "initiatives" && selected ? (
         <div className="grid grid-cols-[272px_1fr_360px] items-start gap-5 px-7 pb-7 pt-[22px]" data-testid="initiatives-tab">
-          <InitiativeList companyId={company.id} initiatives={initiatives} selectedId={selected.id} />
+          <InitiativeList companyId={company.id} initiatives={initiatives} selectedId={selected.id} months={getMonths(stateName)} />
           <QuoteStack key={selected.id} initiative={selected} />
           <QuestionsRail company={company} questions={getQuestions(company.id, stateName)} gap={getGap(company.id)} />
         </div>

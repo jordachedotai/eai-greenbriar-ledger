@@ -1,7 +1,10 @@
-// The four tabs under the header on a company page. The active tab lives
-// in the URL (?tab=) so a cite link can come back to the same place.
+// The four tabs under the header on a company page, with the CEO and the
+// next call date at the right. The active tab lives in the URL (?tab=) so
+// a cite link can come back to the same place.
 
 import Link from "next/link";
+import type { Company } from "@/lib/types";
+import { fmtCallDate } from "@/lib/format";
 
 export const TABS = [
   { id: "initiatives", label: "Initiatives" },
@@ -24,9 +27,10 @@ export function tabHref(companyId: string, tab: TabId, initiativeId?: string): s
   return `/portfolio/${companyId}${qs ? `?${qs}` : ""}`;
 }
 
-export function CompanyTabs({ companyId, active, initiativeId }: { companyId: string; active: TabId; initiativeId?: string }) {
+export function CompanyTabs({ company, active, initiativeId }: { company: Company; active: TabId; initiativeId?: string }) {
+  const companyId = company.id;
   return (
-    <div className="sticky top-0 z-10 flex gap-1 border-b border-line bg-white px-7" role="tablist" data-testid="company-tabs">
+    <div className="sticky top-0 z-10 flex items-center gap-1 border-b border-line bg-white px-7" role="tablist" data-testid="company-tabs">
       {TABS.map((t) => {
         const on = t.id === active;
         return (
@@ -43,6 +47,9 @@ export function CompanyTabs({ companyId, active, initiativeId }: { companyId: st
           </Link>
         );
       })}
+      <span className="ml-auto whitespace-nowrap text-[14px] text-mut" data-testid="company-sub">
+        {company.ceo.name}, {company.ceo.title} · Next call {fmtCallDate(company.nextCall)}
+      </span>
     </div>
   );
 }
