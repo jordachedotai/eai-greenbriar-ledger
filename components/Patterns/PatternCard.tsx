@@ -6,6 +6,7 @@
 import type { Pattern } from "@/lib/types";
 import { companyShortName } from "@/lib/data";
 import { FLAG_COLORS, YOU_COLORS } from "@/lib/flags";
+import { citeShort } from "@/lib/cites";
 import { Button } from "@/components/ui/Button";
 import { CiteLink } from "@/components/ui/CiteLink";
 
@@ -66,7 +67,7 @@ function Evidence({ text, cite }: { text: string; cite?: { reportId: string; pag
     <>
       {text}{" "}
       <CiteLink cite={cite} quote={quoted} className={linkClass}>
-        p. {cite.page}
+        {citeShort(cite, "", companyShortName)}
       </CiteLink>
     </>
   );

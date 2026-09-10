@@ -88,10 +88,16 @@ function StackEntry({ month, initiative }: { month: Month; initiative: Initiativ
           {read.quote}
           {"”"}
         </span>
-        <div className="flex items-center justify-between gap-3">
-          {read.cite ? <CiteLink cite={read.cite} quote={read.quote} /> : <span />}
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5">
+          {read.cite ? (
+            <span className="whitespace-nowrap">
+              <CiteLink cite={read.cite} quote={read.quote} />
+            </span>
+          ) : (
+            <span />
+          )}
           {read.change ? (
-            <span className="inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-[3px] text-[13px] font-semibold" style={{ background: c.bg, color: c.text, border: `1px solid ${c.line}` }} data-testid="change-chip">
+            <span className="ml-auto inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-[3px] text-[13px] font-semibold" style={{ background: c.bg, color: c.text, border: `1px solid ${c.line}` }} data-testid="change-chip">
               {read.change.label}
             </span>
           ) : null}

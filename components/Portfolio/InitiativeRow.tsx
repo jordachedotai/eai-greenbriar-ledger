@@ -8,7 +8,7 @@ import { FLAG_COLORS } from "@/lib/flags";
 import { MonthCells } from "./MonthCells";
 import { StatusPill, YouChip } from "./StatusPill";
 
-export const ROW_GRID = "grid grid-cols-[300px_234px_1fr_96px] items-center gap-4";
+export const ROW_GRID = "grid grid-cols-[270px_234px_1fr_64px] items-center gap-4";
 
 export function InitiativeRow({ initiative }: { initiative: Initiative }) {
   const { flag } = initiative.status;
@@ -33,12 +33,13 @@ export function InitiativeRow({ initiative }: { initiative: Initiative }) {
         </span>
         <span className="min-w-0 flex-1 text-[14px] leading-[1.45] text-txt" style={{ paddingTop: 1 }} data-testid="status-sentence">
           {initiative.status.sentence}
+          {initiative.status.chip ? (
+            <>
+              {" "}
+              <YouChip text={initiative.status.chip.text} />
+            </>
+          ) : null}
         </span>
-        {initiative.status.chip ? (
-          <span className="shrink-0">
-            <YouChip text={initiative.status.chip.text} />
-          </span>
-        ) : null}
       </div>
       <Link href={`/portfolio/${initiative.companyId}?initiative=${initiative.id}`} className="text-right text-[15px] font-semibold text-brand hover:text-brand2" data-testid="open-initiative">
         Open
