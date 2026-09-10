@@ -1,21 +1,33 @@
-// Demo states. A state is "which months have arrived": july is the ledger
-// with January to July, august is all eight, august-approved is august
-// with Harlan's questions approved. buildStates derives every state from
+// Demo states. A state is "which months have arrived" and "which companies
+// are in": july is the ledger with January to July, august is all eight,
+// august-approved is august with Harlan's questions approved, and monday
+// is august across all twelve companies. buildStates derives every state from
 // the fixtures (scripts/gen-states.ts writes the result to
 // data/demo-states.json; the check script and a test regenerate it and
 // fail on any drift). applyState turns the full ledger into what a state
 // shows. Pure functions, no I/O.
 
-import type { Arc, DemoState, DemoStates, Initiative, Month, Pattern, Question } from "./types";
+import type { Arc, Company, DemoState, DemoStates, Initiative, Month, Pattern, Question } from "./types";
 import { MONTHS } from "./types";
 import { conditionsAt, type MonthInput } from "./diff";
 import { pillFor } from "./flags";
-import { monthLabel } from "./format";
+import { monthLabel, numberWord } from "./format";
 import { splitReportId } from "./reports";
 
-export const STATE_NAMES = ["july", "august", "august-approved"] as const;
+export const STATE_NAMES = ["july", "august", "august-approved", "monday"] as const;
 
-const LAST_MONTH: Record<(typeof STATE_NAMES)[number], Month> = { july: "2026-07", august: "2026-08", "august-approved": "2026-08" };
+type StateName = (typeof STATE_NAMES)[number];
+
+const LAST_MONTH: Record<StateName, Month> = { july: "2026-07", august: "2026-08", "august-approved": "2026-08", monday: "2026-08" };
+
+// Which companies a state shows: the core three, or every company in
+// companies.json. Names come from the file, never from here.
+const COMPANY_SET: Record<StateName, "core" | "all"> = { july: "core", august: "core", "august-approved": "core", monday: "all" };
+
+export function companiesIn(name: string, companies: Company[]): Company[] {
+  const set = COMPANY_SET[name as StateName] ?? "core";
+  return set === "all" ? companies : companies.filter((c) => c.core);
+}
 
 // Months up to and including `last`.
 export function monthsThrough(last: Month): Month[] {
@@ -77,22 +89,27 @@ export function patternsIn(patterns: Pattern[], months: Month[]): Pattern[] {
   return patterns.filter((p) => p.evidence.every((e) => !e.cite || set.has(splitReportId(e.cite.reportId).month)));
 }
 
-export function buildStates(input: { initiatives: Initiative[]; arcs: Arc[]; questions: Question[]; patterns: Pattern[] }): DemoStates {
+export function buildStates(input: { companies: Company[]; initiatives: Initiative[]; arcs: Arc[]; questions: Question[]; patterns: Pattern[] }): DemoStates {
   const arcById = new Map(input.arcs.map((a) => [a.id, a]));
   const out: DemoStates = {};
   for (const name of STATE_NAMES) {
     const month = LAST_MONTH[name];
     const months = monthsThrough(month);
+    const companies = companiesIn(name, input.companies);
+    const companyIds = new Set(companies.map((c) => c.id));
     const status: DemoState["status"] = {};
     for (const i of input.initiatives) {
+      if (!companyIds.has(i.companyId)) continue;
       const arc = arcById.get(i.id);
       if (!arc) throw new Error(`${i.id}: no arc`);
       status[i.id] = statusAsOf(i, arc, month, input.initiatives);
     }
     const isLast = month === MONTHS[MONTHS.length - 1];
+    const all = COMPANY_SET[name] === "all";
     out[name] = {
       name,
-      label: `${monthLabel(month)} 2026`,
+      label: all ? `${monthLabel(month)} 2026, ${numberWord(companies.length)} companies` : `${monthLabel(month)} 2026`,
+      companyIds: companies.map((c) => c.id),
       months,
       month,
       cutoff: isLast ? null : endOfMonth(month),

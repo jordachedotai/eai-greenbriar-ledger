@@ -2,9 +2,9 @@
 // Swap this file for a real backend later without touching components.
 //
 // Most readers take an optional demo-state name (july, august,
-// august-approved). Without one they read the full ledger, which is the
-// `august` state. The state decides which months have arrived, what each
-// initiative's status is as of then, and which questions, patterns,
+// august-approved, monday). Without one they read the `august` state. The
+// state decides which companies are in, which months have arrived, what
+// each initiative's status is as of then, and which questions, patterns,
 // reports, and dated notes exist yet.
 
 import usersJson from "@/data/users.json";
@@ -62,8 +62,11 @@ export function getLedgerMeta(stateName?: string): { generatedAt: string; mode: 
 
 // ---- companies and initiatives ---------------------------------------------
 
-export function getCompanies(): Company[] {
-  return ledger.companies;
+// The companies the state shows, in board order. Three in july, august,
+// and august-approved; all twelve in monday.
+export function getCompanies(stateName?: string): Company[] {
+  const ids = new Set(getDemoState(stateName).companyIds);
+  return ledger.companies.filter((c) => ids.has(c.id));
 }
 
 export function getCompany(id: string): Company | undefined {
@@ -89,7 +92,7 @@ function initiativesIn(stateName?: string): Initiative[] {
 // Initiatives in board order, optionally for one company, as the state shows them.
 export function getInitiatives(companyId?: string, stateName?: string): Initiative[] {
   const byId = new Map(initiativesIn(stateName).map((i) => [i.id, i]));
-  const companies = companyId ? ledger.companies.filter((c) => c.id === companyId) : ledger.companies;
+  const companies = getCompanies(stateName).filter((c) => !companyId || c.id === companyId);
   return companies.flatMap((c) => c.initiativeIds.map((id) => byId.get(id)).filter((i): i is Initiative => !!i));
 }
 
@@ -121,10 +124,12 @@ export function worstInitiative(companyId: string, stateName?: string): Initiati
 
 // ---- reports, questions, patterns ------------------------------------------
 
-// The reports that have arrived in the state.
+// The reports that have arrived in the state, for the companies in it.
 export function getReports(companyId?: string, stateName?: string): Report[] {
-  const months = new Set<string>(getMonths(stateName));
-  const all = (reportsJson as Report[]).filter((r) => months.has(r.month));
+  const state = getDemoState(stateName);
+  const months = new Set<string>(state.months);
+  const companies = new Set(state.companyIds);
+  const all = (reportsJson as Report[]).filter((r) => months.has(r.month) && companies.has(r.companyId));
   return companyId ? all.filter((r) => r.companyId === companyId) : all;
 }
 

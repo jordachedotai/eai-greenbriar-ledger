@@ -30,8 +30,8 @@ export function Header() {
   const stateName = useStore((s) => s.stateName);
   const setPresenterOpen = useStore((s) => s.setPresenterOpen);
   const presenterOpen = useStore((s) => s.presenterOpen);
-  const companyCount = getCompanies().length;
   const state = getDemoState(stateName);
+  const companyCount = getCompanies(stateName).length;
   const span = `January to ${monthLabel(state.month)} 2026`;
   const t = TITLES[base];
   const sub = t?.sub(companyCount, span, getLedgerMeta(stateName).reportCount);

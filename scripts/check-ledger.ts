@@ -10,7 +10,7 @@ import { join } from "node:path";
 import type { Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
-import { stateCounts } from "../lib/states";
+import { companiesIn, stateCounts } from "../lib/states";
 import { generateNotes, generateStates } from "./gen-states";
 
 const ROOT = join(__dirname, "..");
@@ -78,10 +78,18 @@ for (const a of arcs) {
   if (JSON.stringify(i.parallelWith ?? null) !== JSON.stringify(a.parallelWith ?? null)) fail(`${a.id}: parallelWith differs`);
 }
 
-// 2. August counts
+// 2. August counts, for the core three companies and for all twelve
+const core = new Set(companiesIn("august", ledger.companies).map((c) => c.id));
+if (core.size !== 3) fail(`${core.size} core companies, expected 3`);
+if (ledger.companies.length !== 12) fail(`${ledger.companies.length} companies, expected 12`);
 const counts = { red: 0, amber: 0, grey: 0, green: 0 };
-for (const i of ledger.initiatives) counts[i.status.flag] += 1;
+const allCounts = { red: 0, amber: 0, grey: 0, green: 0 };
+for (const i of ledger.initiatives) {
+  allCounts[i.status.flag] += 1;
+  if (core.has(i.companyId)) counts[i.status.flag] += 1;
+}
 if (JSON.stringify(counts) !== JSON.stringify({ red: 2, amber: 2, grey: 1, green: 7 })) fail(`August counts ${JSON.stringify(counts)}, expected 2 / 2 / 1 / 7`);
+if (JSON.stringify(allCounts) !== JSON.stringify({ red: 2, amber: 2, grey: 1, green: 25 })) fail(`August counts across twelve companies ${JSON.stringify(allCounts)}, expected 2 / 2 / 1 / 25`);
 
 // 3. Authored fixtures' cites
 if (existsSync(join(ROOT, "data/questions.json"))) {
@@ -112,10 +120,10 @@ if (existsSync(join(ROOT, "data/patterns.json"))) {
   }
 }
 
-// 3b. Gaps: one short paragraph per company, absences only.
+// 3b. Gaps: one short paragraph per core company, absences only.
 if (existsSync(join(ROOT, "data/gaps.json"))) {
   const gaps = JSON.parse(read("data/gaps.json")) as Gap[];
-  for (const c of ledger.companies) {
+  for (const c of ledger.companies.filter((x) => core.has(x.id))) {
     const g = gaps.find((x) => x.companyId === c.id);
     if (!g) fail(`gaps: no entry for ${c.id}`);
     else if (!g.text.trim()) fail(`gaps: empty text for ${c.id}`);
@@ -152,7 +160,7 @@ if (existsSync(join(ROOT, "data/demo-states.json"))) {
   const fresh = JSON.stringify(generateStates(), null, 2) + "\n";
   if (committed !== fresh) fail("data/demo-states.json differs from what scripts/gen-states.ts produces; run npm run gen:states");
   const states = JSON.parse(committed) as DemoStates;
-  const want: Record<string, Record<string, number>> = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, "august-approved": { red: 2, amber: 2, grey: 1, green: 7 } };
+  const want: Record<string, Record<string, number>> = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, "august-approved": { red: 2, amber: 2, grey: 1, green: 7 }, monday: { red: 2, amber: 2, grey: 1, green: 25 } };
   for (const [name, counts] of Object.entries(want)) {
     if (!states[name]) {
       fail(`demo state ${name} is missing`);
@@ -164,6 +172,17 @@ if (existsSync(join(ROOT, "data/demo-states.json"))) {
   if (states.july?.questionIds.length) fail("demo state july should have no questions");
   if (states.july?.status["harlan-erp"]?.flag !== "amber") fail("demo state july: harlan-erp should be amber");
   if (JSON.stringify(states["august-approved"]?.questionsApproved) !== JSON.stringify(["harlan"])) fail("demo state august-approved: Harlan's questions should be approved");
+  for (const name of ["july", "august", "august-approved"]) if (states[name]?.companyIds.length !== 3) fail(`demo state ${name}: should show three companies`);
+  if (states.monday?.companyIds.length !== 12) fail("demo state monday: should show twelve companies");
+  // Every cell in monday: a mentioned month carries a quote and a cite that
+  // resolves; an unmentioned month is a quiet one with neither.
+  for (const i of ledger.initiatives) {
+    for (const m of MONTHS) {
+      const r = i.months[m];
+      if (r?.mentioned && (!r.quote || !r.cite)) fail(`monday: ${i.id} ${m} is mentioned without a quote and cite`);
+      if (r && !r.mentioned && (r.quote || r.cite)) fail(`monday: ${i.id} ${m} is unmentioned but carries a quote or cite`);
+    }
+  }
 }
 if (existsSync(join(ROOT, "data/notes/index.json"))) {
   const committed = read("data/notes/index.json");

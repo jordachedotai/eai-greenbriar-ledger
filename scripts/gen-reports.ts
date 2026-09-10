@@ -1,8 +1,10 @@
-// Render the 24 monthly reports from data/source/arcs.json. Sections in a
+// Render the monthly reports from data/source/arcs.json. Sections in a
 // fixed order, a consistent financial table per company, arc sentences
 // verbatim in their stated section, unmentioned initiatives absent, and
-// padding that never contradicts an arc. Also writes data/reports/index.json
-// (the parsed pages) for the app.
+// padding that never contradicts an arc. The core three companies get the
+// full report (three to four pages); the nine that appear only in the
+// `monday` state get a one-page report from a shorter template. Also
+// writes data/reports/index.json (the parsed pages) for the app.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -200,6 +202,124 @@ const RISKS: Record<string, string[]> = {
   ],
 };
 
+// ---- the short template, for the companies that appear only in monday ---
+
+type Short = { revBudget: number; emBudget: number; headcount: number; seed: number; commentary: string[]; outlook: string; risk: string };
+
+const SHORT: Record<string, Short> = {
+  ashcombe: {
+    revBudget: 6.5, emBudget: 15.0, headcount: 180, seed: 3,
+    commentary: ["Coating volumes in the industrial book were steady through the month.", "The Erie shop ran two shifts with overtime within budget.", "Customer audits during the month closed with no findings."],
+    outlook: "Looking ahead, refinery turnaround season should keep the shop busy through the fall.",
+    risk: "Solvent and abrasive pricing remains the main input cost risk, covered by pass-through clauses in most contracts.",
+  },
+  pellston: {
+    revBudget: 11.0, emBudget: 12.5, headcount: 420, seed: 5,
+    commentary: ["Rail volumes through the three ramps were in line with plan.", "Chassis availability improved during the month at all three ramps.", "Dwell time at the Kansas City ramp stayed under two days."],
+    outlook: "Looking ahead, peak season bookings are tracking ahead of last year.",
+    risk: "Rail service reliability remains the main operational risk and is reviewed weekly with the carriers.",
+  },
+  larkmoor: {
+    revBudget: 7.8, emBudget: 13.0, headcount: 260, seed: 7,
+    commentary: ["Heavy check inputs at Tulsa arrived on the dates scheduled.", "Line maintenance volumes held at the planned level.", "The quality team completed its internal audit cycle with no open findings."],
+    outlook: "Looking ahead, the hangar schedule is booked through the next quarter.",
+    risk: "Technician availability remains the main constraint and recruiting continues at the local technical colleges.",
+  },
+  redfern: {
+    revBudget: 14.5, emBudget: 9.0, headcount: 510, seed: 2,
+    commentary: ["Order volumes were in line with plan across the branch network.", "Fill rates held above the service target for the month.", "Freight cost as a share of revenue was flat on the prior month."],
+    outlook: "Looking ahead, the fall promotional calendar supports the second half plan.",
+    risk: "Supplier lead times remain the main risk to fill rates and are managed with safety stock on top movers.",
+  },
+  thornbury: {
+    revBudget: 9.2, emBudget: 10.5, headcount: 1450, seed: 4,
+    commentary: ["Service delivery ran at plan across the contract base with no service credits issued.", "Frontline hiring kept pace with seasonal attrition.", "Client satisfaction survey results for the quarter were in line with the prior period."],
+    outlook: "Looking ahead, the sales pipeline supports the second half plan.",
+    risk: "Wage inflation in frontline roles remains the main cost risk and is covered by annual escalators in most contracts.",
+  },
+  marlow: {
+    revBudget: 8.4, emBudget: 12.0, headcount: 340, seed: 6,
+    commentary: ["Production output at Fort Wayne was in line with the monthly plan.", "Steel deliveries arrived on schedule during the month.", "The safety committee held its monthly review with no lost time incidents."],
+    outlook: "Looking ahead, order intake supports full production through the year.",
+    risk: "Steel pricing remains the main input cost risk and is covered by surcharge clauses on most orders.",
+  },
+  brightwater: {
+    revBudget: 6.0, emBudget: 18.0, headcount: 390, seed: 8,
+    commentary: ["Cold storage occupancy at Greenville held above 90% through the month.", "The transport fleet ran at plan with on-time delivery in the mid nineties.", "Energy cost per pallet position was flat on the prior month."],
+    outlook: "Looking ahead, produce season should keep occupancy high into the fall.",
+    risk: "Electricity pricing remains the main cost risk and a fixed-price contract covers most of the exposure.",
+  },
+  halvorsen: {
+    revBudget: 5.5, emBudget: 11.0, headcount: 210, seed: 1,
+    commentary: ["Sales through the branch network were in line with plan.", "Inventory turns held at the level assumed in the annual plan.", "Counter sales at the Milwaukee branch grew on the prior month."],
+    outlook: "Looking ahead, the industrial customer base supports the second half plan.",
+    risk: "Import tariffs on fasteners remain the main cost risk and are passed through on the standard price list.",
+  },
+  sablecreek: {
+    revBudget: 4.8, emBudget: 24.0, headcount: 275, seed: 9,
+    commentary: ["Rental utilization across the fleet was in line with plan.", "Service work at the Baton Rouge branch ran at a normal pace.", "Collections were ahead of plan and days sales outstanding were flat."],
+    outlook: "Looking ahead, refinery maintenance schedules support fleet utilization into the fourth quarter.",
+    risk: "Equipment residual values remain the main balance sheet risk and are reviewed quarterly.",
+  },
+};
+
+// Small, deterministic month-to-month movement so the numbers read as a
+// real series without a hand-typed table per company.
+function shortFinancials(sh: Short, mi: number) {
+  const drift = (((mi * 7 + sh.seed) % 11) - 5) / 400;
+  const rev = sh.revBudget * (1 + drift);
+  const em = sh.emBudget + ((((mi * 3 + sh.seed) % 5) - 2) * 0.1);
+  return { rev, revB: sh.revBudget, ebitda: (rev * em) / 100, ebitdaB: (sh.revBudget * sh.emBudget) / 100, em, headcount: sh.headcount + mi * 2 + (mi % 3) };
+}
+
+function renderShort(company: Company, month: Month): { md: string; title: string } {
+  const mi = MONTHS.indexOf(month);
+  const sh = SHORT[company.id];
+  const own = arcs.filter((a) => a.companyId === company.id);
+  const at = (a: Arc) => a.months[month];
+  const title = `${company.name}, ${monthYear(month)}, Monthly report to the board`;
+  const L: string[] = [];
+  const p = (s: string) => L.push(s, "");
+  const x = shortFinancials(sh, mi);
+
+  p(`# ${company.name}`);
+  p(`## Monthly report to the board, ${monthYear(month)}`);
+  p(`Prepared by ${company.ceo.name}, ${company.ceo.title}. Distributed to the board on ${distributionDate(month)}. Figures are unaudited management accounts.`);
+
+  p("## Financial summary");
+  L.push("| Metric | Month actual | Month budget | Variance |");
+  L.push("|---|---|---|---|");
+  L.push(`| Revenue | ${money(x.rev)} | ${money(x.revB)} | ${signed(x.rev - x.revB)} |`);
+  L.push(`| EBITDA | ${money(x.ebitda)} | ${money(x.ebitdaB)} | ${signed(x.ebitda - x.ebitdaB)} |`);
+  L.push(`| EBITDA margin | ${pct(x.em)} | ${pct(sh.emBudget)} | ${signed(x.em - sh.emBudget, " pts")} |`);
+  L.push("");
+  const revVar = ((x.rev - x.revB) / x.revB) * 100;
+  p(`Revenue for the month was ${money(x.rev)}, ${f1(Math.abs(revVar))}% ${revVar >= 0 ? "above" : "below"} budget. EBITDA was ${money(x.ebitda)}, ${signed(x.ebitda - x.ebitdaB)} to budget. Liquidity is within plan and all covenants were met at month end.`);
+
+  p("## CEO commentary");
+  p(`${pick(sh.commentary, mi)} ${pick(sh.commentary, mi + 1)}`);
+  p(sh.outlook);
+
+  p("## Strategic initiatives");
+  p("Update on the initiatives agreed with the board in January, in board order.");
+  own.forEach((a, ai) => {
+    const r = at(a);
+    if (!r.sentence) return;
+    p(`### ${a.name}`);
+    p(`Board target: ${a.boardTarget}. Owner: ${a.owner}.`);
+    p(`${r.sentence} ${pick(FILLERS, ai + mi + sh.seed)}`);
+  });
+
+  p("## People");
+  p(`No changes to the leadership team this month. Total headcount was ${x.headcount.toLocaleString("en-US")} at month end.`);
+
+  p("## Risks and asks");
+  p(sh.risk);
+  p("No asks of the board this month.");
+
+  return { md: paginate(L), title };
+}
+
 function distributionDate(month: Month): string {
   const [y, m] = month.split("-").map(Number);
   const next = new Date(Date.UTC(y, m, 5));
@@ -312,7 +432,8 @@ const index: Report[] = [];
 for (const c of companies) {
   for (const m of MONTHS) {
     const id = reportId(c.id, m);
-    const { md, title } = render(c, m);
+    if (!FIN[c.id] && !SHORT[c.id]) throw new Error(`${c.id}: no report template (add it to FIN or SHORT)`);
+    const { md, title } = FIN[c.id] ? render(c, m) : renderShort(c, m);
     writeFileSync(join(outDir, `${id}.md`), md);
     index.push(toReport(id, title, md));
   }

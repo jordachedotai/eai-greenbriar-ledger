@@ -10,7 +10,7 @@ import { monthLabel, numberWord, plural } from "@/lib/format";
 
 export default function ReportsPage() {
   const stateName = useStore((s) => s.stateName);
-  const companies = getCompanies();
+  const companies = getCompanies(stateName);
   const all = getReports(undefined, stateName);
   const months = getMonths(stateName);
   const last = monthLabel(months[months.length - 1]);

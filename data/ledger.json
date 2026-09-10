@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T00:05:53.332Z",
+  "generatedAt": "2026-09-10T01:05:17.628Z",
   "mode": "code",
   "companies": [
     {
@@ -18,7 +18,8 @@
         "harlan-plant",
         "harlan-pricing",
         "harlan-tms"
-      ]
+      ],
+      "core": true
     },
     {
       "id": "meridian",
@@ -36,7 +37,8 @@
         "meridian-drivers",
         "meridian-cfo",
         "meridian-warehouse"
-      ]
+      ],
+      "core": true
     },
     {
       "id": "corvus",
@@ -54,10 +56,540 @@
         "corvus-mro",
         "corvus-tms",
         "corvus-concentration"
+      ],
+      "core": true
+    },
+    {
+      "id": "ashcombe",
+      "name": "Ashcombe Industrial Coatings",
+      "sector": "Industrial services",
+      "city": "Erie, PA",
+      "ceo": {
+        "name": "Tomas Iglesias",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-18",
+      "initiativeIds": [
+        "ashcombe-booth",
+        "ashcombe-crew"
+      ]
+    },
+    {
+      "id": "pellston",
+      "name": "Pellston Intermodal",
+      "sector": "Logistics",
+      "city": "Kansas City, MO",
+      "ceo": {
+        "name": "Anita Desai",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-21",
+      "initiativeIds": [
+        "pellston-yard",
+        "pellston-drayage"
+      ]
+    },
+    {
+      "id": "larkmoor",
+      "name": "Larkmoor Aviation Support",
+      "sector": "Aviation services",
+      "city": "Tulsa, OK",
+      "ceo": {
+        "name": "Grant Okafor",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-22",
+      "initiativeIds": [
+        "larkmoor-hangar",
+        "larkmoor-parts"
+      ]
+    },
+    {
+      "id": "redfern",
+      "name": "Redfern Distribution Partners",
+      "sector": "Distribution",
+      "city": "Columbus, OH",
+      "ceo": {
+        "name": "Helen Marchetti",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-22",
+      "initiativeIds": [
+        "redfern-dc",
+        "redfern-online"
+      ]
+    },
+    {
+      "id": "thornbury",
+      "name": "Thornbury Facility Services",
+      "sector": "Business services",
+      "city": "Charlotte, NC",
+      "ceo": {
+        "name": "Owen Baptiste",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-23",
+      "initiativeIds": [
+        "thornbury-renewals",
+        "thornbury-payroll"
+      ]
+    },
+    {
+      "id": "marlow",
+      "name": "Marlow Transit Equipment",
+      "sector": "Transportation equipment",
+      "city": "Fort Wayne, IN",
+      "ceo": {
+        "name": "Sylvia Krantz",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-24",
+      "initiativeIds": [
+        "marlow-paint",
+        "marlow-backlog"
+      ]
+    },
+    {
+      "id": "brightwater",
+      "name": "Brightwater Cold Chain",
+      "sector": "Logistics",
+      "city": "Greenville, SC",
+      "ceo": {
+        "name": "Devon Ashby",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-18",
+      "initiativeIds": [
+        "brightwater-monitoring",
+        "brightwater-expansion"
+      ]
+    },
+    {
+      "id": "halvorsen",
+      "name": "Halvorsen Fastener Supply",
+      "sector": "Distribution",
+      "city": "Milwaukee, WI",
+      "ceo": {
+        "name": "Ruth Adeyemi",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-25",
+      "initiativeIds": [
+        "halvorsen-branches",
+        "halvorsen-vmi"
+      ]
+    },
+    {
+      "id": "sablecreek",
+      "name": "Sable Creek Equipment Services",
+      "sector": "Industrial services",
+      "city": "Baton Rouge, LA",
+      "ceo": {
+        "name": "Felix Moreau",
+        "title": "CEO"
+      },
+      "dealLeadId": "matt-burke",
+      "nextCall": "2026-09-21",
+      "initiativeIds": [
+        "sablecreek-telematics",
+        "sablecreek-safety"
       ]
     }
   ],
   "initiatives": [
+    {
+      "id": "ashcombe-booth",
+      "companyId": "ashcombe",
+      "name": "Blast booth automation",
+      "boardTarget": "online by end of Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Tomas Iglesias",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The automated blast booth is on plan to be online by the end of Q2.",
+          "cite": {
+            "reportId": "ashcombe-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Booth foundations were poured in February and the equipment is on order.",
+          "cite": {
+            "reportId": "ashcombe-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The blast booth equipment shipped from the manufacturer in March.",
+          "cite": {
+            "reportId": "ashcombe-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Booth installation began in April with the mechanical contractor on site.",
+          "cite": {
+            "reportId": "ashcombe-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Commissioning of the blast booth is scheduled for the second week of June.",
+          "cite": {
+            "reportId": "ashcombe-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q2 2026",
+            "to": "June",
+            "label": "Date stated: June"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The automated blast booth went live on June 18 and is running two shifts.",
+          "cite": {
+            "reportId": "ashcombe-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Blast booth throughput in July was ahead of the level assumed in the plan.",
+          "cite": {
+            "reportId": "ashcombe-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The blast booth ran at plan through August with no unplanned downtime.",
+          "cite": {
+            "reportId": "ashcombe-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Live June 18. Running two shifts at plan."
+      }
+    },
+    {
+      "id": "ashcombe-crew",
+      "companyId": "ashcombe",
+      "name": "Field crew scheduling system",
+      "boardTarget": "live in all districts by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Nadia Ferris, COO",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Field crew scheduling software selection is underway with a Q3 go-live planned.",
+          "cite": {
+            "reportId": "ashcombe-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The crew scheduling vendor was selected in February.",
+          "cite": {
+            "reportId": "ashcombe-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Configuration of the crew scheduling system started in March.",
+          "cite": {
+            "reportId": "ashcombe-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Crew leads began scheduling system training in April.",
+          "cite": {
+            "reportId": "ashcombe-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The crew scheduling pilot is running in the Erie district.",
+          "cite": {
+            "reportId": "ashcombe-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Erie pilot is producing crew schedules a week ahead.",
+          "cite": {
+            "reportId": "ashcombe-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Crew scheduling go-live for the remaining districts is set for September.",
+          "cite": {
+            "reportId": "ashcombe-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Crew scheduling remains on plan for the September go-live in all districts.",
+          "cite": {
+            "reportId": "ashcombe-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Pilot running in Erie. All districts live in September."
+      }
+    },
+    {
+      "id": "brightwater-monitoring",
+      "companyId": "brightwater",
+      "name": "Trailer temperature monitoring",
+      "boardTarget": "full fleet monitored by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Devon Ashby",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Trailer temperature monitoring will cover the full fleet by the end of Q2.",
+          "cite": {
+            "reportId": "brightwater-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Monitoring units were fitted to 120 trailers in February.",
+          "cite": {
+            "reportId": "brightwater-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Half of the trailer fleet now carries temperature monitoring.",
+          "cite": {
+            "reportId": "brightwater-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Monitoring installation continued in April at the planned rate.",
+          "cite": {
+            "reportId": "brightwater-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Monitoring units are fitted to 90% of the trailer fleet.",
+          "cite": {
+            "reportId": "brightwater-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The full trailer fleet carried temperature monitoring by the end of June.",
+          "cite": {
+            "reportId": "brightwater-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Temperature exception reports covered the full fleet in July.",
+          "cite": {
+            "reportId": "brightwater-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The monitoring program is complete and exception reporting is now weekly.",
+          "cite": {
+            "reportId": "brightwater-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Full fleet monitored by end of June."
+      }
+    },
+    {
+      "id": "brightwater-expansion",
+      "companyId": "brightwater",
+      "name": "Greenville cold storage expansion",
+      "boardTarget": "40,000 pallet positions open by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Tessa Holloway, VP Facilities",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Greenville cold storage expansion adds 40,000 pallet positions by Q4.",
+          "cite": {
+            "reportId": "brightwater-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Design of the Greenville expansion was completed in February.",
+          "cite": {
+            "reportId": "brightwater-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The general contractor for the Greenville expansion was appointed in March.",
+          "cite": {
+            "reportId": "brightwater-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Ground was broken on the Greenville expansion in April.",
+          "cite": {
+            "reportId": "brightwater-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": false,
+          "flag": "green"
+        },
+        "2026-06": {
+          "mentioned": false,
+          "flag": "grey",
+          "change": {
+            "kind": "silent",
+            "from": "April",
+            "label": "Not mentioned since April"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Refrigeration equipment for the Greenville expansion was ordered in July.",
+          "cite": {
+            "reportId": "brightwater-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Greenville expansion remains on plan for Q4.",
+          "cite": {
+            "reportId": "brightwater-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Refrigeration ordered in July. On plan for Q4. Not mentioned in May or June."
+      }
+    },
     {
       "id": "corvus-sales",
       "companyId": "corvus",
@@ -417,6 +949,207 @@
         "flag": "green",
         "pill": "On track",
         "sentence": "Top customer 33%, down from 38% in January."
+      }
+    },
+    {
+      "id": "halvorsen-branches",
+      "companyId": "halvorsen",
+      "name": "Branch network consolidation",
+      "boardTarget": "eleven branches to eight by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Ruth Adeyemi",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Consolidation from eleven branches to eight is planned to complete by the end of Q3.",
+          "cite": {
+            "reportId": "halvorsen-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Racine branch was merged into Milwaukee in February.",
+          "cite": {
+            "reportId": "halvorsen-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Customer transfers from the Racine branch were completed in March.",
+          "cite": {
+            "reportId": "halvorsen-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Rockford branch consolidation is scheduled for June.",
+          "cite": {
+            "reportId": "halvorsen-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Lease notice on the Rockford branch was served in May.",
+          "cite": {
+            "reportId": "halvorsen-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The branch consolidation program remains on plan.",
+          "cite": {
+            "reportId": "halvorsen-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "label": "Restated without a date"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Rockford branch closed in July and the final consolidation completes in September.",
+          "cite": {
+            "reportId": "halvorsen-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The last branch consolidation remains on plan for September.",
+          "cite": {
+            "reportId": "halvorsen-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two of three consolidations done. Last one in September."
+      }
+    },
+    {
+      "id": "halvorsen-vmi",
+      "companyId": "halvorsen",
+      "name": "Vendor managed inventory program",
+      "boardTarget": "25 customer sites by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Ben Aldana, VP Sales",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The vendor managed inventory program targets 25 customer sites by Q4.",
+          "cite": {
+            "reportId": "halvorsen-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Three customer sites joined the vendor managed inventory program in February.",
+          "cite": {
+            "reportId": "halvorsen-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Eight customer sites are live on vendor managed inventory.",
+          "cite": {
+            "reportId": "halvorsen-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Twelve customer sites are live on vendor managed inventory.",
+          "cite": {
+            "reportId": "halvorsen-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Fifteen customer sites are live on vendor managed inventory.",
+          "cite": {
+            "reportId": "halvorsen-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Eighteen customer sites are live on vendor managed inventory.",
+          "cite": {
+            "reportId": "halvorsen-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Twenty customer sites are live on vendor managed inventory.",
+          "cite": {
+            "reportId": "halvorsen-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Twenty-two customer sites are live, on plan for 25 by Q4.",
+          "cite": {
+            "reportId": "halvorsen-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Twenty-two sites live. Target 25 by Q4."
       }
     },
     {
@@ -842,6 +1575,398 @@
       ]
     },
     {
+      "id": "larkmoor-hangar",
+      "companyId": "larkmoor",
+      "name": "Second hangar line at Tulsa",
+      "boardTarget": "operational by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Grant Okafor",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The second hangar line at Tulsa is planned to be operational in Q3.",
+          "cite": {
+            "reportId": "larkmoor-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Tooling for the second hangar line was ordered in February.",
+          "cite": {
+            "reportId": "larkmoor-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Structural work on the second hangar line finished in March.",
+          "cite": {
+            "reportId": "larkmoor-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Hiring for the second hangar line started with twelve technician openings.",
+          "cite": {
+            "reportId": "larkmoor-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Nine of the twelve technician roles for the second line have been filled.",
+          "cite": {
+            "reportId": "larkmoor-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Tooling for the second hangar line arrived and installation began in June.",
+          "cite": {
+            "reportId": "larkmoor-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The second hangar line is scheduled to take its first aircraft in September.",
+          "cite": {
+            "reportId": "larkmoor-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The second hangar line remains on plan for its first aircraft in September.",
+          "cite": {
+            "reportId": "larkmoor-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Tooling installed. First aircraft in September."
+      }
+    },
+    {
+      "id": "larkmoor-parts",
+      "companyId": "larkmoor",
+      "name": "Rotable parts pool",
+      "boardTarget": "pool stocked by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Mei Tanaka, VP Supply Chain",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The rotable parts pool will be stocked to plan by the end of Q2.",
+          "cite": {
+            "reportId": "larkmoor-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Purchase orders for the rotable parts pool were placed in February.",
+          "cite": {
+            "reportId": "larkmoor-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "About half of the rotable pool inventory had arrived by the end of March.",
+          "cite": {
+            "reportId": "larkmoor-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Rotable pool receipts continued in April and the pool is on plan for the end of Q2.",
+          "cite": {
+            "reportId": "larkmoor-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The rotable parts pool was fully stocked in May, ahead of the Q2 target.",
+          "cite": {
+            "reportId": "larkmoor-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The rotable pool supported every heavy check in June without an outside lease.",
+          "cite": {
+            "reportId": "larkmoor-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Rotable pool turns in July were in line with the plan.",
+          "cite": {
+            "reportId": "larkmoor-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The rotable parts pool remains fully stocked and in use.",
+          "cite": {
+            "reportId": "larkmoor-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Fully stocked in May. In use on every heavy check."
+      }
+    },
+    {
+      "id": "marlow-paint",
+      "companyId": "marlow",
+      "name": "Paint line modernization",
+      "boardTarget": "new paint line running by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Sylvia Krantz",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The new paint line is planned to be running in Q3.",
+          "cite": {
+            "reportId": "marlow-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The paint line equipment contract was signed in February.",
+          "cite": {
+            "reportId": "marlow-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Paint line foundation work started in March during the planned shutdown.",
+          "cite": {
+            "reportId": "marlow-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Paint line equipment fabrication is on schedule at the supplier.",
+          "cite": {
+            "reportId": "marlow-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The paint line equipment is due on site in July.",
+          "cite": {
+            "reportId": "marlow-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Preparation of the paint line bay was completed in June.",
+          "cite": {
+            "reportId": "marlow-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Paint line equipment arrived in July and installation is underway.",
+          "cite": {
+            "reportId": "marlow-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The new paint line remains on plan to be running in September.",
+          "cite": {
+            "reportId": "marlow-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment installed. Running in September."
+      }
+    },
+    {
+      "id": "marlow-backlog",
+      "companyId": "marlow",
+      "name": "Backlog conversion",
+      "boardTarget": "backlog under 9 months by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Ravi Menon, VP Operations",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The order backlog stands at 12 months and the target is under 9 months by Q4.",
+          "cite": {
+            "reportId": "marlow-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Second shift hiring to work down the backlog began in February.",
+          "cite": {
+            "reportId": "marlow-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The order backlog was 11 months at the end of March.",
+          "cite": {
+            "reportId": "marlow-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Second shift output reached plan in April.",
+          "cite": {
+            "reportId": "marlow-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The order backlog was 10 months at the end of May.",
+          "cite": {
+            "reportId": "marlow-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Backlog conversion continued in June at the second shift run rate.",
+          "cite": {
+            "reportId": "marlow-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The order backlog was 10 months at the end of July.",
+          "cite": {
+            "reportId": "marlow-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The order backlog was 9 months at the end of August, on plan for under 9 months by Q4.",
+          "cite": {
+            "reportId": "marlow-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Backlog 9 months in August, from 12 in January."
+      }
+    },
+    {
       "id": "meridian-pricing",
       "companyId": "meridian",
       "name": "Pricing initiative, +2 to 3 pts by Q3",
@@ -1235,6 +2360,801 @@
         "flag": "green",
         "pill": "On track",
         "sentence": "Equipment installed. First throughput read in September."
+      }
+    },
+    {
+      "id": "pellston-yard",
+      "companyId": "pellston",
+      "name": "Yard management system",
+      "boardTarget": "live at all three ramps by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Anita Desai",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The yard management system will be live at all three ramps by the end of Q3.",
+          "cite": {
+            "reportId": "pellston-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Yard management hardware was installed at the Kansas City ramp in February.",
+          "cite": {
+            "reportId": "pellston-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Kansas City ramp went live on the yard management system in March.",
+          "cite": {
+            "reportId": "pellston-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "The yard management rollout to the other two ramps remains on plan.",
+          "cite": {
+            "reportId": "pellston-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "label": "Restated without a date"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Dallas goes live on the yard system in June and Memphis in September, inside the Q3 target.",
+          "cite": {
+            "reportId": "pellston-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Dallas ramp went live on the yard management system in June.",
+          "cite": {
+            "reportId": "pellston-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Memphis ramp preparation for the yard management system is underway.",
+          "cite": {
+            "reportId": "pellston-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Memphis ramp remains on plan for a September go-live.",
+          "cite": {
+            "reportId": "pellston-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Two of three ramps live. Memphis in September."
+      }
+    },
+    {
+      "id": "pellston-drayage",
+      "companyId": "pellston",
+      "name": "Drayage fleet renewal",
+      "boardTarget": "40 new tractors in service by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Carl Whitmore, VP Operations",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Forty new drayage tractors are on order for delivery through Q4.",
+          "cite": {
+            "reportId": "pellston-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The first ten drayage tractors were delivered in February.",
+          "cite": {
+            "reportId": "pellston-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Twenty of the forty drayage tractors are now in service.",
+          "cite": {
+            "reportId": "pellston-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Drayage tractor deliveries continued in April at the planned pace.",
+          "cite": {
+            "reportId": "pellston-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Thirty drayage tractors are in service and fuel cost per mile on the new units is below the fleet average.",
+          "cite": {
+            "reportId": "pellston-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The final ten drayage tractors are scheduled for delivery in Q4.",
+          "cite": {
+            "reportId": "pellston-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Older drayage tractors are being retired as the new units arrive.",
+          "cite": {
+            "reportId": "pellston-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Drayage fleet renewal remains on plan with thirty in service and ten due in Q4.",
+          "cite": {
+            "reportId": "pellston-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Thirty of forty in service. Last ten due in Q4."
+      }
+    },
+    {
+      "id": "redfern-dc",
+      "companyId": "redfern",
+      "name": "Columbus distribution center expansion",
+      "boardTarget": "expansion open by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Helen Marchetti",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Columbus distribution center expansion is on plan to open in Q4.",
+          "cite": {
+            "reportId": "redfern-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Permits for the Columbus expansion were issued in February.",
+          "cite": {
+            "reportId": "redfern-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Site work on the Columbus expansion began in March.",
+          "cite": {
+            "reportId": "redfern-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Steel for the Columbus expansion is going up on schedule.",
+          "cite": {
+            "reportId": "redfern-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Columbus expansion building was enclosed in May.",
+          "cite": {
+            "reportId": "redfern-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Racking for the Columbus expansion has been ordered for an October installation.",
+          "cite": {
+            "reportId": "redfern-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Interior fit-out of the Columbus expansion is underway.",
+          "cite": {
+            "reportId": "redfern-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The Columbus expansion remains on plan to open in Q4.",
+          "cite": {
+            "reportId": "redfern-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Building enclosed. Fit-out underway. Opens in Q4."
+      }
+    },
+    {
+      "id": "redfern-online",
+      "companyId": "redfern",
+      "name": "Online order share to 30%",
+      "boardTarget": "30% of orders online by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Rosa Delgado, VP Commercial",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online orders were 20% of order volume and the target is 30% by Q4.",
+          "cite": {
+            "reportId": "redfern-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online orders reached 22% of volume in February.",
+          "cite": {
+            "reportId": "redfern-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The new customer portal launched in March with reorder features.",
+          "cite": {
+            "reportId": "redfern-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "amber",
+          "quote": "Online orders were 21% of volume in April, down slightly on a seasonal mix.",
+          "cite": {
+            "reportId": "redfern-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "number",
+            "from": "22%",
+            "to": "21%",
+            "label": "Number moved: 22% to 21%"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online orders were 24% of volume in May.",
+          "cite": {
+            "reportId": "redfern-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online order share held at 25% in June.",
+          "cite": {
+            "reportId": "redfern-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online orders were 26% of volume in July.",
+          "cite": {
+            "reportId": "redfern-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Online orders reached 27% of volume in August, on plan for 30% by Q4.",
+          "cite": {
+            "reportId": "redfern-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "27% in August, from 20% in January. Target 30% by Q4."
+      }
+    },
+    {
+      "id": "sablecreek-telematics",
+      "companyId": "sablecreek",
+      "name": "Fleet telematics",
+      "boardTarget": "telematics across the rental fleet by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Felix Moreau",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics will be fitted across the rental fleet by the end of Q2.",
+          "cite": {
+            "reportId": "sablecreek-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics units were fitted to the first 200 rental units in February.",
+          "cite": {
+            "reportId": "sablecreek-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics installation passed the halfway point in March.",
+          "cite": {
+            "reportId": "sablecreek-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics installation is on plan for completion in June.",
+          "cite": {
+            "reportId": "sablecreek-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q2 2026",
+            "to": "June",
+            "label": "Date stated: June"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics installation reached 85% of the rental fleet in May.",
+          "cite": {
+            "reportId": "sablecreek-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics installation across the rental fleet was completed in June.",
+          "cite": {
+            "reportId": "sablecreek-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Utilization reporting from telematics started in July.",
+          "cite": {
+            "reportId": "sablecreek-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Telematics data is now part of the weekly rental utilization review.",
+          "cite": {
+            "reportId": "sablecreek-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Fitted across the fleet in June. In the weekly review."
+      }
+    },
+    {
+      "id": "sablecreek-safety",
+      "companyId": "sablecreek",
+      "name": "Safety program, recordable rate under 1.0",
+      "boardTarget": "recordable rate under 1.0 by Q4 2026",
+      "targetDate": "2026-Q4",
+      "owner": "Gloria Pham, VP Safety",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The recordable incident rate was 1.8 and the target is under 1.0 by Q4.",
+          "cite": {
+            "reportId": "sablecreek-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Site safety leads were appointed at every branch in February.",
+          "cite": {
+            "reportId": "sablecreek-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The recordable incident rate was 1.5 at the end of March.",
+          "cite": {
+            "reportId": "sablecreek-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Daily equipment inspections were added to the safety program in April.",
+          "cite": {
+            "reportId": "sablecreek-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The recordable incident rate was 1.3 at the end of May.",
+          "cite": {
+            "reportId": "sablecreek-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Safety training hours in June were double the prior year.",
+          "cite": {
+            "reportId": "sablecreek-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The recordable incident rate was 1.1 at the end of July.",
+          "cite": {
+            "reportId": "sablecreek-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The recordable incident rate held at 1.1 in August, on plan for under 1.0 by Q4.",
+          "cite": {
+            "reportId": "sablecreek-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Rate 1.1 in August, from 1.8 in January."
+      }
+    },
+    {
+      "id": "thornbury-renewals",
+      "companyId": "thornbury",
+      "name": "Top twenty contract renewals",
+      "boardTarget": "all twenty renewed by Q3 2026",
+      "targetDate": "2026-Q3",
+      "owner": "Owen Baptiste",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The renewal program covers the top twenty contracts, with all renewals targeted by the end of Q3.",
+          "cite": {
+            "reportId": "thornbury-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Four of the top twenty contracts were renewed in February.",
+          "cite": {
+            "reportId": "thornbury-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Nine of the top twenty contracts have now been renewed.",
+          "cite": {
+            "reportId": "thornbury-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Renewal discussions are underway on eight further contracts.",
+          "cite": {
+            "reportId": "thornbury-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Fourteen of the top twenty contracts have been renewed.",
+          "cite": {
+            "reportId": "thornbury-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Sixteen of the top twenty contracts have been renewed at or above prior rates.",
+          "cite": {
+            "reportId": "thornbury-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Eighteen of the top twenty contracts are renewed, with two in final negotiation.",
+          "cite": {
+            "reportId": "thornbury-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The last two renewals are expected to close in September, inside the Q3 target.",
+          "cite": {
+            "reportId": "thornbury-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q3 2026",
+            "to": "September",
+            "label": "Date stated: September"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Eighteen of twenty renewed. Last two close in September."
+      }
+    },
+    {
+      "id": "thornbury-payroll",
+      "companyId": "thornbury",
+      "name": "Payroll and HR platform",
+      "boardTarget": "single platform by Q2 2026",
+      "targetDate": "2026-Q2",
+      "owner": "Lena Sorensen, CFO",
+      "months": {
+        "2026-01": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The payroll and HR platform consolidation is on plan for the end of Q2.",
+          "cite": {
+            "reportId": "thornbury-2026-01",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-02": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Data migration for the payroll platform began in February.",
+          "cite": {
+            "reportId": "thornbury-2026-02",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-03": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Payroll data migration was two thirds complete at the end of March.",
+          "cite": {
+            "reportId": "thornbury-2026-03",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-04": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "Parallel payroll runs start in May ahead of a June cutover.",
+          "cite": {
+            "reportId": "thornbury-2026-04",
+            "page": 1,
+            "section": "Strategic initiatives"
+          },
+          "change": {
+            "kind": "date",
+            "from": "Q2 2026",
+            "to": "June",
+            "label": "Date stated: June"
+          }
+        },
+        "2026-05": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The first parallel payroll run in May reconciled with no material differences.",
+          "cite": {
+            "reportId": "thornbury-2026-05",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-06": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The consolidated payroll and HR platform went live on June 26.",
+          "cite": {
+            "reportId": "thornbury-2026-06",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-07": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "July payroll ran on the new platform without issue.",
+          "cite": {
+            "reportId": "thornbury-2026-07",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        },
+        "2026-08": {
+          "mentioned": true,
+          "flag": "green",
+          "quote": "The payroll platform is stable and the legacy systems were switched off in August.",
+          "cite": {
+            "reportId": "thornbury-2026-08",
+            "page": 1,
+            "section": "Strategic initiatives"
+          }
+        }
+      },
+      "status": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Live June 26. Legacy systems off in August."
       }
     }
   ]

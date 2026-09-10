@@ -3,7 +3,9 @@
 // before and after "August report arrives," the ERP flag change, the three
 // questions, the May cite landing on the May report page with the sentence
 // marked, the three pattern cards, and the draft log entry after "Dictate
-// a note." Fails on any console error.
+// a note." Then Beat 7: jump to monday shows twelve companies, and Reset
+// to August returns to the three-company august state. Fails on any
+// console error.
 
 import { expect, test, type Page } from "@playwright/test";
 
@@ -180,7 +182,24 @@ test("the header month toggle loads july and august like Jump to state", async (
   await page.getByTestId("month-2026-08").click();
   await expect(page.getByTestId("month-2026-08")).toHaveAttribute("aria-selected", "true");
   expect(await counts(page)).toBe("2 / 2 / 1 / 7");
-  // Reset from the presenter menu lands on Portfolio in August.
+  // Beat 7. Monday: twelve company cards, thirty rows, the strip recomputed.
+  await jumpTo(page, "monday");
+  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "monday");
+  await expect(page.getByTestId("company-card")).toHaveCount(12);
+  await expect(page.getByTestId("initiative-row")).toHaveCount(30);
+  expect(await counts(page)).toBe("2 / 2 / 1 / 25");
+  await expect(page.getByTestId("work-strip")).toContainText("30 initiatives across 12 companies. Read from 96 monthly reports.");
+  await expect(page.locator('[data-testid="company-card"][data-company="brightwater"] [data-testid="flag-cell"][data-flag="grey"]')).toHaveCount(1);
+  await expect(page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]')).toHaveAttribute("data-flag", "red");
+  // Reset from the presenter menu lands on Portfolio in August, three companies.
+  await openPresenter(page);
+  await page.getByTestId("presenter-reset").click();
+  await expect(page.getByTestId("portfolio")).toHaveAttribute("data-state", "august");
+  await expect(page.getByTestId("company-card")).toHaveCount(3);
+  expect(await counts(page)).toBe("2 / 2 / 1 / 7");
+  await page.keyboard.press("Shift+P");
+  await expect(page.getByTestId("presenter-menu")).toHaveCount(0);
+  // And august-approved, reset from a company page, also lands on August.
   await jumpTo(page, "august-approved");
   await page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"]').getByTestId("open-initiative").click();
   await expect(page.getByTestId("needs-you")).toHaveAttribute("data-approved", "true");

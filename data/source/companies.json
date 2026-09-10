@@ -7,7 +7,8 @@
     "ceo": { "name": "Dana Whitfield", "title": "CEO" },
     "dealLeadId": "matt-burke",
     "nextCall": "2026-09-17",
-    "initiativeIds": ["harlan-erp", "harlan-plant", "harlan-pricing", "harlan-tms"]
+    "initiativeIds": ["harlan-erp", "harlan-plant", "harlan-pricing", "harlan-tms"],
+    "core": true
   },
   {
     "id": "meridian",
@@ -17,7 +18,8 @@
     "ceo": { "name": "Luis Ortega", "title": "CEO" },
     "dealLeadId": "matt-burke",
     "nextCall": "2026-09-15",
-    "initiativeIds": ["meridian-pricing", "meridian-drivers", "meridian-cfo", "meridian-warehouse"]
+    "initiativeIds": ["meridian-pricing", "meridian-drivers", "meridian-cfo", "meridian-warehouse"],
+    "core": true
   },
   {
     "id": "corvus",
@@ -27,6 +29,97 @@
     "ceo": { "name": "Priya Natarajan", "title": "CEO" },
     "dealLeadId": "matt-burke",
     "nextCall": "2026-09-16",
-    "initiativeIds": ["corvus-sales", "corvus-mro", "corvus-tms", "corvus-concentration"]
+    "initiativeIds": ["corvus-sales", "corvus-mro", "corvus-tms", "corvus-concentration"],
+    "core": true
+  },
+  {
+    "id": "ashcombe",
+    "name": "Ashcombe Industrial Coatings",
+    "sector": "Industrial services",
+    "city": "Erie, PA",
+    "ceo": { "name": "Tomas Iglesias", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-18",
+    "initiativeIds": ["ashcombe-booth", "ashcombe-crew"]
+  },
+  {
+    "id": "pellston",
+    "name": "Pellston Intermodal",
+    "sector": "Logistics",
+    "city": "Kansas City, MO",
+    "ceo": { "name": "Anita Desai", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-21",
+    "initiativeIds": ["pellston-yard", "pellston-drayage"]
+  },
+  {
+    "id": "larkmoor",
+    "name": "Larkmoor Aviation Support",
+    "sector": "Aviation services",
+    "city": "Tulsa, OK",
+    "ceo": { "name": "Grant Okafor", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-22",
+    "initiativeIds": ["larkmoor-hangar", "larkmoor-parts"]
+  },
+  {
+    "id": "redfern",
+    "name": "Redfern Distribution Partners",
+    "sector": "Distribution",
+    "city": "Columbus, OH",
+    "ceo": { "name": "Helen Marchetti", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-22",
+    "initiativeIds": ["redfern-dc", "redfern-online"]
+  },
+  {
+    "id": "thornbury",
+    "name": "Thornbury Facility Services",
+    "sector": "Business services",
+    "city": "Charlotte, NC",
+    "ceo": { "name": "Owen Baptiste", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-23",
+    "initiativeIds": ["thornbury-renewals", "thornbury-payroll"]
+  },
+  {
+    "id": "marlow",
+    "name": "Marlow Transit Equipment",
+    "sector": "Transportation equipment",
+    "city": "Fort Wayne, IN",
+    "ceo": { "name": "Sylvia Krantz", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-24",
+    "initiativeIds": ["marlow-paint", "marlow-backlog"]
+  },
+  {
+    "id": "brightwater",
+    "name": "Brightwater Cold Chain",
+    "sector": "Logistics",
+    "city": "Greenville, SC",
+    "ceo": { "name": "Devon Ashby", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-18",
+    "initiativeIds": ["brightwater-monitoring", "brightwater-expansion"]
+  },
+  {
+    "id": "halvorsen",
+    "name": "Halvorsen Fastener Supply",
+    "sector": "Distribution",
+    "city": "Milwaukee, WI",
+    "ceo": { "name": "Ruth Adeyemi", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-25",
+    "initiativeIds": ["halvorsen-branches", "halvorsen-vmi"]
+  },
+  {
+    "id": "sablecreek",
+    "name": "Sable Creek Equipment Services",
+    "sector": "Industrial services",
+    "city": "Baton Rouge, LA",
+    "ceo": { "name": "Felix Moreau", "title": "CEO" },
+    "dealLeadId": "matt-burke",
+    "nextCall": "2026-09-21",
+    "initiativeIds": ["sablecreek-telematics", "sablecreek-safety"]
   }
 ]

@@ -24,8 +24,9 @@ export default function LogPage() {
   const noteReviewed = useStore((s) => s.noteReviewed);
   const [company, setCompany] = useState<string>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
-  const companies = getCompanies();
   const all = getLogSorted({ drafts: draftModeOf({ noteDictated, noteReviewed }), stateName });
+  // Filter by the companies that have entries; in `monday` most do not yet.
+  const companies = getCompanies(stateName).filter((c) => all.some((e) => e.companyId === c.id));
   const shown = all.filter((e) => (company === "all" || e.companyId === company) && (status === "all" || e.status === status));
   return (
     <div className="flex flex-col gap-4 px-7 pb-7 pt-[22px]" data-testid="log-page">

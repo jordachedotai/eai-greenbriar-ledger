@@ -2,7 +2,8 @@
 
 // The grid: companies by initiatives by months, as the loaded demo state
 // shows them. `july` has seven month cells and no August read; `august`
-// has all eight. Loading one over the other re-renders in place.
+// has all eight; `monday` has all twelve companies. Loading one over
+// another re-renders in place.
 
 import { getCompanies, getInitiatives, getLedgerMeta, getMonths, statusCounts } from "@/lib/data";
 import { useStore } from "@/lib/store";
@@ -12,7 +13,7 @@ import { CompanyCard } from "@/components/Portfolio/CompanyCard";
 export default function PortfolioPage() {
   const filter = useStore((s) => s.workFilter);
   const stateName = useStore((s) => s.stateName);
-  const companies = getCompanies();
+  const companies = getCompanies(stateName);
   const months = getMonths(stateName);
   const all = getInitiatives(undefined, stateName);
   const counts = statusCounts(all);

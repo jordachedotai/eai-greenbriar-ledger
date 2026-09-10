@@ -17,7 +17,7 @@ export function generateStates(): DemoStates {
   const arcs = JSON.parse(read("data/source/arcs.json")) as Arc[];
   const questions = JSON.parse(read("data/questions.json")) as Question[];
   const patterns = JSON.parse(read("data/patterns.json")) as Pattern[];
-  return buildStates({ initiatives: ledger.initiatives, arcs, questions, patterns });
+  return buildStates({ companies: ledger.companies, initiatives: ledger.initiatives, arcs, questions, patterns });
 }
 
 // One entry per data/notes/{companyId}-{slug}-{YYYY-MM-DD}.txt. The draft
@@ -51,7 +51,7 @@ export function generateNotes(): Note[] {
 if (require.main === module) {
   const states = generateStates();
   const notes = generateNotes();
-  const want = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 } };
+  const want = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, monday: { red: 2, amber: 2, grey: 1, green: 25 } };
   for (const [name, counts] of Object.entries(want)) {
     const got = stateCounts(states[name]);
     if (JSON.stringify(got) !== JSON.stringify(counts)) throw new Error(`${name}: counts ${JSON.stringify(got)}, expected ${JSON.stringify(counts)}`);
@@ -61,7 +61,7 @@ if (require.main === module) {
   const summary = Object.values(states)
     .map((s) => {
       const c = stateCounts(s);
-      return `${s.name}: ${s.months.length} months, ${c.red} / ${c.amber} / ${c.grey} / ${c.green}, ${s.questionIds.length} questions, ${s.patternIds.length} patterns`;
+      return `${s.name}: ${s.companyIds.length} companies, ${s.months.length} months, ${c.red} / ${c.amber} / ${c.grey} / ${c.green}, ${s.questionIds.length} questions, ${s.patternIds.length} patterns`;
     })
     .join("\n  ");
   console.log(`Wrote data/demo-states.json and data/notes/index.json (${notes.length} note${notes.length === 1 ? "" : "s"}).\n  ${summary}`);
