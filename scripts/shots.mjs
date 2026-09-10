@@ -1,5 +1,5 @@
 // Dev helper: full-page screenshots at 1440 wide.
-//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2]
+//   node scripts/shots.mjs <outDir> [baseUrl] [phase1|phase2|phase3]
 // The shell scrolls inside <main>, so each capture sizes the viewport to
 // the page's own height instead of using fullPage.
 import { chromium } from "@playwright/test";
@@ -35,7 +35,76 @@ async function signIn() {
   await page.getByTestId("sign-in").waitFor();
 }
 
-if (phase === "phase1") {
+async function presenter() {
+  await page.keyboard.press("Shift+P");
+  await page.getByTestId("presenter-menu").waitFor();
+}
+
+if (phase === "phase3") {
+  const result = { consoleErrors: errors };
+  await signIn();
+  await page.getByTestId("sign-in").click();
+  await page.getByTestId("work-strip").waitFor();
+
+  // July, from the presenter menu. Portfolio at 1 / 3 / 1 / 7.
+  await presenter();
+  await page.getByTestId("jump-state").click();
+  await page.getByTestId("jump-state-opt-july").click();
+  await page.keyboard.press("Shift+P");
+  await page.locator('[data-testid="initiative-row"][data-initiative="harlan-erp"][data-flag="amber"]').waitFor();
+  await fit();
+  await page.screenshot({ path: `${out}/phase3-july-portfolio.png` });
+  const counts = async () => {
+    const c = [];
+    for (const f of ["red", "amber", "grey", "green"]) c.push(await page.getByTestId(`count-${f}`).innerText());
+    return c.join(" / ");
+  };
+  result.julyCounts = await counts();
+
+  // Harlan in July with the presenter menu open.
+  await page.locator('[data-initiative="harlan-erp"] [data-testid="open-initiative"]').click();
+  await page.getByTestId("questions-empty").waitFor();
+  await presenter();
+  await fit();
+  await page.screenshot({ path: `${out}/phase3-presenter-open.png` });
+
+  // August report arrives, on the Harlan page.
+  await page.getByTestId("beat-august-arrives").click();
+  await page.getByTestId("working").waitFor();
+  await page.locator('[data-testid="question"]').first().waitFor({ timeout: 6000 });
+  await page.locator('[data-testid="stack-entry"][data-month="2026-08"]').waitFor();
+  await page.waitForTimeout(600);
+  await fit();
+  await page.screenshot({ path: `${out}/phase3-august-arrives.png` });
+  result.afterAugust = {
+    questions: await page.getByTestId("question").count(),
+    stackMonths: await page.locator('[data-testid="stack-entry"]').evaluateAll((els) => els.map((e) => e.getAttribute("data-month"))),
+    pill: await page.locator('[data-testid="quote-stack"] [data-testid="status-pill"]').innerText(),
+  };
+  await page.goto(`${base}/portfolio`, { waitUntil: "networkidle" });
+  await page.getByTestId("work-strip").waitFor();
+  result.augustCounts = await counts();
+
+  // Dictate a note, then Meridian's learning log tab before Review.
+  await page.goto(`${base}/portfolio/meridian?tab=log`, { waitUntil: "networkidle" });
+  await page.getByTestId("log-tab").waitFor();
+  await presenter();
+  await page.getByTestId("beat-dictate").click();
+  await page.locator('[data-testid="dictation"][data-status="drafted"]').waitFor({ timeout: 8000 });
+  await page.locator('[data-testid="log-tab"] [data-testid="log-entry"][data-status="draft"]').waitFor();
+  await page.waitForTimeout(300);
+  await fit();
+  await page.screenshot({ path: `${out}/phase3-dictate.png` });
+
+  // The Learning log page with the Draft entry.
+  await page.getByTestId("nav-learning-log").click();
+  await page.locator('[data-testid="log-page"] [data-testid="log-entry"][data-status="draft"]').waitFor();
+  await fit();
+  await page.screenshot({ path: `${out}/phase3-log.png` });
+  result.draftEntries = await page.locator('[data-testid="log-entry"][data-status="draft"]').count();
+
+  console.log(JSON.stringify(result, null, 1));
+} else if (phase === "phase1") {
   await signIn();
   await page.screenshot({ path: `${out}/phase1-login.png`, fullPage: true });
   await page.getByTestId("sign-in").click();
