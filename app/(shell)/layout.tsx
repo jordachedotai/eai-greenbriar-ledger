@@ -1,13 +1,16 @@
 "use client";
 
-// The signed-in shell: sidebar, header, page content. The presenter menu
-// mounts here in Phase 3.
+// The signed-in shell: sidebar, header, page content, the presenter menu,
+// the working indicator, and the dictation panel.
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { Sidebar } from "@/components/Shell/Sidebar";
 import { Header } from "@/components/Shell/Header";
+import { PresenterMenu } from "@/components/Presenter/PresenterMenu";
+import { WorkingToast } from "@/components/Presenter/WorkingToast";
+import { DictationPanel } from "@/components/Presenter/DictationPanel";
 
 export default function ShellLayout({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -28,6 +31,9 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
         <Header />
         <main className="min-h-0 flex-1 overflow-y-auto">{children}</main>
       </div>
+      <WorkingToast />
+      <DictationPanel />
+      <PresenterMenu />
     </div>
   );
 }
