@@ -27,12 +27,18 @@ export function InitiativeRow({ initiative }: { initiative: Initiative }) {
         <span className="text-[13px] text-mut">Board target: {initiative.boardTarget}</span>
       </div>
       <MonthCells initiative={initiative} />
-      <div className="flex min-w-0 items-center gap-2.5">
-        <StatusPill flag={flag} text={initiative.status.pill} />
-        <span className="min-w-0 truncate text-[14px] text-txt" title={initiative.status.sentence}>
+      <div className="flex min-w-0 items-start gap-2.5">
+        <span className="shrink-0">
+          <StatusPill flag={flag} text={initiative.status.pill} />
+        </span>
+        <span className="min-w-0 flex-1 text-[14px] leading-[1.45] text-txt" style={{ paddingTop: 1 }} data-testid="status-sentence">
           {initiative.status.sentence}
         </span>
-        {initiative.status.chip ? <YouChip text={initiative.status.chip.text} /> : null}
+        {initiative.status.chip ? (
+          <span className="shrink-0">
+            <YouChip text={initiative.status.chip.text} />
+          </span>
+        ) : null}
       </div>
       <Link href={`/portfolio/${initiative.companyId}?initiative=${initiative.id}`} className="text-right text-[15px] font-semibold text-brand hover:text-brand2" data-testid="open-initiative">
         Open
