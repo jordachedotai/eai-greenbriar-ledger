@@ -2,13 +2,16 @@
 // from arcs.json by a character, any flag or change that differs from the
 // intended one, any cite that does not resolve to a real report page with
 // the quote on it. Also checks the authored fixtures' cites, the August
-// counts, and that no fixture or UI copy carries an em-dash.
+// counts, that the demo states and the notes index are what the generator
+// produces, and that no fixture or UI copy carries an em-dash.
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import type { Arc, CurrentState, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
+import type { Arc, CurrentState, DemoStates, Gap, Ledger, LogEntry, Pattern, Question, QuarterlyPrep } from "../lib/types";
 import { MONTHS } from "../lib/types";
 import { locateSentence, pageText, reportId } from "../lib/reports";
+import { stateCounts } from "../lib/states";
+import { generateNotes, generateStates } from "./gen-states";
 
 const ROOT = join(__dirname, "..");
 const read = (p: string) => readFileSync(join(ROOT, p), "utf8");
@@ -140,6 +143,32 @@ for (const e of JSON.parse(read("data/log.json")) as LogEntry[]) {
 }
 for (const s of JSON.parse(read("data/current-state.json")) as CurrentState[]) {
   if (!ledger.companies.some((c) => c.id === s.companyId)) fail(`current-state: unknown company ${s.companyId}`);
+}
+
+// 3e. Demo states and the notes index are exactly what the generator
+// produces from the fixtures now. Anything else is drift.
+if (existsSync(join(ROOT, "data/demo-states.json"))) {
+  const committed = read("data/demo-states.json");
+  const fresh = JSON.stringify(generateStates(), null, 2) + "\n";
+  if (committed !== fresh) fail("data/demo-states.json differs from what scripts/gen-states.ts produces; run npm run gen:states");
+  const states = JSON.parse(committed) as DemoStates;
+  const want: Record<string, Record<string, number>> = { july: { red: 1, amber: 3, grey: 1, green: 7 }, august: { red: 2, amber: 2, grey: 1, green: 7 }, "august-approved": { red: 2, amber: 2, grey: 1, green: 7 } };
+  for (const [name, counts] of Object.entries(want)) {
+    if (!states[name]) {
+      fail(`demo state ${name} is missing`);
+      continue;
+    }
+    const got = stateCounts(states[name]);
+    if (JSON.stringify(got) !== JSON.stringify(counts)) fail(`demo state ${name}: counts ${JSON.stringify(got)}, expected ${JSON.stringify(counts)}`);
+  }
+  if (states.july?.questionIds.length) fail("demo state july should have no questions");
+  if (states.july?.status["harlan-erp"]?.flag !== "amber") fail("demo state july: harlan-erp should be amber");
+  if (JSON.stringify(states["august-approved"]?.questionsApproved) !== JSON.stringify(["harlan"])) fail("demo state august-approved: Harlan's questions should be approved");
+}
+if (existsSync(join(ROOT, "data/notes/index.json"))) {
+  const committed = read("data/notes/index.json");
+  const fresh = JSON.stringify(generateNotes(), null, 2) + "\n";
+  if (committed !== fresh) fail("data/notes/index.json differs from the .txt notes; run npm run gen:states");
 }
 
 // 4. No em-dashes in fixtures or UI copy

@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import type { LogEntry } from "@/lib/types";
-import { getCompanies, getLogSorted } from "@/lib/data";
+import { draftModeOf, getCompanies, getLogSorted } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { LogList } from "@/components/Company/LogList";
 import { plural } from "@/lib/format";
@@ -15,14 +15,17 @@ const STATUS: { id: StatusFilter; label: string }[] = [
   { id: "all", label: "All" },
   { id: "on-bench", label: "On bench" },
   { id: "confirmed", label: "Confirmed" },
+  { id: "draft", label: "Draft" },
 ];
 
 export default function LogPage() {
+  const stateName = useStore((s) => s.stateName);
   const noteDictated = useStore((s) => s.noteDictated);
+  const noteReviewed = useStore((s) => s.noteReviewed);
   const [company, setCompany] = useState<string>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
   const companies = getCompanies();
-  const all = getLogSorted({ includeDrafts: noteDictated });
+  const all = getLogSorted({ drafts: draftModeOf({ noteDictated, noteReviewed }), stateName });
   const shown = all.filter((e) => (company === "all" || e.companyId === company) && (status === "all" || e.status === status));
   return (
     <div className="flex flex-col gap-4 px-7 pb-7 pt-[22px]" data-testid="log-page">

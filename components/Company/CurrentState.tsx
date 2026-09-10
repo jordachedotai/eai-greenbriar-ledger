@@ -2,7 +2,9 @@
 
 // Current state tab: the company's current-state file, a short list of
 // lines with dates, in the deal team's format. Draft lines (from "Dictate
-// a note") carry a Draft chip and a Review control.
+// a note") carry a Draft chip and a Review control that confirms them.
+// Which lines exist, and whether the draft shows, is decided by the caller
+// through lib/data.
 
 import type { CurrentState as CurrentStateT } from "@/lib/types";
 import { fmtShortDate } from "@/lib/format";
@@ -11,8 +13,8 @@ import { YouChip } from "@/components/Portfolio/StatusPill";
 import { Button } from "@/components/ui/Button";
 
 export function CurrentState({ state, companyName }: { state?: CurrentStateT; companyName: string }) {
-  const noteDictated = useStore((s) => s.noteDictated);
-  const lines = (state?.lines ?? []).filter((l) => noteDictated || l.status !== "draft");
+  const reviewNote = useStore((s) => s.reviewNote);
+  const lines = state?.lines ?? [];
   return (
     <div className="px-7 pb-7 pt-[22px]">
       <section className="flex max-w-[760px] flex-col gap-4 rounded-[14px] border border-line bg-white px-[22px] py-5 shadow-[var(--shadow-card)]" data-testid="current-state">
@@ -30,7 +32,7 @@ export function CurrentState({ state, companyName }: { state?: CurrentStateT; co
                   {l.status === "draft" ? (
                     <div className="flex items-center gap-2.5">
                       <YouChip text="Draft" />
-                      <Button variant="secondary" size={36} testId="review-state-line">
+                      <Button variant="you" size={36} testId="review-state-line" onClick={reviewNote}>
                         Review
                       </Button>
                     </div>

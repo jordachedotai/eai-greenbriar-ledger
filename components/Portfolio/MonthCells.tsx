@@ -1,17 +1,18 @@
-// Eight month cells for one initiative. Each cell is the flag that month,
-// and its title is the sentence management wrote, so hovering shows the quote.
+// The month cells for one initiative, one per month that has arrived.
+// Each cell is the flag that month, and its title is the sentence
+// management wrote, so hovering shows the quote.
 
-import type { Initiative } from "@/lib/types";
-import { MONTHS } from "@/lib/types";
+import type { Initiative, Month } from "@/lib/types";
 import { monthLabel } from "@/lib/format";
 import { FLAG_COLORS } from "@/lib/flags";
 import { FlagCell } from "./StatusPill";
 
-export function MonthCells({ initiative }: { initiative: Initiative }) {
+export function MonthCells({ initiative, months }: { initiative: Initiative; months: Month[] }) {
   return (
     <div className="flex gap-1.5" data-testid="month-cells">
-      {MONTHS.map((m) => {
+      {months.map((m) => {
         const r = initiative.months[m];
+        if (!r) return null;
         const title = r.mentioned && r.quote ? `${monthLabel(m)}: ${FLAG_COLORS[r.flag].name}. ${r.quote}` : `${monthLabel(m)}: ${FLAG_COLORS[r.flag].name}. Not mentioned.`;
         return <FlagCell key={m} flag={r.flag} title={title} />;
       })}
@@ -19,11 +20,11 @@ export function MonthCells({ initiative }: { initiative: Initiative }) {
   );
 }
 
-export function MonthLetters() {
+export function MonthLetters({ months }: { months: Month[] }) {
   return (
     <div className="flex gap-1.5">
-      {MONTHS.map((m) => (
-        <span key={m} className="w-6 text-center text-[12px] text-mut">
+      {months.map((m) => (
+        <span key={m} className="w-6 text-center text-[12px] text-mut" data-testid="month-letter">
           {monthLabel(m)[0]}
         </span>
       ))}

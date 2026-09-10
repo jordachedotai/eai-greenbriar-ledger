@@ -1,0 +1,312 @@
+{
+  "july": {
+    "name": "july",
+    "label": "July 2026",
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
+    ],
+    "month": "2026-07",
+    "cutoff": "2026-07-31",
+    "status": {
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Online date moved twice: October in May, December in July."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Contract terms in negotiation.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 34%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Phase 1 live July 1. Phase 2 planned for Q4. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for September."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus chose from a two-vendor bake-off in May.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "All regions live since June. Gross margin up 180 bps since April. The report does not connect the two.",
+        "chip": {
+          "text": "Benefit not rolled up",
+          "tone": "you"
+        }
+      },
+      "meridian-drivers": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 45%, was 44% in May. No new actions named."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Offer negotiations in progress for a Q3 start. The search restarted in April."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment arrived in Memphis. Installation underway."
+      }
+    },
+    "questionIds": [],
+    "questionsApproved": [],
+    "patternIds": [
+      "pattern-tms"
+    ]
+  },
+  "august": {
+    "name": "august",
+    "label": "August 2026",
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08"
+    ],
+    "month": "2026-08",
+    "cutoff": null,
+    "status": {
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Contract in legal.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 33%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for September."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus is running the same evaluation.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Gross margin up 180 bps since April. The report does not connect the two.",
+        "chip": {
+          "text": "Benefit not rolled up",
+          "tone": "you"
+        }
+      },
+      "meridian-drivers": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 46%, was 44% in May. No new actions named."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "Done",
+        "sentence": "Offer accepted Aug 20. Start date Sep 15."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment installed. First throughput read in September."
+      }
+    },
+    "questionIds": [
+      "q-harlan-1",
+      "q-harlan-2",
+      "q-harlan-3",
+      "q-meridian-1",
+      "q-meridian-2",
+      "q-meridian-3",
+      "q-corvus-1",
+      "q-corvus-2",
+      "q-corvus-3"
+    ],
+    "questionsApproved": [],
+    "patternIds": [
+      "pattern-tms",
+      "pattern-pricing",
+      "pattern-vendor"
+    ]
+  },
+  "august-approved": {
+    "name": "august-approved",
+    "label": "August 2026",
+    "months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08"
+    ],
+    "month": "2026-08",
+    "cutoff": null,
+    "status": {
+      "corvus-sales": {
+        "flag": "grey",
+        "pill": "Not reported",
+        "sentence": "Last mentioned in March: \"Recruiting underway for both territory roles.\" No closure stated since."
+      },
+      "corvus-mro": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Online date moved twice. August cites vendor resourcing, same phrase as Harlan."
+      },
+      "corvus-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Vendor chosen in May. Contract in legal.",
+        "chip": {
+          "text": "Parallel with Harlan",
+          "tone": "you"
+        }
+      },
+      "corvus-concentration": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Top customer 33%, down from 38% in January."
+      },
+      "harlan-erp": {
+        "flag": "red",
+        "pill": "Needs a conversation",
+        "sentence": "Phase 2 now Q1 2027. The whole system was due end of Q2."
+      },
+      "harlan-plant": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Lease exit signed in March. No move date stated since."
+      },
+      "harlan-pricing": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Live in 2 of 3 regions. Midwest scheduled for September."
+      },
+      "harlan-tms": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Down to two vendors. Corvus is running the same evaluation.",
+        "chip": {
+          "text": "Parallel with Corvus",
+          "tone": "you"
+        }
+      },
+      "meridian-pricing": {
+        "flag": "green",
+        "pill": "Delivered",
+        "sentence": "Gross margin up 180 bps since April. The report does not connect the two.",
+        "chip": {
+          "text": "Benefit not rolled up",
+          "tone": "you"
+        }
+      },
+      "meridian-drivers": {
+        "flag": "amber",
+        "pill": "Slipping",
+        "sentence": "Turnover reported at 46%, was 44% in May. No new actions named."
+      },
+      "meridian-cfo": {
+        "flag": "green",
+        "pill": "Done",
+        "sentence": "Offer accepted Aug 20. Start date Sep 15."
+      },
+      "meridian-warehouse": {
+        "flag": "green",
+        "pill": "On track",
+        "sentence": "Equipment installed. First throughput read in September."
+      }
+    },
+    "questionIds": [
+      "q-harlan-1",
+      "q-harlan-2",
+      "q-harlan-3",
+      "q-meridian-1",
+      "q-meridian-2",
+      "q-meridian-3",
+      "q-corvus-1",
+      "q-corvus-2",
+      "q-corvus-3"
+    ],
+    "questionsApproved": [
+      "harlan"
+    ],
+    "patternIds": [
+      "pattern-tms",
+      "pattern-pricing",
+      "pattern-vendor"
+    ]
+  }
+}

@@ -1,11 +1,14 @@
+"use client";
+
 // Learning-log entries, one card each: date and company, a status pill
 // (On bench, Confirmed, or Draft with a Review control), the learning, and
 // where it came from. Used on the company tab, the Patterns rail, and the
-// Learning log page.
+// Learning log page. Review confirms the dictated draft; nothing is sent.
 
 import type { LogEntry } from "@/lib/types";
 import { companyShortName } from "@/lib/data";
 import { fmtShortDate } from "@/lib/format";
+import { useStore } from "@/lib/store";
 import { StatusPill, YouChip } from "@/components/Portfolio/StatusPill";
 import { Button } from "@/components/ui/Button";
 
@@ -16,6 +19,7 @@ export function LogStatusPill({ status }: { status: LogEntry["status"] }) {
 }
 
 export function LogEntryCard({ entry, showSource = false }: { entry: LogEntry; showSource?: boolean }) {
+  const reviewNote = useStore((s) => s.reviewNote);
   return (
     <div className="flex flex-col gap-1.5 rounded-[10px] border border-line bg-white px-3.5 py-3" data-testid="log-entry" data-entry={entry.id} data-status={entry.status}>
       <div className="flex items-center justify-between gap-3">
@@ -28,7 +32,7 @@ export function LogEntryCard({ entry, showSource = false }: { entry: LogEntry; s
       {showSource ? <span className="text-[12px] text-mut">{entry.source}</span> : null}
       {entry.status === "draft" ? (
         <div className="pt-1">
-          <Button variant="secondary" size={36} testId="review-log-entry">
+          <Button variant="you" size={36} testId="review-log-entry" onClick={reviewNote}>
             Review
           </Button>
         </div>

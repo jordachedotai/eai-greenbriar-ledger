@@ -14,7 +14,7 @@ export function mentionedMonths(i: Initiative): Month[] {
 // The first mention and every month with a change.
 export function keyMonths(i: Initiative): Month[] {
   const mentioned = mentionedMonths(i);
-  return mentioned.filter((m, idx) => idx === 0 || !!i.months[m].change);
+  return mentioned.filter((m, idx) => idx === 0 || !!i.months[m]?.change);
 }
 
 // Mentioned months that carry no change and are not the first mention.

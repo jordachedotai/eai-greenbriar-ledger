@@ -2,19 +2,20 @@
 
 // The header band. Dark green, serif title, subtitle, the month toggle on
 // Portfolio, the Demo data tag, the presenter button. On a company page: a
-// breadcrumb, the company name, CEO and next call.
+// breadcrumb, the company name, CEO and next call. The subtitle and the
+// month toggle follow the loaded demo state.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useStore, type MonthView } from "@/lib/store";
-import { getCompanies, getCompany, getLedgerMeta } from "@/lib/data";
-import { fmtCallDate } from "@/lib/format";
+import { useStore } from "@/lib/store";
+import { getCompanies, getCompany, getDemoState, getLedgerMeta } from "@/lib/data";
+import { fmtCallDate, monthLabel } from "@/lib/format";
 import { IconChevronRight, IconPresenter } from "@/components/ui/icons";
 
-const TITLES: Record<string, { title: string; sub: (n: number) => string }> = {
-  "/portfolio": { title: "Portfolio", sub: () => "Initiatives, January to August 2026" },
-  "/patterns": { title: "Patterns", sub: (n) => `Across ${n} companies, January to August 2026` },
-  "/reports": { title: "Reports", sub: (n) => `${getLedgerMeta().reportCount} monthly reports, ${n} companies` },
+const TITLES: Record<string, { title: string; sub: (n: number, span: string, reports: number) => string }> = {
+  "/portfolio": { title: "Portfolio", sub: (_n, span) => `Initiatives, ${span}` },
+  "/patterns": { title: "Patterns", sub: (n, span) => `Across ${n} companies, ${span}` },
+  "/reports": { title: "Reports", sub: (n, _span, reports) => `${reports} monthly reports, ${n} companies` },
   "/log": { title: "Learning log", sub: () => "What the team has learned, by company" },
   "/settings": { title: "Settings", sub: () => "" },
 };
@@ -26,13 +27,17 @@ export function Header() {
   const company = isCompany ? getCompany(pathname.split("/")[2]) : undefined;
   const mockMode = useStore((s) => s.mockMode);
   const showDemoTag = useStore((s) => s.showDemoTag);
+  const stateName = useStore((s) => s.stateName);
   const setPresenterOpen = useStore((s) => s.setPresenterOpen);
   const presenterOpen = useStore((s) => s.presenterOpen);
   const companyCount = getCompanies().length;
+  const state = getDemoState(stateName);
+  const span = `January to ${monthLabel(state.month)} 2026`;
   const t = TITLES[base];
+  const sub = t?.sub(companyCount, span, getLedgerMeta(stateName).reportCount);
 
   return (
-    <header className="flex h-[64px] shrink-0 items-center justify-between bg-header px-7 text-white">
+    <header className="flex h-[64px] shrink-0 items-center justify-between bg-header px-7 text-white" data-state={stateName}>
       {isCompany ? (
         <div className="flex items-baseline gap-3.5 text-[16px]">
           <Link href="/portfolio" className="text-white/72 hover:text-white">
@@ -53,7 +58,11 @@ export function Header() {
           <span className="serif text-[24px] font-semibold tracking-[-0.01em]" data-testid="header-title">
             {t?.title ?? "Greenbriar"}
           </span>
-          {t?.sub(companyCount) ? <span className="text-[15px] text-white/72">{t.sub(companyCount)}</span> : null}
+          {sub ? (
+            <span className="text-[15px] text-white/72" data-testid="header-sub">
+              {sub}
+            </span>
+          ) : null}
         </div>
       )}
       <div className="flex items-center gap-3">
@@ -77,29 +86,39 @@ export function Header() {
   );
 }
 
-// July / August 2026. Visual only until the demo states arrive.
+// July / August 2026. Shows the loaded state's month. Clicking July loads
+// `july`; clicking August loads `august`, unless an August state is
+// already loaded. The same thing as Jump to state in the presenter menu.
 export function MonthToggle() {
-  const month = useStore((s) => s.month);
-  const setMonth = useStore((s) => s.setMonth);
-  const options: [MonthView, string][] = [
-    ["2026-07", "July"],
-    ["2026-08", "August 2026"],
+  const stateName = useStore((s) => s.stateName);
+  const working = useStore((s) => s.working);
+  const loadState = useStore((s) => s.loadState);
+  const current = getDemoState(stateName).month;
+  const options: [string, string, string][] = [
+    ["2026-07", "July", "july"],
+    ["2026-08", "August 2026", "august"],
   ];
   return (
     <div className="flex items-center rounded-[8px] border border-white/18 bg-white/10 p-[3px]" role="tablist" aria-label="Month">
-      {options.map(([v, text]) => (
-        <button
-          key={v}
-          type="button"
-          role="tab"
-          aria-selected={month === v}
-          onClick={() => setMonth(v)}
-          data-testid={`month-${v}`}
-          className={"rounded-[6px] px-3 py-[5px] text-[14px] " + (month === v ? "bg-white font-semibold text-header" : "font-medium text-white/85 hover:text-white")}
-        >
-          {text}
-        </button>
-      ))}
+      {options.map(([m, text, target]) => {
+        const on = current === m;
+        return (
+          <button
+            key={m}
+            type="button"
+            role="tab"
+            aria-selected={on}
+            disabled={!!working}
+            onClick={() => {
+              if (!on && !working) loadState(target);
+            }}
+            data-testid={`month-${m}`}
+            className={"rounded-[6px] px-3 py-[5px] text-[14px] " + (on ? "bg-white font-semibold text-header" : "font-medium text-white/85 hover:text-white")}
+          >
+            {text}
+          </button>
+        );
+      })}
     </div>
   );
 }

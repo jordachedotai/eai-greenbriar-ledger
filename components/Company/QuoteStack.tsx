@@ -75,6 +75,7 @@ export function QuoteStack({ initiative }: { initiative: Initiative }) {
 
 function StackEntry({ month, initiative }: { month: Month; initiative: Initiative }) {
   const read = initiative.months[month];
+  if (!read) return null;
   const c = FLAG_COLORS[read.flag];
   return (
     <div className="grid grid-cols-[96px_1fr] items-start gap-4" data-testid="stack-entry" data-month={month} data-change={read.change ? "true" : "false"}>

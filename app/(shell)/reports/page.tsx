@@ -1,21 +1,27 @@
-// The 24 monthly reports, by company and month. Every cite in the app
-// lands on one of these at the page it names.
+"use client";
+
+// The monthly reports that have arrived, by company and month. Every cite
+// in the app lands on one of these at the page it names.
 
 import Link from "next/link";
-import { getCompanies, getReports } from "@/lib/data";
+import { getCompanies, getMonths, getReports } from "@/lib/data";
+import { useStore } from "@/lib/store";
 import { monthLabel, numberWord, plural } from "@/lib/format";
 
 export default function ReportsPage() {
+  const stateName = useStore((s) => s.stateName);
   const companies = getCompanies();
-  const all = getReports();
+  const all = getReports(undefined, stateName);
+  const months = getMonths(stateName);
+  const last = monthLabel(months[months.length - 1]);
   const countWord = numberWord(all.length);
   return (
     <div className="flex flex-col gap-3.5 px-7 pb-7 pt-[22px]" data-testid="reports">
       <span className="text-[15px] text-mut">
-        {countWord.charAt(0).toUpperCase() + countWord.slice(1)} monthly reports, {numberWord(companies.length)} companies, January to August 2026. Every cite in the ledger links to a page here.
+        {countWord.charAt(0).toUpperCase() + countWord.slice(1)} monthly reports, {numberWord(companies.length)} companies, January to {last} 2026. Every cite in the ledger links to a page here.
       </span>
       {companies.map((c) => {
-        const own = getReports(c.id);
+        const own = getReports(c.id, stateName);
         return (
           <section key={c.id} className="flex flex-col gap-2.5 rounded-[14px] border border-line bg-white px-5 pb-4 pt-[18px] shadow-[var(--shadow-card)]" data-testid="report-group" data-company={c.id}>
             <div className="flex items-baseline gap-3">

@@ -3,11 +3,13 @@
 // Right column, 360px. The Needs you card: "Before Thursday's call," the
 // three drafted questions with their cites, Approve for Thursday and Edit.
 // Approve marks them approved in the store and turns the card plain;
-// nothing is sent. Then "What the reports do not say." Then "After the
-// call" with the dictate control (button only; the flow is Phase 3).
+// nothing is sent. Before the newest report arrives (state `july`) the
+// card says questions are drafted when it does. Then "What the reports do
+// not say." Then "After the call" with the dictate control, which runs
+// the same beat as the presenter menu.
 
 import type { Company, Gap, Question } from "@/lib/types";
-import { companyShortName } from "@/lib/data";
+import { companyShortName, getNotes } from "@/lib/data";
 import { FLAG_COLORS, YOU_COLORS } from "@/lib/flags";
 import { fmtWeekday, numberWord } from "@/lib/format";
 import { citeShort, parseCite } from "@/lib/cites";
@@ -21,6 +23,9 @@ const CARD = "flex flex-col rounded-[14px] border border-line bg-white shadow-[v
 export function QuestionsRail({ company, questions, gap }: { company: Company; questions: Question[]; gap?: Gap }) {
   const approvedIds = useStore((s) => s.questionsApproved);
   const approve = useStore((s) => s.approveQuestions);
+  const startDictation = useStore((s) => s.startDictation);
+  const dictation = useStore((s) => s.dictation);
+  const note = getNotes().find((n) => n.companyId === company.id) ?? getNotes()[0];
   const approved = approvedIds.includes(company.id);
   const weekday = fmtWeekday(company.nextCall);
   const count = numberWord(questions.length);
@@ -29,41 +34,48 @@ export function QuestionsRail({ company, questions, gap }: { company: Company; q
 
   return (
     <div className="flex flex-col gap-3.5" data-testid="questions-rail">
-      <section
-        className={CARD + " gap-3.5 px-5 py-[18px]"}
-        style={approved ? undefined : { border: "1px solid #b9cbe3", borderLeft: "4px solid #2b5f9e", paddingLeft: 17 }}
-        data-testid="needs-you"
-        data-approved={approved ? "true" : "false"}
-      >
-        <div className="flex flex-col gap-0.5">
-          <span className={LABEL} style={{ color: tone.text }}>
-            {approved ? "Approved" : "Needs you"}
-          </span>
-          <span className="text-[18px] font-semibold">{approved ? `${weekday}'s call` : `Before ${weekday}'s call`}</span>
-          <span className="text-[14px] text-mut">{approved ? `${countCap} questions approved. Nothing was sent; they are yours for the call.` : `${countCap} drafted questions. Edit or drop any of them.`}</span>
-        </div>
-        {questions.map((q) => (
-          <div key={q.id} className="flex items-start gap-3" data-testid="question" data-question={q.id}>
-            <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full text-[13px] font-bold" style={{ background: tone.bg, color: tone.text }}>
-              {q.n}
+      {questions.length === 0 ? (
+        <section className={CARD + " gap-1.5 px-5 py-[18px]"} data-testid="questions-empty">
+          <span className={LABEL}>Before {weekday}&apos;s call</span>
+          <span className="text-[15px] leading-[1.45] text-mut">Questions are drafted when the next report arrives.</span>
+        </section>
+      ) : (
+        <section
+          className={CARD + " gap-3.5 px-5 py-[18px]"}
+          style={approved ? undefined : { border: "1px solid #b9cbe3", borderLeft: "4px solid #2b5f9e", paddingLeft: 17 }}
+          data-testid="needs-you"
+          data-approved={approved ? "true" : "false"}
+        >
+          <div className="flex flex-col gap-0.5">
+            <span className={LABEL} style={{ color: tone.text }}>
+              {approved ? "Approved" : "Needs you"}
             </span>
-            <div className="flex flex-col gap-1">
-              <span className="text-[15px] leading-[1.4]">{q.text}</span>
-              <QuestionCites cites={q.cites} companyId={company.id} />
-            </div>
+            <span className="text-[18px] font-semibold">{approved ? `${weekday}'s call` : `Before ${weekday}'s call`}</span>
+            <span className="text-[14px] text-mut">{approved ? `${countCap} questions approved. Nothing was sent; they are yours for the call.` : `${countCap} drafted questions. Edit or drop any of them.`}</span>
           </div>
-        ))}
-        <div className="flex gap-2.5">
-          {approved ? null : (
-            <Button variant="you" onClick={() => approve(company.id)} testId="approve-questions">
-              Approve for {weekday}
+          {questions.map((q) => (
+            <div key={q.id} className="flex items-start gap-3" data-testid="question" data-question={q.id}>
+              <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full text-[13px] font-bold" style={{ background: tone.bg, color: tone.text }}>
+                {q.n}
+              </span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[15px] leading-[1.4]">{q.text}</span>
+                <QuestionCites cites={q.cites} companyId={company.id} />
+              </div>
+            </div>
+          ))}
+          <div className="flex gap-2.5">
+            {approved ? null : (
+              <Button variant="you" onClick={() => approve(company.id)} testId="approve-questions">
+                Approve for {weekday}
+              </Button>
+            )}
+            <Button variant="secondary" testId="edit-questions">
+              Edit
             </Button>
-          )}
-          <Button variant="secondary" testId="edit-questions">
-            Edit
-          </Button>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       <section className={CARD + " gap-2 px-5 py-4"} data-testid="gaps">
         <span className={LABEL}>What the reports do not say</span>
@@ -77,7 +89,7 @@ export function QuestionsRail({ company, questions, gap }: { company: Company; q
           <span className="text-[14px] leading-[1.45]">Dictate two minutes. The learning log and current state update as a draft for review.</span>
         </div>
         <div>
-          <Button variant="secondary" size={36} testId="dictate-note">
+          <Button variant="secondary" size={36} testId="dictate-note" onClick={() => note && dictation?.status !== "playing" && startDictation(note.id)}>
             Dictate a note
           </Button>
         </div>

@@ -1,13 +1,14 @@
 // One card per company: name, CEO, next call and counts, the column labels,
 // and one row per initiative.
 
-import type { Company, Initiative } from "@/lib/types";
+import type { Company, Initiative, Month } from "@/lib/types";
 import { statusCounts } from "@/lib/data";
 import { fmtCallDate, monthLabel, plural } from "@/lib/format";
 import { InitiativeRow, ROW_GRID } from "./InitiativeRow";
 import { MonthLetters } from "./MonthCells";
 
-export function CompanyCard({ company, initiatives, shown, month }: { company: Company; initiatives: Initiative[]; shown: Initiative[]; month: string }) {
+export function CompanyCard({ company, initiatives, shown, months }: { company: Company; initiatives: Initiative[]; shown: Initiative[]; months: Month[] }) {
+  const month = months[months.length - 1];
   const c = statusCounts(initiatives);
   const parts = [`Next call ${fmtCallDate(company.nextCall)}`, plural(initiatives.length, "initiative")];
   if (c.red) parts.push(`${c.red} ${c.red === 1 ? "needs" : "need"} a conversation`);
@@ -26,13 +27,13 @@ export function CompanyCard({ company, initiatives, shown, month }: { company: C
       </div>
       <div className={ROW_GRID + " px-4"}>
         <span className={label}>Initiative</span>
-        <MonthLetters />
+        <MonthLetters months={months} />
         <span className={label}>Where it stands in {monthLabel(month)}</span>
         <span />
       </div>
       <div className="flex flex-col gap-2">
         {shown.map((i) => (
-          <InitiativeRow key={i.id} initiative={i} />
+          <InitiativeRow key={i.id} initiative={i} months={months} />
         ))}
         {shown.length === 0 ? <div className="px-4 py-3 text-[14px] text-mut">No initiatives in this filter.</div> : null}
       </div>

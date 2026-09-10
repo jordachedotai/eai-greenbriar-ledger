@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { getInitiative, getInitiatives } from "@/lib/data";
 import { expandLabel, keyMonths, mentionedMonths, quietLine, quietMonths, silentTail, stackMonths } from "@/lib/stack";
 import { joinList, numberWord } from "@/lib/format";
-import { MONTHS, type Initiative } from "@/lib/types";
+import { MONTHS, type Initiative, type MonthRead } from "@/lib/types";
 
 const erp = getInitiative("harlan-erp") as Initiative;
 const sales = getInitiative("corvus-sales") as Initiative;
@@ -41,7 +41,7 @@ describe("quote stack selection", () => {
       const collapsed = stackMonths(i, false);
       const expanded = stackMonths(i, true);
       expect(expanded.filter((m) => collapsed.includes(m))).toEqual(collapsed);
-      for (const m of expanded) if (i.months[m].change) expect(collapsed).toContain(m);
+      for (const m of expanded) if (i.months[m]?.change) expect(collapsed).toContain(m);
       expect(new Set([...collapsed, ...quietMonths(i)]).size).toBe(expanded.length);
     }
   });
@@ -61,7 +61,7 @@ describe("quote stack selection", () => {
       if (m === "2026-01" || m === "2026-02" || m === "2026-08") continue;
       one.months[m] = { mentioned: false, flag: "green" };
     }
-    one.months["2026-02"] = { ...one.months["2026-02"], mentioned: true, change: undefined };
+    one.months["2026-02"] = { ...(one.months["2026-02"] as MonthRead), mentioned: true, change: undefined };
     expect(quietLine(one)).toBe("February mentions the initiative without a change.");
   });
 

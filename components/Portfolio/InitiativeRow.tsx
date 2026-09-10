@@ -1,23 +1,25 @@
-// One initiative: name and board target, eight month cells, the status pill
-// with one sentence, an optional blue chip, and Open. Red and grey rows get
-// the colored left border.
+// One initiative: name and board target, one cell per month that has
+// arrived, the status pill with one sentence, an optional blue chip, and
+// Open. Red and grey rows get the colored left border. When a state loads
+// over another (the August beat), the row updates in place: React keys it
+// by id, and the border color eases so the change reads as a change.
 
 import Link from "next/link";
-import type { Initiative } from "@/lib/types";
+import type { Initiative, Month } from "@/lib/types";
 import { FLAG_COLORS } from "@/lib/flags";
 import { MonthCells } from "./MonthCells";
 import { StatusPill, YouChip } from "./StatusPill";
 
 export const ROW_GRID = "grid grid-cols-[270px_234px_1fr_64px] items-center gap-4";
 
-export function InitiativeRow({ initiative }: { initiative: Initiative }) {
+export function InitiativeRow({ initiative, months }: { initiative: Initiative; months: Month[] }) {
   const { flag } = initiative.status;
   const c = FLAG_COLORS[flag];
   const edged = flag === "red" || flag === "grey";
   return (
     <div
       className={ROW_GRID + " rounded-[12px] bg-white px-4 py-3"}
-      style={{ border: `1px solid ${edged ? c.line : "#dde3da"}`, borderLeft: edged ? `4px solid ${c.text}` : undefined }}
+      style={{ border: `1px solid ${edged ? c.line : "#dde3da"}`, borderLeft: edged ? `4px solid ${c.text}` : undefined, transition: "border-color 400ms ease" }}
       data-testid="initiative-row"
       data-initiative={initiative.id}
       data-flag={flag}
@@ -26,7 +28,7 @@ export function InitiativeRow({ initiative }: { initiative: Initiative }) {
         <span className="text-[16px] font-semibold leading-[1.25]">{initiative.name}</span>
         <span className="text-[13px] text-mut">Board target: {initiative.boardTarget}</span>
       </div>
-      <MonthCells initiative={initiative} />
+      <MonthCells initiative={initiative} months={months} />
       <div className="flex min-w-0 items-start gap-2.5">
         <span className="shrink-0">
           <StatusPill flag={flag} text={initiative.status.pill} />
