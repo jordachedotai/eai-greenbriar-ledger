@@ -36,3 +36,19 @@ Fix requested for Phase 3:
 2. Report view: make sure "Back to [company]" is visible without scrolling up when arriving at a deep page (sticky or repeated at the marked sentence).
 
 Open: none blocking. Deploy is held for Jordache's go-ahead (new GitHub repo and Vercel project).
+
+## Round 3: Phase 3 screenshots, 2026-09-10 early
+
+Reviewed july portfolio, presenter open, august arrives, dictate, log. Friday definition of done items 1 to 6 are met locally. 65 tests, three Playwright walkthrough tests green, ledger check green, build clean.
+
+Deviations the build made, accepted:
+- A demo state is "which months have arrived." July truncates the ledger, hides August-dated notes and patterns, drafts no questions. Clean model; keep it.
+- `monday` (twelve companies) not built, because a stub would need month cells without quotes and that breaks the cite rule. Phase 4 builds it properly with one-line arcs per extra company, or the scale beat is narrated over the vision board.
+- Reports page lists only arrived reports (21 in July, 24 in August).
+
+Polish for Phase 4:
+1. Dictate panel overlaps the log cards on the Learning log tab (a Draft pill is clipped). Give the panel its own column or dim the page behind it.
+2. Sidebar: add a greyed "Deals" item as a placeholder, so the product family with the Apex workflow is visible. Apex, if built, gets a greyed "Portfolio."
+3. Darken the month cell fills one step if they read faint on a projector; check on the Friday call.
+
+Open: deploy (new GitHub repo and Vercel project) still held for Jordache's go-ahead.
