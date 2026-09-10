@@ -26,8 +26,10 @@ export function YouChip({ text }: { text: string }) {
   );
 }
 
-// The 24px flag cell used in month strips and initiative lists.
+// The 24px flag cell used in month strips, initiative lists, and the quote
+// stack. One step darker than the pills so it reads on a projector: the
+// tone's line color as the fill, the tone color as a 1px border.
 export function FlagCell({ flag, title, size = 24 }: { flag: Flag; title?: string; size?: number }) {
   const c = FLAG_COLORS[flag];
-  return <span className="inline-flex shrink-0 items-center justify-center rounded-[6px]" style={{ width: size, height: size, background: c.bg, border: `1px solid ${c.line}` }} title={title} data-testid="flag-cell" data-flag={flag} />;
+  return <span className="inline-flex shrink-0 items-center justify-center rounded-[6px]" style={{ width: size, height: size, background: c.line, border: `1px solid ${c.text}` }} title={title} data-testid="flag-cell" data-flag={flag} />;
 }
